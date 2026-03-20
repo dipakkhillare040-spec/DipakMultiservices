@@ -1,165 +1,126 @@
-<!DOCTYPE html>
-<html>
-<head>
+<!-- =========================
+ADVANCED GOV SCHEME PORTAL
+Features:
+- Login System (LocalStorage)
+- Admin Panel (Add Schemes)
+- Search System
+- Scheme Detail Page
+- Mobile Responsive UI
+========================= -->
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
 <meta charset="UTF-8">
-<title>Dipak CSC Government Schemes</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gov Scheme Portal</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 
 <style>
-
-body{
-font-family:Arial;
-margin:0;
-background:#f2f2f2;
-}
-
-header{
-background:#0066cc;
-color:white;
-padding:20px;
-text-align:center;
-}
-
-nav{
-background:#222;
-padding:10px;
-text-align:center;
-}
-
-nav a{
-color:white;
-margin:15px;
-text-decoration:none;
-font-size:18px;
-}
-
-.section{
-padding:40px;
-text-align:center;
-}
-
-.cards{
-display:flex;
-flex-wrap:wrap;
-justify-content:center;
-gap:20px;
-}
-
-.card{
-background:white;
-width:220px;
-padding:20px;
-box-shadow:0 0 10px rgba(0,0,0,0.2);
-border-radius:8px;
-}
-
-footer{
-background:#222;
-color:white;
-text-align:center;
-padding:15px;
-}
-
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif;}
+body{background:#eef2f7;}
+header{background:#1e3c72;color:#fff;padding:15px;text-align:center;font-size:20px;}
+.container{padding:20px;}
+input,button{padding:10px;margin:5px;border-radius:5px;border:1px solid #ccc;}
+button{background:#1e3c72;color:#fff;border:none;cursor:pointer;}
+.card{background:#fff;padding:15px;margin:10px 0;border-radius:10px;box-shadow:0 3px 10px rgba(0,0,0,0.1);}
+.hidden{display:none;}
 </style>
-
 </head>
 
 <body>
 
-<header>
-<h1>Dipak CSC Government Schemes Portal</h1>
-<p>Student | Farmer | Jobs | Government Schemes</p>
-</header>
+<header>Gov Scheme Portal - Dipak</header>
 
-<nav>
+<div class="container">
 
-<a href="#">Home</a>
-<a href="#student">Student</a>
-<a href="#farmer">Farmer</a>
-<a href="#jobs">Jobs</a>
-
-</nav>
-
-<section id="student" class="section">
-
-<h2>Student Schemes</h2>
-
-<div class="cards">
-
-<div class="card">
-<h3>Scholarship</h3>
-<p>Apply Online</p>
+<!-- LOGIN -->
+<div id="loginBox">
+<h2>Login</h2>
+<input type="text" id="username" placeholder="Username">
+<input type="password" id="password" placeholder="Password">
+<button onclick="login()">Login</button>
 </div>
 
-<div class="card">
-<h3>Free Laptop Scheme</h3>
-<p>Government Scheme</p>
+<!-- ADMIN PANEL -->
+<div id="adminPanel" class="hidden">
+<h2>Admin Panel</h2>
+<input type="text" id="schemeTitle" placeholder="Scheme Title">
+<input type="text" id="schemeDesc" placeholder="Scheme Description">
+<button onclick="addScheme()">Add Scheme</button>
 </div>
 
-<div class="card">
-<h3>Education Loan</h3>
-<p>Apply Online</p>
-</div>
+<!-- SEARCH -->
+<h2>Search Scheme</h2>
+<input type="text" id="search" placeholder="Search..." onkeyup="searchScheme()">
+
+<!-- SCHEME LIST -->
+<div id="schemeList"></div>
 
 </div>
 
-</section>
+<script>
 
-<section id="farmer" class="section">
+// Default Login
+const defaultUser = "admin";
+const defaultPass = "1234";
 
-<h2>Farmer Schemes</h2>
+// Load Schemes
+let schemes = JSON.parse(localStorage.getItem("schemes")) || [
+ {title:"PM Kisan Yojana",desc:"Financial support for farmers"},
+ {title:"Scholarship Scheme",desc:"Support for students"}
+];
 
-<div class="cards">
+function login(){
+ let u = document.getElementById("username").value;
+ let p = document.getElementById("password").value;
 
-<div class="card">
-<h3>PM Kisan Yojana</h3>
-<p>₹6000 Farmer Scheme</p>
-</div>
+ if(u===defaultUser && p===defaultPass){
+   document.getElementById("adminPanel").classList.remove("hidden");
+   alert("Login Success");
+ }else{
+   alert("Wrong login");
+ }
+}
 
-<div class="card">
-<h3>Crop Insurance</h3>
-<p>Apply Online</p>
-</div>
+function addScheme(){
+ let title = document.getElementById("schemeTitle").value;
+ let desc = document.getElementById("schemeDesc").value;
 
-<div class="card">
-<h3>Subsidy Schemes</h3>
-<p>Government Support</p>
-</div>
+ if(title && desc){
+   schemes.push({title,desc});
+   localStorage.setItem("schemes", JSON.stringify(schemes));
+   displaySchemes();
+ }
+}
 
-</div>
+function displaySchemes(list = schemes){
+ let html = "";
+ list.forEach((s,i)=>{
+  html += `
+   <div class="card" onclick="viewDetail(${i})">
+    <h3>${s.title}</h3>
+    <p>${s.desc}</p>
+   </div>`;
+ });
+ document.getElementById("schemeList").innerHTML = html;
+}
 
-</section>
+function searchScheme(){
+ let val = document.getElementById("search").value.toLowerCase();
+ let filtered = schemes.filter(s => s.title.toLowerCase().includes(val));
+ displaySchemes(filtered);
+}
 
-<section id="jobs" class="section">
+function viewDetail(i){
+ alert("Scheme: " + schemes[i].title + "\n\n" + schemes[i].desc);
+}
 
-<h2>Latest Government Jobs</h2>
+// Init
+displaySchemes();
 
-<div class="cards">
-
-<div class="card">
-<h3>Railway Jobs</h3>
-<p>Latest Recruitment</p>
-</div>
-
-<div class="card">
-<h3>Police Jobs</h3>
-<p>Apply Online</p>
-</div>
-
-<div class="card">
-<h3>Bank Jobs</h3>
-<p>Government Bank Recruitment</p>
-</div>
-
-</div>
-
-</section>
-
-<footer>
-
-<p>© Dipak CSC Center | Government Services Portal</p>
-
-</footer>
+</script>
 
 </body>
 </html>
