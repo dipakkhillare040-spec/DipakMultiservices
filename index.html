@@ -1,154 +1,103 @@
 <!-- =========================
-PRO GOV SCHEME PORTAL (EARNING READY)
-Features:
-- Firebase Login सिस्टम
-- Admin Dashboard
-- Scheme Add + Image + PDF
-- Search + Categories
-- Mobile UI
+MULTI PAGE ATTRACTIVE GOV SCHEME WEBSITE
+Pages included:
+- index.html (Home)
+- student.html
+- farmer.html
+- jobs.html
 ========================= -->
 
+<!-- ================= HOME PAGE ================= -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Pro Gov Scheme Portal</title>
-
+<title>Gov Scheme Portal</title>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
-
 <style>
 *{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif;}
-body{background:#eef2f7;}
-header{background:#1e3c72;color:#fff;padding:15px;text-align:center;font-size:20px;}
-.container{padding:15px;max-width:900px;margin:auto;}
-input,button,select{padding:10px;margin:5px;width:100%;border-radius:5px;border:1px solid #ccc;}
-button{background:#1e3c72;color:#fff;border:none;cursor:pointer;}
-.card{background:#fff;padding:15px;margin:10px 0;border-radius:10px;box-shadow:0 3px 10px rgba(0,0,0,0.1);}
-img{width:100%;border-radius:8px;margin-top:10px;}
-.hidden{display:none;}
+body{background:#f4f7fb;}
+header{background:#1e3c72;color:white;padding:15px;text-align:center;font-size:22px;}
+nav{background:#2a5298;padding:10px;text-align:center;}
+nav a{color:white;margin:10px;text-decoration:none;font-weight:500;}
+.hero{padding:50px;text-align:center;background:linear-gradient(135deg,#1e3c72,#2a5298);color:white;}
+.container{padding:30px;display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:20px;}
+.card{background:white;padding:20px;border-radius:10px;box-shadow:0 5px 15px rgba(0,0,0,0.1);}
+.btn{display:inline-block;margin-top:10px;padding:8px 15px;background:#1e3c72;color:white;border-radius:5px;text-decoration:none;}
+footer{text-align:center;padding:15px;background:#1e3c72;color:white;}
 </style>
-
-<!-- Firebase CDN -->
-<script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js"></script>
-<script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js"></script>
-<script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js"></script>
-
 </head>
-
 <body>
+<header>Dipak MultiServices - Gov Portal</header>
+<nav>
+<a href="index.html">Home</a>
+<a href="student.html">Student</a>
+<a href="farmer.html">Farmer</a>
+<a href="jobs.html">Jobs</a>
+</nav>
 
-<header>Pro Gov Scheme Portal - Dipak</header>
+<section class="hero">
+<h1>All Government Schemes</h1>
+<p>Students | Farmers | Jobs</p>
+</section>
 
 <div class="container">
-
-<!-- LOGIN -->
-<div id="loginBox">
-<h2>Admin Login</h2>
-<input type="email" id="email" placeholder="Email">
-<input type="password" id="password" placeholder="Password">
-<button onclick="login()">Login</button>
+<div class="card">
+<h3>🎓 Student Schemes</h3>
+<p>Scholarship and education schemes</p>
+<a href="student.html" class="btn">View</a>
 </div>
 
-<!-- ADMIN PANEL -->
-<div id="adminPanel" class="hidden">
-<h2>Add Scheme</h2>
-<input type="text" id="title" placeholder="Scheme Title">
-<input type="text" id="desc" placeholder="Description">
-<input type="text" id="image" placeholder="Image URL">
-<input type="text" id="pdf" placeholder="PDF Link">
-<select id="category">
-<option>Student</option>
-<option>Farmer</option>
-<option>Jobs</option>
-</select>
-<button onclick="addScheme()">Add Scheme</button>
+<div class="card">
+<h3>🌾 Farmer Schemes</h3>
+<p>PM Kisan and subsidy schemes</p>
+<a href="farmer.html" class="btn">View</a>
 </div>
 
-<h2>Search</h2>
-<input type="text" id="search" onkeyup="searchScheme()" placeholder="Search scheme...">
-
-<div id="schemeList"></div>
-
+<div class="card">
+<h3>💼 Job Schemes</h3>
+<p>Government jobs and updates</p>
+<a href="jobs.html" class="btn">View</a>
+</div>
 </div>
 
-<script>
-
-// 🔥 Firebase Config (replace with your own)
-const firebaseConfig = {
-  apiKey: "YOUR_API_KEY",
-  authDomain: "YOUR_DOMAIN",
-  projectId: "YOUR_PROJECT_ID"
-};
-
-firebase.initializeApp(firebaseConfig);
-const auth = firebase.auth();
-const db = firebase.firestore();
-
-// LOGIN
-function login(){
- let email = document.getElementById("email").value;
- let password = document.getElementById("password").value;
-
- auth.signInWithEmailAndPassword(email,password)
- .then(()=>{
-   document.getElementById("adminPanel").classList.remove("hidden");
- })
- .catch(()=>alert("Login Failed"));
-}
-
-// ADD SCHEME
-function addScheme(){
- let data = {
-  title: title.value,
-  desc: desc.value,
-  image: image.value,
-  pdf: pdf.value,
-  category: category.value
- };
-
- db.collection("schemes").add(data).then(()=>{
-  alert("Added");
-  loadSchemes();
- });
-}
-
-// LOAD SCHEMES
-function loadSchemes(){
- db.collection("schemes").get().then(res=>{
-  let html="";
-  res.forEach(doc=>{
-   let s = doc.data();
-   html+=`
-   <div class="card">
-    <h3>${s.title}</h3>
-    <p>${s.desc}</p>
-    <img src="${s.image}">
-    <a href="${s.pdf}" target="_blank">Download PDF</a>
-   </div>`;
-  });
-  schemeList.innerHTML = html;
- });
-}
-
-// SEARCH
-function searchScheme(){
- let val = search.value.toLowerCase();
- db.collection("schemes").get().then(res=>{
-  let html="";
-  res.forEach(doc=>{
-   let s = doc.data();
-   if(s.title.toLowerCase().includes(val)){
-     html+=`<div class="card"><h3>${s.title}</h3><p>${s.desc}</p></div>`;
-   }
-  });
-  schemeList.innerHTML = html;
- });
-}
-
-loadSchemes();
-
-</script>
-
+<footer>© Dipak Center Dabha</footer>
 </body>
 </html>
+
+
+<!-- ================= STUDENT PAGE ================= -->
+
+<!-- Save as student.html -->
+<h1 style="text-align:center">🎓 Student Schemes</h1>
+<ul style="padding:20px;font-size:18px;">
+<li>National Scholarship Portal</li>
+<li>Post Matric Scholarship</li>
+<li>Free Laptop Yojana</li>
+</ul>
+<a href="index.html">⬅ Back</a>
+
+
+<!-- ================= FARMER PAGE ================= -->
+
+<!-- Save as farmer.html -->
+<h1 style="text-align:center">🌾 Farmer Schemes</h1>
+<ul style="padding:20px;font-size:18px;">
+<li>PM Kisan Yojana</li>
+<li>Crop Insurance</li>
+<li>Subsidy Schemes</li>
+</ul>
+<a href="index.html">⬅ Back</a>
+
+
+<!-- ================= JOBS PAGE ================= -->
+
+<!-- Save as jobs.html -->
+<h1 style="text-align:center">💼 Job Schemes</h1>
+<ul style="padding:20px;font-size:18px;">
+<li>Government Jobs</li>
+<li>Skill India</li>
+<li>Apprenticeship</li>
+</ul>
+<a href="index.html">⬅ Back</a>
