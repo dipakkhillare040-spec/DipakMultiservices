@@ -1,112 +1,588 @@
 <!DOCTYPE html>
-<html lang="mr">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Dipak CSC Center</title>
+<title>MahaGov Scheme Portal Dips Support </title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
 
 <style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
 body{
-  margin:0;
-  font-family:Arial;
-  background:#f5f5f5;
+    background:#f4f7fb;
+    color:#222;
 }
+
+/* HEADER */
+
 header{
-  background:#007bff;
-  color:white;
-  padding:15px;
-  text-align:center;
+    width:100%;
+    background:#0b57d0;
+    color:white;
+    padding:15px 7%;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    position:sticky;
+    top:0;
+    z-index:1000;
+    box-shadow:0 4px 10px rgba(0,0,0,0.1);
 }
-nav{
-  background:#333;
-  padding:10px;
-  text-align:center;
+
+.logo{
+    font-size:28px;
+    font-weight:700;
 }
-nav a{
-  color:white;
-  margin:10px;
-  text-decoration:none;
+
+nav ul{
+    display:flex;
+    gap:25px;
+    list-style:none;
 }
+
+nav ul li a{
+    color:white;
+    text-decoration:none;
+    font-weight:500;
+    transition:0.3s;
+}
+
+nav ul li a:hover{
+    color:#ffdd00;
+}
+
+/* HERO */
+
 .hero{
-  background:#e3f2fd;
-  padding:40px;
-  text-align:center;
+    width:100%;
+    min-height:90vh;
+    background:
+    linear-gradient(rgba(0,0,0,0.6),
+    rgba(0,0,0,0.6)),
+    url('https://images.unsplash.com/photo-1521791136064-7986c2920216?q=80&w=1600&auto=format&fit=crop');
+    background-size:cover;
+    background-position:center;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    color:white;
+    padding:30px;
 }
-.services{
-  display:flex;
-  flex-wrap:wrap;
-  justify-content:center;
+
+.hero-content{
+    max-width:900px;
 }
+
+.hero h1{
+    font-size:60px;
+    margin-bottom:20px;
+}
+
+.hero p{
+    font-size:20px;
+    margin-bottom:35px;
+    line-height:1.8;
+}
+
+.search-box{
+    background:white;
+    padding:10px;
+    border-radius:60px;
+    display:flex;
+    overflow:hidden;
+    max-width:700px;
+    margin:auto;
+}
+
+.search-box input{
+    flex:1;
+    border:none;
+    outline:none;
+    padding:15px;
+    font-size:16px;
+}
+
+.search-box button{
+    background:#0b57d0;
+    color:white;
+    border:none;
+    padding:15px 30px;
+    border-radius:50px;
+    cursor:pointer;
+    font-size:16px;
+    font-weight:600;
+}
+
+/* CATEGORY */
+
+.section{
+    padding:80px 7%;
+}
+
+.section-title{
+    text-align:center;
+    font-size:40px;
+    margin-bottom:50px;
+    color:#0b57d0;
+}
+
+.categories{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:30px;
+}
+
 .card{
-  background:white;
-  margin:10px;
-  padding:20px;
-  width:250px;
-  box-shadow:0 0 10px rgba(0,0,0,0.1);
+    background:white;
+    padding:35px;
+    border-radius:20px;
+    text-align:center;
+    transition:0.4s;
+    box-shadow:0 5px 20px rgba(0,0,0,0.08);
 }
+
+.card:hover{
+    transform:translateY(-10px);
+}
+
+.card i{
+    font-size:55px;
+    margin-bottom:20px;
+    color:#0b57d0;
+}
+
+.card h3{
+    margin-bottom:15px;
+    font-size:24px;
+}
+
+.card p{
+    color:#666;
+    line-height:1.7;
+}
+
+/* LATEST SCHEMES */
+
+.scheme-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+    gap:30px;
+}
+
+.scheme-card{
+    background:white;
+    border-radius:20px;
+    overflow:hidden;
+    box-shadow:0 5px 20px rgba(0,0,0,0.08);
+    transition:0.3s;
+}
+
+.scheme-card:hover{
+    transform:scale(1.03);
+}
+
+.scheme-card img{
+    width:100%;
+    height:220px;
+    object-fit:cover;
+}
+
+.scheme-content{
+    padding:25px;
+}
+
+.scheme-content h3{
+    margin-bottom:15px;
+    color:#0b57d0;
+}
+
+.scheme-content p{
+    color:#555;
+    line-height:1.7;
+}
+
+.scheme-content button{
+    margin-top:20px;
+    background:#0b57d0;
+    color:white;
+    border:none;
+    padding:12px 20px;
+    border-radius:10px;
+    cursor:pointer;
+}
+
+/* STATS */
+
+.stats{
+    background:#0b57d0;
+    color:white;
+}
+
+.stats-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:30px;
+    text-align:center;
+}
+
+.stat-box h2{
+    font-size:50px;
+    margin-bottom:10px;
+}
+
+/* FOOTER */
+
 footer{
-  background:#222;
-  color:white;
-  text-align:center;
-  padding:10px;
+    background:#111827;
+    color:white;
+    padding:60px 7%;
 }
-.btn{
-  background:green;
-  color:white;
-  padding:10px;
-  display:inline-block;
-  margin-top:10px;
-  text-decoration:none;
+
+.footer-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:40px;
 }
+
+.footer-box h3{
+    margin-bottom:20px;
+    color:#ffdd00;
+}
+
+.footer-box p,
+.footer-box a{
+    color:#ccc;
+    text-decoration:none;
+    line-height:2;
+}
+
+.social{
+    margin-top:20px;
+}
+
+.social i{
+    margin-right:15px;
+    font-size:22px;
+    cursor:pointer;
+}
+
+/* MOBILE */
+
+.menu-btn{
+    display:none;
+}
+
+@media(max-width:900px){
+
+.hero h1{
+    font-size:38px;
+}
+
+.hero p{
+    font-size:16px;
+}
+
+nav{
+    display:none;
+}
+
+.menu-btn{
+    display:block;
+    font-size:28px;
+}
+
+}
+
 </style>
 </head>
 
 <body>
 
+<!-- HEADER -->
+
 <header>
-<h1>दिपक मल्टीसर्विसेस सेवा केंद्र दाभा</h1>
-<p>All Online Services Available</p>
-</header>
+
+<div class="logo">
+MahaGov Portal
+</div>
 
 <nav>
-<a href="#">Home</a>
-<a href="#">Services</a>
-<a href="#">Contact</a>
+<ul>
+<li><a href="#">Home</a></li>
+<li><a href="#">Schemes</a></li>
+<li><a href="#">Farmers</a></li>
+<li><a href="#">Students</a></li>
+<li><a href="#">Jobs</a></li>
+<li><a href="#">Contact</a></li>
+</ul>
 </nav>
 
-<div class="hero">
-<h2>सरकारी योजना व ऑनलाइन सेवा केंद्र</h2>
-<p>सर्व प्रकारचे फॉर्म येथे भरले जातील</p>
-<a class="btn" href="https://wa.me/919359563098">WhatsApp करा</a>
+<div class="menu-btn">
+<i class="fa-solid fa-bars"></i>
 </div>
 
-<h2 style="text-align:center;">Our Services</h2>
+</header>
 
-<div class="services">
+<!-- HERO -->
+
+<section class="hero">
+
+<div class="hero-content">
+
+<h1>India & Maharashtra Government Scheme Portal</h1>
+
+<p>
+Find all Central Government and Maharashtra Government schemes
+for farmers, students, jobs, women, business and more in one portal.
+</p>
+
+<div class="search-box">
+
+<input type="text" placeholder="Search schemes here...">
+
+<button>
+<i class="fa-solid fa-magnifying-glass"></i>
+ Search
+</button>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- CATEGORIES -->
+
+<section class="section">
+
+<h2 class="section-title">
+Popular Categories
+</h2>
+
+<div class="categories">
+
 <div class="card">
-<h3>शासकीय योजना</h3>
-<p>सर्व योजना अर्ज भरणे</p>
+<i class="fa-solid fa-graduation-cap"></i>
+<h3>Student Schemes</h3>
+<p>
+Scholarships, Free Education, Hostel and Laptop schemes.
+</p>
 </div>
 
 <div class="card">
-<h3>PAN / Aadhaar</h3>
-<p>PAN, Aadhaar Update सेवा</p>
+<i class="fa-solid fa-tractor"></i>
+<h3>Farmer Schemes</h3>
+<p>
+PM Kisan, Crop Insurance, Tractor Subsidy and more.
+</p>
 </div>
 
 <div class="card">
-<h3>Scholarship</h3>
-<p>विद्यार्थी शिष्यवृत्ती फॉर्म</p>
+<i class="fa-solid fa-briefcase"></i>
+<h3>Jobs & Employment</h3>
+<p>
+Government jobs, skill development and apprenticeship schemes.
+</p>
 </div>
 
 <div class="card">
-<h3>Job Form</h3>
-<p>सरकारी नोकरी अर्ज</p>
+<i class="fa-solid fa-house"></i>
+<h3>Housing Schemes</h3>
+<p>
+PM Awas Yojana and affordable housing support.
+</p>
 </div>
+
+<div class="card">
+<i class="fa-solid fa-heart-pulse"></i>
+<h3>Health Schemes</h3>
+<p>
+Ayushman Bharat and health insurance schemes.
+</p>
 </div>
+
+<div class="card">
+<i class="fa-solid fa-business-time"></i>
+<h3>Business Loans</h3>
+<p>
+Mudra loan, startup support and MSME schemes.
+</p>
+</div>
+
+</div>
+
+</section>
+
+<!-- LATEST SCHEMES -->
+
+<section class="section">
+
+<h2 class="section-title">
+Latest Government Schemes
+</h2>
+
+<div class="scheme-grid">
+
+<div class="scheme-card">
+
+<img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?q=80&w=1200&auto=format&fit=crop">
+
+<div class="scheme-content">
+
+<h3>PM Kisan Samman Nidhi</h3>
+
+<p>
+Farmers receive yearly financial assistance directly into bank accounts.
+</p>
+
+<button>Read More</button>
+
+</div>
+
+</div>
+
+<div class="scheme-card">
+
+<img src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?q=80&w=1200&auto=format&fit=crop">
+
+<div class="scheme-content">
+
+<h3>MahaDBT Scholarship</h3>
+
+<p>
+Scholarship schemes for Maharashtra students and higher education support.
+</p>
+
+<button>Read More</button>
+
+</div>
+
+</div>
+
+<div class="scheme-card">
+
+<img src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?q=80&w=1200&auto=format&fit=crop">
+
+<div class="scheme-content">
+
+<h3>Skill India Mission</h3>
+
+<p>
+Training and employment opportunities for youth and job seekers.
+</p>
+
+<button>Read More</button>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- STATS -->
+
+<section class="section stats">
+
+<div class="stats-grid">
+
+<div class="stat-box">
+<h2>500+</h2>
+<p>Government Schemes</p>
+</div>
+
+<div class="stat-box">
+<h2>10K+</h2>
+<p>Daily Visitors</p>
+</div>
+
+<div class="stat-box">
+<h2>100+</h2>
+<p>Student Schemes</p>
+</div>
+
+<div class="stat-box">
+<h2>24/7</h2>
+<p>Online Support</p>
+</div>
+
+</div>
+
+</section>
+
+<!-- FOOTER -->
 
 <footer>
-<p>📞 Contact: 9359563098</p>
-<p>© 2026 दिपक मल्टीसर्विसेस सेवा केंद्र दाभा</p>
+
+<div class="footer-grid">
+
+<div class="footer-box">
+
+<h3>MahaGov Portal</h3>
+
+<p>
+One portal for all India and Maharashtra government schemes.
+</p>
+
+<div class="social">
+
+<i class="fa-brands fa-facebook"></i>
+<i class="fa-brands fa-instagram"></i>
+<i class="fa-brands fa-youtube"></i>
+<i class="fa-brands fa-whatsapp"></i>
+
+</div>
+
+</div>
+
+<div class="footer-box">
+
+<h3>Quick Links</h3>
+
+<p><a href="#">Home</a></p>
+<p><a href="#">All Schemes</a></p>
+<p><a href="#">Jobs</a></p>
+<p><a href="#">Students</a></p>
+
+</div>
+
+<div class="footer-box">
+
+<h3>Services</h3>
+
+<p>Online Forms</p>
+<p>Document Help</p>
+<p>Scholarship Guide</p>
+<p>Farmer Assistance</p>
+
+</div>
+
+<div class="footer-box">
+
+<h3>Contact</h3>
+
+<p>Email: support@mahagovportal.in</p>
+<p>Phone: +91 9876543210</p>
+<p>Maharashtra, India</p>
+
+</div>
+
+</div>
+
 </footer>
 
 </body>
