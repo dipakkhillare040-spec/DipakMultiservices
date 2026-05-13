@@ -110,22 +110,17 @@ transform:scale(1.03);
 
 /* CERTIFICATE */
 
-.certificate-wrapper{
-display:flex;
-justify-content:center;
-}
-
 .certificate{
-width:210mm;
-height:297mm;
+width:190mm;
+min-height:270mm;
 background:white;
 padding:14mm 18mm;
 margin:0 auto;
 overflow:hidden;
 position:relative;
 box-shadow:0 10px 40px rgba(0,0,0,0.2);
+page-break-after:avoid;
 }
-
 /* TITLE */
 
 .cert-title{
@@ -202,29 +197,30 @@ min-height:297mm;
 
 /* PRINT */
 
-@media print{
-
-body{
-background:white;
-padding:0;
+@page{
+size:A4;
 margin:0;
 }
 
-.form-box{
-display:none;
-}
+@media print{
 
-.container{
-display:block;
+html,body{
+width:210mm;
+height:297mm;
+margin:0;
+padding:0;
+overflow:hidden;
+background:white;
 }
 
 .certificate{
-width:210mm;
-height:297mm;
-padding:14mm 18mm;
-margin:0;
+width:190mm;
+min-height:270mm;
 box-shadow:none;
+margin:0 auto;
 page-break-after:avoid;
+}
+
 }
 
 }
