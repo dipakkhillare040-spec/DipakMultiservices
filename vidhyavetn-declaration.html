@@ -104,13 +104,58 @@ transform:scale(1.03);
 }
 
 /* CERTIFICATE */
+/* A4 SIZE CERTIFICATE */
 
 .certificate{
 background:white;
-padding:60px;
-border-radius:25px;
+width:210mm;
+min-height:297mm;
+padding:25mm;
+margin:auto;
+border-radius:10px;
 box-shadow:0 10px 40px rgba(0,0,0,0.2);
-min-height:1000px;
+position:relative;
+overflow:hidden;
+}
+
+/* PRINT SETTING */
+
+@media print{
+
+body{
+background:white;
+padding:0;
+}
+
+.form-box{
+display:none;
+}
+
+.container{
+display:block;
+}
+
+.certificate{
+width:210mm;
+min-height:297mm;
+padding:25mm;
+margin:0;
+box-shadow:none;
+border-radius:0;
+}
+
+}
+
+/* MOBILE RESPONSIVE */
+
+@media(max-width:1000px){
+
+.certificate{
+width:100%;
+min-height:auto;
+padding:20px;
+}
+
 }
 
 /* TITLE */
