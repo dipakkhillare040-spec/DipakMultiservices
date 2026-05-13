@@ -21,8 +21,9 @@ font-family:Arial,sans-serif;
 }
 
 body{
-background:linear-gradient(135deg,#0052a3,#2f80ed);
-padding:20px;
+background:#0052a3;
+padding:15px;
+overflow-x:hidden;
 }
 
 /* MAIN */
@@ -44,7 +45,7 @@ padding:30px;
 border-radius:20px;
 box-shadow:0 10px 30px rgba(0,0,0,0.2);
 position:sticky;
-top:20px;
+top:15px;
 }
 
 .form-box h1{
@@ -63,6 +64,7 @@ display:block;
 font-size:17px;
 font-weight:bold;
 margin-bottom:7px;
+color:#222;
 }
 
 .input-box input{
@@ -72,13 +74,14 @@ border:2px solid #ddd;
 border-radius:12px;
 font-size:17px;
 outline:none;
+transition:0.3s;
 }
 
 .input-box input:focus{
 border-color:#0052a3;
 }
 
-/* BUTTONS */
+/* BUTTON */
 
 .btn{
 width:100%;
@@ -116,35 +119,39 @@ justify-content:center;
 width:210mm;
 height:297mm;
 background:white;
-padding:18mm;
-box-shadow:0 10px 40px rgba(0,0,0,0.2);
+padding:14mm 18mm;
+margin:0 auto;
 overflow:hidden;
 position:relative;
+box-shadow:0 10px 40px rgba(0,0,0,0.2);
 }
 
 /* TITLE */
 
 .cert-title{
 text-align:center;
-font-size:22px;
+font-size:20px;
 font-weight:bold;
 line-height:1.5;
-margin-bottom:10px;
+margin-top:0;
+margin-bottom:6px;
+color:#111;
 }
 
 .cert-sub{
 text-align:center;
-font-size:16px;
-margin-bottom:25px;
+font-size:14px;
+margin-bottom:20px;
+color:#444;
 }
 
-/* TEXT */
+/* BODY TEXT */
 
 .cert-text{
-font-size:17px;
-line-height:2;
+font-size:16px;
+line-height:2.1;
+color:#111;
 text-align:justify;
-color:#222;
 }
 
 .bold{
@@ -154,21 +161,22 @@ font-weight:bold;
 /* SIGN */
 
 .bottom{
-margin-top:55px;
-font-size:17px;
+margin-top:40px;
+font-size:16px;
 line-height:2;
 }
 
 /* FOOTER */
 
 .footer-text{
-margin-top:40px;
+position:absolute;
+bottom:8mm;
+left:0;
+right:0;
 text-align:center;
-font-size:15px;
+font-size:13px;
 font-weight:bold;
 color:#666;
-border-top:1px dashed #bbb;
-padding-top:12px;
 }
 
 /* MOBILE */
@@ -199,6 +207,7 @@ min-height:297mm;
 body{
 background:white;
 padding:0;
+margin:0;
 }
 
 .form-box{
@@ -210,10 +219,12 @@ display:block;
 }
 
 .certificate{
-box-shadow:none;
-margin:0;
 width:210mm;
 height:297mm;
+padding:14mm 18mm;
+margin:0;
+box-shadow:none;
+page-break-after:avoid;
 }
 
 }
@@ -233,12 +244,14 @@ height:297mm;
 
 <div class="input-box">
 <label>विद्यार्थ्याचे नाव</label>
-<input type="text" id="name">
+<input type="text" id="name"
+placeholder="पूर्ण नाव टाका">
 </div>
 
 <div class="input-box">
 <label>कॉलेज नाव</label>
-<input type="text" id="college">
+<input type="text" id="college"
+placeholder="कॉलेज नाव">
 </div>
 
 <div class="input-box">
@@ -249,12 +262,14 @@ placeholder="2025-2026">
 
 <div class="input-box">
 <label>आधार क्रमांक</label>
-<input type="text" id="adhar">
+<input type="text" id="adhar"
+placeholder="XXXX XXXX XXXX">
 </div>
 
 <div class="input-box">
 <label>कोर्स / वर्ग</label>
-<input type="text" id="course">
+<input type="text" id="course"
+placeholder="BCA / MBA / Diploma">
 </div>
 
 <button class="btn generate-btn"
@@ -309,29 +324,41 @@ onclick="downloadPDF()">
 <br><br>
 
 मी खालील सही करणारा
-<span class="bold" id="showName">विद्यार्थी नाव</span>
+<span class="bold" id="showName">
+विद्यार्थी नाव
+</span>
 
 सन
-<span class="bold" id="showYear2">2025-2026</span>
+<span class="bold" id="showYear2">
+2025-2026
+</span>
 
 करिता महाविद्यालयाचे नाव
-<span class="bold" id="showCollege">कॉलेज नाव</span>
+<span class="bold" id="showCollege">
+कॉलेज नाव
+</span>
 
 मध्ये
 
-<span class="bold" id="showCourse">कोर्स</span>
+<span class="bold" id="showCourse">
+कोर्स
+</span>
 
 या अभ्यासक्रमात प्रवेशित आहे.
 
 मी सन
-<span class="bold" id="showYear3">2025-2026</span>
+<span class="bold" id="showYear3">
+2025-2026
+</span>
 
 मध्ये विद्यावेतन योजनेचा अर्ज भरला नाही.
 
 <br><br>
 
 करिता मी भारतरत्न डॉ. बाबासाहेब आंबेडकर स्वाधार योजना सन
-<span class="bold" id="showYear4">2025-2026</span>
+<span class="bold" id="showYear4">
+2025-2026
+</span>
 
 चा लाभ मिळणे बाबत अर्ज करत आहे.
 
@@ -344,12 +371,16 @@ onclick="downloadPDF()">
 <br><br>
 
 अर्जदाराचे नाव :
-<span class="bold" id="showName2">विद्यार्थी नाव</span>
+<span class="bold" id="showName2">
+विद्यार्थी नाव
+</span>
 
 <br><br>
 
 अर्जदाराचे आधार क्रमांक :
-<span class="bold" id="showAdhar">XXXX XXXX XXXX</span>
+<span class="bold" id="showAdhar">
+XXXX XXXX XXXX
+</span>
 
 </div>
 
@@ -366,6 +397,8 @@ Provided By Dips
 </div>
 
 <script>
+
+/* GENERATE CERTIFICATE */
 
 function generateCertificate(){
 
@@ -398,14 +431,14 @@ document.getElementById("course").value;
 
 }
 
-/* PDF DOWNLOAD */
+/* DOWNLOAD PDF */
 
 function downloadPDF(){
 
 const element =
 document.getElementById("certificate");
 
-const opt = {
+const options = {
 
 margin:0,
 
@@ -417,23 +450,23 @@ quality:1
 },
 
 html2canvas:{
-scale:3,
-useCORS:true
+scale:2,
+scrollX:0,
+scrollY:0
 },
 
 jsPDF:{
 unit:'mm',
 format:'a4',
 orientation:'portrait'
-},
-
-pagebreak:{
-mode:['avoid-all']
 }
 
 };
 
-html2pdf().set(opt).from(element).save();
+html2pdf()
+.set(options)
+.from(element)
+.save();
 
 }
 
