@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="mr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>स्वाधार शपथपत्र Generator</title>
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial,sans-serif;
+}
+
+body{
+background:linear-gradient(135deg,#0052a3,#2f80ed);
+padding:30px;
+}
+
+/* MAIN BOX */
+
+.container{
+max-width:1200px;
+margin:auto;
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:30px;
+}
+
+/* FORM */
+
+.form-box{
+background:white;
+padding:35px;
+border-radius:25px;
+box-shadow:0 10px 40px rgba(0,0,0,0.2);
+}
+
+.form-box h1{
+text-align:center;
+margin-bottom:30px;
+color:#0b2f6b;
+font-size:38px;
+}
+
+.input-box{
+margin-bottom:20px;
+}
+
+.input-box label{
+display:block;
+margin-bottom:8px;
+font-size:18px;
+font-weight:bold;
+color:#333;
+}
+
+.input-box input,
+.input-box textarea{
+width:100%;
+padding:15px;
+border-radius:12px;
+border:2px solid #dcdcdc;
+font-size:18px;
+outline:none;
+transition:0.3s;
+}
+
+.input-box input:focus,
+.input-box textarea:focus{
+border-color:#0052a3;
+}
+
+.btn{
+width:100%;
+padding:18px;
+border:none;
+border-radius:50px;
+background:linear-gradient(45deg,#ff416c,#ff4b2b);
+color:white;
+font-size:22px;
+cursor:pointer;
+transition:0.3s;
+margin-top:10px;
+}
+
+.btn:hover{
+transform:scale(1.03);
+}
+
+/* CERTIFICATE */
+
+.certificate{
+background:white;
+padding:60px;
+border-radius:25px;
+box-shadow:0 10px 40px rgba(0,0,0,0.2);
+position:relative;
+overflow:hidden;
+min-height:1000px;
+}
+
+.watermark{
+position:absolute;
+top:50%;
+left:50%;
+transform:translate(-50%,-50%) rotate(-35deg);
+font-size:90px;
+color:rgba(0,82,163,0.08);
+font-weight:bold;
+pointer-events:none;
+white-space:nowrap;
+}
+
+.cert-title{
+text-align:center;
+font-size:34px;
+font-weight:bold;
+margin-bottom:20px;
+color:#333;
+line-height:1.6;
+}
+
+.cert-sub{
+text-align:center;
+font-size:24px;
+margin-bottom:40px;
+color:#555;
+}
+
+.cert-text{
+font-size:26px;
+line-height:2;
+color:#222;
+text-align:justify;
+}
+
+.bold{
+font-weight:bold;
+}
+
+.bottom{
+margin-top:100px;
+font-size:24px;
+line-height:2.2;
+}
+
+.print-btn{
+margin-top:25px;
+background:#0b2f6b;
+}
+
+/* MOBILE */
+
+@media(max-width:1000px){
+
+.container{
+grid-template-columns:1fr;
+}
+
+.certificate{
+padding:25px;
+}
+
+.cert-text{
+font-size:20px;
+}
+
+.bottom{
+font-size:20px;
+}
+
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<!-- FORM -->
+
+<div class="form-box">
+
+<h1>📄 शपथपत्र Generator</h1>
+
+<div class="input-box">
+<label>विद्यार्थ्याचे नाव</label>
+<input type="text" id="name"
+placeholder="पूर्ण नाव टाका">
+</div>
+
+<div class="input-box">
+<label>कॉलेज नाव</label>
+<input type="text" id="college"
+placeholder="कॉलेज नाव">
+</div>
+
+<div class="input-box">
+<label>शैक्षणिक वर्ष</label>
+<input type="text" id="year"
+placeholder="2025-2026">
+</div>
+
+<div class="input-box">
+<label>आधार क्रमांक</label>
+<input type="text" id="adhar"
+placeholder="XXXX XXXX XXXX">
+</div>
+
+<div class="input-box">
+<label>कोर्स / वर्ग</label>
+<input type="text" id="course"
+placeholder="BCA / MBA / Diploma">
+</div>
+
+<button class="btn" onclick="generateCertificate()">
+
+✨ Certificate Generate
+
+</button>
+
+<button class="btn print-btn" onclick="window.print()">
+
+🖨 Print Certificate
+
+</button>
+
+</div>
+
+<!-- CERTIFICATE -->
+
+<div class="certificate" id="certificate">
+
+<div class="watermark">
+आपली माहिती
+</div>
+
+<div class="cert-title">
+
+विद्यावेतन योजनेचा अर्ज भरला नसल्याचे शपथपत्र
+
+</div>
+
+<div class="cert-sub">
+
+(केवळ व्यावसायिक अभ्यासक्रमाकरिता)
+
+</div>
+
+<div class="cert-text">
+
+प्रति,<br><br>
+
+मा. सहाय्यक आयुक्त,<br>
+समाज कल्याण परभणी<br><br>
+
+विषय :- शैक्षणिक वर्ष
+<span class="bold" id="showYear">2025-2026</span>
+मध्ये विद्यावेतन या योजनेचा अर्ज न भरल्याबाबत.
+
+<br><br>
+
+महोदय,
+
+<br><br>
+
+मी खालील सही करणारा
+<span class="bold" id="showName">
+विद्यार्थी नाव
+</span>
+
+सन
+<span class="bold" id="showYear2">
+2025-2026
+</span>
+
+करिता महाविद्यालयाचे नाव
+<span class="bold" id="showCollege">
+कॉलेज नाव
+</span>
+
+मध्ये
+
+<span class="bold" id="showCourse">
+कोर्स
+</span>
+
+या अभ्यासक्रमात प्रवेशित आहे.
+
+मी सन
+<span class="bold" id="showYear3">
+2025-2026
+</span>
+
+मध्ये विद्यावेतन योजनेचा अर्ज भरला नाही.
+
+<br><br>
+
+करिता मी भारतरत्न डॉ. बाबासाहेब आंबेडकर स्वाधार योजना सन
+<span class="bold" id="showYear4">
+2025-2026
+</span>
+
+चा लाभ मिळणे बाबत अर्ज करत आहे.
+
+</div>
+
+<div class="bottom">
+
+अर्जदाराची स्वाक्षरी :- ___________________
+
+<br><br>
+
+अर्जदाराचे नाव :
+<span class="bold" id="showName2">
+विद्यार्थी नाव
+</span>
+
+<br><br>
+
+अर्जदाराचे आधार क्रमांक :
+<span class="bold" id="showAdhar">
+XXXX XXXX XXXX
+</span>
+
+</div>
+
+</div>
+
+</div>
+
+<script>
+
+function generateCertificate(){
+
+document.getElementById("showName").innerHTML =
+document.getElementById("name").value;
+
+document.getElementById("showName2").innerHTML =
+document.getElementById("name").value;
+
+document.getElementById("showCollege").innerHTML =
+document.getElementById("college").value;
+
+document.getElementById("showYear").innerHTML =
+document.getElementById("year").value;
+
+document.getElementById("showYear2").innerHTML =
+document.getElementById("year").value;
+
+document.getElementById("showYear3").innerHTML =
+document.getElementById("year").value;
+
+document.getElementById("showYear4").innerHTML =
+document.getElementById("year").value;
+
+document.getElementById("showAdhar").innerHTML =
+document.getElementById("adhar").value;
+
+document.getElementById("showCourse").innerHTML =
+document.getElementById("course").value;
+
+}
+
+</script>
+
+</body>
+</html>
