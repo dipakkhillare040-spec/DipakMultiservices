@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>विध्यावेतन शपतपत्र Certificate Generator</title>
+<title> शासकीय वस्तीगृहात राहत नसल्याबाबतचे शपथपत्र Certificate Generator</title>
 
 <link rel="stylesheet"
 href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
@@ -109,6 +109,18 @@ transform:scale(1.03);
 }
 
 /* CERTIFICATE */
+.certificate{
+width:190mm;
+padding-top:60mm;
+padding-left:22mm;
+padding-right:22mm;
+padding-bottom:40mm;
+}
+
+.cert-body{
+font-size:18px;
+line-height:2.2;
+}
 
 .certificate{
 width:190mm;
@@ -130,9 +142,10 @@ text-align:center;
 font-size:20px;
 font-weight:bold;
 line-height:1.5;
-margin-top:0;
-margin-bottom:6px;
+margin-bottom:20px;
 color:#111;
+border-bottom:2px solid #000; /* Line */
+padding-bottom:10px;
 }
 
 .cert-sub{
@@ -215,6 +228,19 @@ overflow:hidden;
 background:white;
 }
 
+.cert-body{
+font-size:17px;
+line-height:2.3;
+text-align:justify;
+word-spacing:2px;
+letter-spacing:0.3px;
+}
+
+.bold{
+font-weight:bold;
+padding:0 3px;
+}
+
 .certificate{
 width:190mm;
 min-height:270mm;
@@ -238,15 +264,9 @@ page-break-after:avoid;
 
 <div class="form-box">
 
-<h1>📄 विध्यावेतन शपतपत्र</h1>
+<h1>📄 शासकीय वस्तीगृहात राहत नसल्याबाबतचे  शपथपत्र</h1>
 <h2>कृपया मराठी मध्ये टाइप करा.</h2>
-<br>
-
-<div class="input-box">
-<label>समाज कल्याण नाव</label>
-<input type="text" id="district"
-placeholder="समाज कल्याण नाव टाका">
-</div>
+<br><br>
 
 <div class="input-box">
 <label>विद्यार्थ्याचे नाव</label>
@@ -255,21 +275,22 @@ placeholder="पूर्ण नाव टाका">
 </div>
 
 <div class="input-box">
+<label>वय</label>
+<input type="text" id="age"
+placeholder="वय टाका">
+</div>
+
+<div class="input-box">
+<label> विध्यार्थी चा पता</label>
+<input type="text" id="address"
+placeholder="गाव, तालुका आणी जिल्हा टाका">
+</div>
+
+
+<div class="input-box">
 <label>कॉलेज नाव</label>
 <input type="text" id="college"
-placeholder="कॉलेज नाव">
-</div>
-
-<div class="input-box">
-<label>शैक्षणिक वर्ष</label>
-<input type="text" id="year"
-placeholder="2025-2026">
-</div>
-
-<div class="input-box">
-<label>आधार क्रमांक</label>
-<input type="text" id="adhar"
-placeholder="XXXX XXXX XXXX">
+placeholder="कॉलेज नाव टाका">
 </div>
 
 <div class="input-box">
@@ -277,6 +298,25 @@ placeholder="XXXX XXXX XXXX">
 <input type="text" id="course"
 placeholder="BCA / MBA / Diploma">
 </div>
+
+<div class="input-box">
+<label>कॉलेज चा पत्ता</label>
+<input type="text" id="place"
+placeholder="कॉलेज पत्ता टाका / ठिकाण/जिल्हा">
+</div>
+
+<div class="input-box">
+<label>घरमालकाचे पूर्ण नाव </label>
+<input type="text" id="owner"
+placeholder="घरमालकाचे पूर्ण नाव टाका">
+</div>
+
+<div class="input-box">
+<label>घरमालका.चा पत्ता</label>
+<input type="text" id="rentplace"
+placeholder="घरमालकाचा पत्ता टाका">
+</div>
+
 
 <button class="btn generate-btn"
 onclick="generateCertificate()">
@@ -308,106 +348,72 @@ onclick="downloadPDF()">
 
 
 
-विद्यावेतन योजनेचा अर्ज भरला नसल्याचे शपथपत्र
-
-</div>
-
-<div class="cert-sub">
-
-(केवळ व्यावसायिक अभ्यासक्रमाकरिता)
-
-</div>
-
-<div class="cert-text">
-
-प्रति,<br><br>
-
-मा. सहाय्यक आयुक्त,<br>
-समाज कल्याण
-<span class="bold" id="showDistrict">
-j
-</span>
-
+ शासकीय वस्तीगृहात राहत नसल्याबाबतचे शपथपत्र
 <br><br>
 
-विषय :- शैक्षणिक वर्ष
-<span class="bold" id="showYear">2025-2026</span>
-मध्ये विद्यावेतन या योजनेचा अर्ज न भरल्याबाबत.
+</div>
 
-<br>
 
-महोदय,
 
-<br>
+<div class="cert-body">
 <span style="margin-left:60px;display:inline-block;">
-        मी खालील सही करणार सत्य प्रतिज्ञा लेख लिहून देते कि नामे :-
+     <br>   मी 
 </span>
 <span class="bold" id="showName">
 विद्यार्थी नाव
 </span>
 
-सन
-<span class="bold" id="showYear2">
-2025-2026
+वय
+<span class="bold" id="showAge">
+वय टाका
 </span>
 
-करिता महाविद्यालयाचे नाव
-<span class="bold" id="showCollege">
+वर्ष धंदा शिक्षण रा.
+<span class="bold" id="showAddress">
+विध्यार्थी चा  पता
+</span>
+शपथेवर निवेदन करते/करतो , की मी 
+  <span class="bold" id="showCollege">
 कॉलेज नाव
 </span>
-
-प्रवेशित वर्ष प्रथम / द्वितीय / तुतीय / चौथे 
-
-
+तालुका जिल्हा  येथे  
+<span class="bold" id="showCourse">
+कौर्स चे नाव 
 </span>
 
-वर्ष मध्ये  प्रवेशित आहे.
+शाखेत शिक्षण घेत आहे. मी
+<span class="bold" id="showOwner">
+घर मालकाचे नाव पूर्ण टाका 
+</span> 
+    
+ रा.
+<span class="bold" id="showRentPlace">
+भाड्याने राहत असलेले ठिकाण
+</span>            
+ यांच्या घरी एक खोली प्रति महिना <b>3000/- </b>रुपये प्रमाणे भाड्याने राहत असुन मी कोणत्याही शासकीय वस्तीगृहात राहत नसुन मी <b>डॉ. बाबासाहेब आंबेडकर स्वाधार योजना</b> साठी अर्ज करत आहे.
 
-मी सन
-<span class="bold" id="showYear3">
-2025-2026
-</span>
-
-मध्ये विद्यावेतन योजनेचा अर्ज भरला नाही.
-
-<br>
 <span style="margin-left:60px;display:inline-block;">
-करिता मी भारतरत्न डॉ. बाबासाहेब आंबेडकर स्वाधार योजना सन
+ वरील प्रमाणे शपथपत्रामध्ये नमूद  केलेली सर्व  माहिती सत्य व बोरोबर आहे .  
 </span>
-<span class="bold" id="showYear4">
-2025-2026
-</span>
-
-चा लाभ मिळणे बाबत अर्ज करत आहे.
-
+ ती चूक दिसून आल्यास मी भा. द. वी कलम 199 व 200 नुसार शिक्षेस पात्र राहीन याची मला जाणीव  आहे. 
 </div>
+<div style="width:250px;margin-left:auto;text-align:center;margin-top:100px;line-height:2;">
 
-<div class="bottom">
-
-अर्जदाराची स्वाक्षरी :- ___________________
-
-<br><br>
-
-अर्जदाराचे नाव :
-<span class="bold" id="showName2">
-विद्यार्थी नाव
-</span>
+निवेदक
 
 <br>
 
-अर्जदाराचे आधार क्रमांक :
-<span class="bold" id="showAdhar">
-XXXX XXXX XXXX
-</span>
+<b id="showName1">विद्यार्थ्याचे नाव</b>
+
+<br>
+
+<span id="showAddress1">रा. </span>
 
 </div>
-
 <div class="footer-text">
-
 <a href="https://dipakcsccenter.com/" class="doc-link">
 Provided By Dips
 </a>
-
 </div>
 
 </div>
@@ -422,14 +428,23 @@ Provided By Dips
 
 function generateCertificate(){
 
-document.getElementById("showDistrict").innerHTML =
-document.getElementById("district").value;
+
 
 document.getElementById("showName").innerHTML =
 document.getElementById("name").value;
 
-document.getElementById("showName2").innerHTML =
+
+document.getElementById("showName1").innerHTML =
 document.getElementById("name").value;
+
+document.getElementById("showAge").innerHTML =
+document.getElementById("age").value;
+
+document.getElementById("showAddress").innerHTML =
+document.getElementById("address").value;
+
+document.getElementById("showAddress1").innerHTML =
+document.getElementById("address").value;
 
 document.getElementById("showCollege").innerHTML =
 document.getElementById("college").value;
@@ -437,20 +452,19 @@ document.getElementById("college").value;
 document.getElementById("showYear").innerHTML =
 document.getElementById("year").value;
 
-document.getElementById("showYear2").innerHTML =
-document.getElementById("year").value;
-
-document.getElementById("showYear3").innerHTML =
-document.getElementById("year").value;
-
-document.getElementById("showYear4").innerHTML =
-document.getElementById("year").value;
-
-document.getElementById("showAdhar").innerHTML =
-document.getElementById("adhar").value;
-
 document.getElementById("showCourse").innerHTML =
 document.getElementById("course").value;
+
+document.getElementById("showPlace").innerHTML =
+document.getElementById("place").value;
+
+document.getElementById("showRentPlace").innerHTML =
+document.getElementById("rentplace").value;
+
+document.getElementById("showOwner").innerHTML =
+document.getElementById("owner").value;
+
+
 
 }
 
