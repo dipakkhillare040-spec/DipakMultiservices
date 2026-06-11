@@ -241,6 +241,40 @@ footer{
     font-size:15px;
     color:#ccc;
 }
+.notice-board{
+    width:90%;
+    margin:30px auto;
+    border-radius:20px;
+    overflow:hidden;
+    background:rgba(255,255,255,0.08);
+    backdrop-filter:blur(12px);
+    box-shadow:0 8px 25px rgba(0,0,0,0.2);
+}
+
+.notice-header{
+    background:linear-gradient(90deg,#ff6b00,#ff9800);
+    color:white;
+    padding:15px;
+    font-size:24px;
+    font-weight:bold;
+    text-align:center;
+}
+
+.notice-content{
+    padding:20px;
+}
+
+.notice-content p{
+    font-size:18px;
+    color:white;
+    padding:10px 0;
+}
+
+.notice-content hr{
+    border:none;
+    height:1px;
+    background:rgba(255,255,255,0.2);
+}
 </style>
 </head>
 <body>
@@ -263,6 +297,38 @@ footer{
 </div>
 
 </header>
+<section class="notice-board">
+
+    <div class="notice-header">
+        📢 नवीन अपडेट्स / सूचना
+    </div>
+
+    <div class="notice-content">
+
+        <marquee direction="up" scrollamount="3" height="250">
+
+            <p>🔔 स्वाधार योजनेचे अर्ज सुरू झाले आहेत.</p>
+            <hr>
+
+            <p>🎓 नवीन शिष्यवृत्ती अर्ज उपलब्ध.</p>
+            <hr>
+
+            <p>📜 उत्पन्न प्रमाणपत्र सेवा लवकरच सुरू होणार.</p>
+            <hr>
+
+            <p>💼 नवीन सरकारी भरती माहिती अपडेट.</p>
+            <hr>
+
+            <p>🌾 शेतकरी योजना अर्ज सुरू.</p>
+            <hr>
+
+            <p>📢 CSC Portal Version 2.0 Launch.</p>
+
+        </marquee>
+
+    </div>
+
+</section>
 
 <section class="hero">
     <h1>🙏 स्वागत आहे</h1>
