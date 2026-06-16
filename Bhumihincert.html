@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="mr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>भूमिहीन स्वयं घोषणापत्र</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
+}
+
+body{
+background:linear-gradient(135deg,#0f172a,#1e293b);
+padding:20px;
+}
+
+.container{
+max-width:1200px;
+margin:auto;
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:20px;
+}
+
+.form-box{
+background:#fff;
+padding:25px;
+border-radius:20px;
+box-shadow:0 10px 30px rgba(0,0,0,.2);
+}
+
+.form-box h2{
+text-align:center;
+color:#0f172a;
+margin-bottom:20px;
+}
+
+.input-group{
+margin-bottom:12px;
+}
+
+label{
+font-weight:600;
+display:block;
+margin-bottom:5px;
+}
+
+input{
+width:100%;
+padding:12px;
+border:1px solid #ddd;
+border-radius:10px;
+font-size:15px;
+}
+
+.btn{
+width:100%;
+padding:14px;
+border:none;
+border-radius:12px;
+background:#2563eb;
+color:white;
+font-size:16px;
+font-weight:600;
+cursor:pointer;
+margin-top:10px;
+}
+
+.btn:hover{
+background:#1d4ed8;
+}
+
+.preview{
+background:white;
+padding:40px;
+border-radius:20px;
+box-shadow:0 10px 30px rgba(0,0,0,.2);
+min-height:900px;
+}
+
+.paper{
+max-width:800px;
+margin:auto;
+color:#000;
+line-height:2;
+}
+
+.heading{
+text-align:center;
+font-size:28px;
+font-weight:bold;
+text-decoration:underline;
+margin-bottom:40px;
+}
+
+.date{
+text-align:right;
+margin-bottom:30px;
+font-weight:600;
+}
+
+.content{
+font-size:20px;
+text-align:justify;
+}
+
+.signature{
+margin-top:80px;
+text-align:right;
+}
+
+.name-bottom{
+margin-top:30px;
+text-align:right;
+font-size:20px;
+font-weight:600;
+}
+
+.print-btn{
+background:#16a34a;
+margin-top:20px;
+}
+
+@media print{
+
+body{
+background:white;
+}
+
+.form-box,
+.btn,
+.print-btn{
+display:none;
+}
+
+.preview{
+box-shadow:none;
+width:100%;
+}
+
+}
+
+@media(max-width:900px){
+
+.container{
+grid-template-columns:1fr;
+}
+
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<div class="form-box">
+
+<h2>📄 भूमिहीन स्वयं घोषणापत्र</h2>
+
+<div class="input-group">
+<label>नाव</label>
+<input type="text" id="name">
+</div>
+
+<div class="input-group">
+<label>वडील / पतीचे नाव</label>
+<input type="text" id="father">
+</div>
+
+<div class="input-group">
+<label>वय</label>
+<input type="number" id="age">
+</div>
+
+<div class="input-group">
+<label>आधार क्रमांक</label>
+<input type="text" id="aadhaar">
+</div>
+
+<div class="input-group">
+<label>व्यवसाय</label>
+<input type="text" id="occupation">
+</div>
+
+<div class="input-group">
+<label>गाव</label>
+<input type="text" id="village">
+</div>
+
+<div class="input-group">
+<label>तालुका</label>
+<input type="text" id="taluka">
+</div>
+
+<div class="input-group">
+<label>जिल्हा</label>
+<input type="text" id="district">
+</div>
+
+<div class="input-group">
+<label>पिनकोड</label>
+<input type="text" id="pincode">
+</div>
+
+<div class="input-group">
+<label>वार्षिक उत्पन्न</label>
+<input type="number" id="income">
+</div>
+
+<button class="btn" onclick="generateCertificate()">
+Generate घोषणापत्र
+</button>
+
+<button class="btn print-btn" onclick="window.print()">
+🖨 Print
+</button>
+
+</div>
+
+<div class="preview">
+
+<div class="paper">
+
+<div class="date">
+दिनांक : <span id="todayDate"></span>
+</div>
+
+<div class="heading">
+भूमिहीन असल्याबाबत स्वयं घोषणापत्र
+</div>
+
+<div class="content" id="certificateText">
+
+येथे घोषणापत्र तयार होईल...
+
+</div>
+
+<div class="signature">
+
+_____________________<br>
+अर्जदाराची सही
+
+</div>
+
+<div class="name-bottom">
+नाव : (<span id="bottomName">__________</span>)
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<script>
+
+document.getElementById("todayDate").innerHTML =
+new Date().toLocaleDateString('en-GB');
+
+function generateCertificate(){
+
+let name=document.getElementById("name").value;
+let father=document.getElementById("father").value;
+let age=document.getElementById("age").value;
+let aadhaar=document.getElementById("aadhaar").value;
+let occupation=document.getElementById("occupation").value;
+let village=document.getElementById("village").value;
+let taluka=document.getElementById("taluka").value;
+let district=document.getElementById("district").value;
+let pincode=document.getElementById("pincode").value;
+let income=document.getElementById("income").value;
+
+document.getElementById("bottomName").innerHTML=name;
+
+document.getElementById("certificateText").innerHTML=`
+
+मी श्री./श्रीमती/कु. <b>${name}</b>,
+श्री. <b>${father}</b> यांचा/यांची मुलगा/मुलगी,
+वय <b>${age}</b> वर्ष,
+आधार क्र. <b>${aadhaar}</b>,
+व्यवसाय <b>${occupation}</b>,
+रा. <b>${village}</b>,
+ता. <b>${taluka}</b>,
+जि. <b>${district}</b>,
+पिनकोड <b>${pincode}</b> येथील रहिवासी असून या द्वारे घोषित करतो/करते की,
+
+माझ्या नावावर तसेच माझ्या कुटुंबातील कोणत्याही सदस्याच्या नावावर
+कोणतीही शेती जमीन अथवा गावठाण क्षेत्रामधील मालमत्ता नाही.
+
+तसेच माझे वार्षिक उत्पन्न रु.
+<b>${Number(income).toLocaleString('en-IN')}</b>
+(अक्षरी रुपये) एवढे आहे.
+
+सदर माहिती मी स्वतः समजून उमजून दिली असून,
+ती चुकीची आढळल्यास माझ्यावर भारतीय दंड संहितेनुसार
+कारवाई करण्यात यावी यास माझी पूर्ण संमती आहे.
+
+करिता भूमिहीन असल्याबाबत स्वयं घोषणापत्र लिहून देत आहे.
+
+`;
+
+}
+
+</script>
+
+</body>
+</html>
