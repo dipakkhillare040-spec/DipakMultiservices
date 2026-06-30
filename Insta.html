@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Instagram Toolkit</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
+scroll-behavior:smooth;
+}
+
+body{
+background:linear-gradient(135deg,#4b0082,#0f2027,#203a43,#2c5364);
+color:white;
+overflow-x:hidden;
+}
+
+/* NAVBAR */
+
+nav{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+padding:18px 8%;
+display:flex;
+justify-content:space-between;
+align-items:center;
+backdrop-filter:blur(15px);
+background:rgba(255,255,255,.08);
+z-index:999;
+}
+
+.logo{
+font-size:30px;
+font-weight:bold;
+color:#fff;
+}
+
+nav ul{
+display:flex;
+list-style:none;
+gap:25px;
+}
+
+nav ul li a{
+color:white;
+text-decoration:none;
+font-weight:600;
+transition:.4s;
+}
+
+nav ul li a:hover{
+color:#00ffe7;
+}
+
+/* HERO */
+
+.hero{
+
+min-height:100vh;
+
+display:flex;
+
+justify-content:center;
+
+align-items:center;
+
+padding:120px 10%;
+
+text-align:center;
+
+flex-direction:column;
+
+}
+
+.hero h1{
+
+font-size:55px;
+
+margin-bottom:20px;
+
+}
+
+.hero p{
+
+font-size:20px;
+
+max-width:800px;
+
+line-height:35px;
+
+opacity:.9;
+
+}
+
+.hero button{
+
+margin-top:35px;
+
+padding:18px 45px;
+
+border:none;
+
+border-radius:50px;
+
+font-size:18px;
+
+cursor:pointer;
+
+background:#00ffd5;
+
+font-weight:bold;
+
+transition:.4s;
+
+}
+
+.hero button:hover{
+
+transform:scale(1.08);
+
+}
+
+/* NOTICE */
+
+.notice{
+
+width:90%;
+
+margin:auto;
+
+padding:20px;
+
+background:#ff9800;
+
+color:#000;
+
+border-radius:15px;
+
+font-weight:bold;
+
+text-align:center;
+
+margin-top:-60px;
+
+}
+
+/* SECTION */
+
+section{
+
+padding:100px 10%;
+
+}
+
+.heading{
+
+text-align:center;
+
+font-size:40px;
+
+margin-bottom:50px;
+
+}
+
+/* CARD */
+
+.card{
+
+background:rgba(255,255,255,.08);
+
+backdrop-filter:blur(20px);
+
+padding:30px;
+
+border-radius:20px;
+
+margin-bottom:30px;
+
+transition:.5s;
+
+}
+
+.card:hover{
+
+transform:translateY(-8px);
+
+box-shadow:0 0 25px cyan;
+
+}
+
+.card h2{
+
+margin-bottom:15px;
+
+}
+
+.card p{
+
+line-height:30px;
+
+opacity:.9;
+
+}
+
+.copyBox{
+
+display:flex;
+
+gap:15px;
+
+margin-top:20px;
+
+}
+
+.copyBox input{
+
+flex:1;
+
+padding:15px;
+
+border:none;
+
+border-radius:10px;
+
+font-size:16px;
+
+}
+
+.copyBox button{
+
+padding:15px 30px;
+
+border:none;
+
+border-radius:10px;
+
+cursor:pointer;
+
+font-weight:bold;
+
+background:#00ffd5;
+
+}
+
+/* Responsive */
+
+@media(max-width:768px){
+
+.hero h1{
+
+font-size:38px;
+
+}
+
+.hero p{
+
+font-size:17px;
+
+line-height:30px;
+
+}
+
+nav{
+
+flex-direction:column;
+
+gap:15px;
+
+}
+
+nav ul{
+
+flex-wrap:wrap;
+
+justify-content:center;
+
+}
+
+}
+
+</style>
+</head>
+
+<body>
+
+<nav>
+
+<div class="logo">Instagram Toolkit</div>
+
+<ul>
+
+<li><a href="#home">Home</a></li>
+
+<li><a href="https://indown.io/reels">Story</a></li>
+
+<li><a href="https://indown.io/reels">Reels</a></li>
+
+<li><a href="https://indown.io/reels">Posts</a></li>
+
+<li><a href="https://indown.io/reels">Videos</a></li>
+
+<li><a href="https://indown.io/reels">Profile</a></li>
+
+<li><a href="#faq">FAQ</a></li>
+
+</ul>
+
+</nav>
+
+<!-- HERO -->
+
+<section class="hero" id="home">
+
+<h1>Instagram Toolkit</h1>
+
+<p>
+
+Learn how to copy links, organize your content, and use Instagram features safely.
+This page provides guides and tips for Stories, Reels, Posts, Videos, and Profile Pictures.
+
+</p>
+
+<button type="button" onclick="window.open('https://indown.io/', '_blank')">
+    Get Started
+</button>
+</section>
+
+<div class="notice">
+
+⚠ This page is for educational guidance only. It does not bypass Instagram privacy or security.
+
+</div>
+
+<!-- STORY -->
+
+<section id="story">
+
+<h1 class="heading">
+
+📥 Story Guide
+
+</h1>
+
+<div class="card">
+
+<h2>How to Get a Story Link</h2>
+
+<p>
+
+1. Open Instagram.<br>
+
+2. Open a public story or your own content where a share link is available.<br>
+
+3. Tap Share/Copy Link if available.<br>
+
+4. Paste the link below for your own reference.
+
+</p>
+
+<div class="copyBox">
+
+<input id="storyLink" placeholder="Paste Story Link">
+
+<button onclick="copyStory()">
+
+Copy
+
+</button>
+
+</div>
+
+</div>
+
+<div class="card">
+
+<h2>Tips</h2>
+
+<p>
+
+✔ Respect creator rights.<br>
+✔ Download or save only content you have permission to use.<br>
+✔ Do not violate privacy or platform rules.
+
+</p>
+
+</div>
+
+</section>
+
+<script>
+
+function copyStory(){
+
+var copy=document.getElementById("storyLink");
+
+copy.select();
+
+document.execCommand("copy");
+
+alert("Copied Successfully");
+
+}
+
+</script>
+
+<!-- Part 2 continues here -->
+
+</body>
+</html>
