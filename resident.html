@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="mr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>रहिवासी स्वयं घोषणा पत्र</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Devanagari:wght@400;500;700&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Noto Sans Devanagari',sans-serif;
+}
+
+body{
+background:#edf2f7;
+padding:20px;
+}
+
+.container{
+display:grid;
+grid-template-columns:350px 1fr;
+gap:20px;
+}
+
+.form-box{
+background:#fff;
+padding:20px;
+border-radius:12px;
+box-shadow:0 5px 15px rgba(0,0,0,.15);
+}
+
+.form-box h2{
+text-align:center;
+margin-bottom:20px;
+}
+
+.form-box input{
+width:100%;
+padding:10px;
+margin:8px 0;
+border:1px solid #ccc;
+border-radius:6px;
+font-size:15px;
+}
+
+button{
+width:100%;
+padding:12px;
+margin-top:10px;
+border:none;
+background:#0b7dda;
+color:#fff;
+font-size:16px;
+cursor:pointer;
+border-radius:6px;
+}
+
+button:hover{
+background:#095ea6;
+}
+
+.paper{
+width:210mm;
+min-height:297mm;
+background:#fff;
+padding:30mm 25mm;
+margin:auto;
+box-shadow:0 0 15px rgba(0,0,0,.3);
+position:relative;
+}
+
+.header{
+text-align:center;
+font-size:13px;
+font-weight:bold;
+}
+
+.date{
+text-align:right;
+margin-top:15px;
+}
+
+.title{
+text-align:center;
+font-size:32px;
+font-weight:bold;
+margin:30px 0;
+}
+
+.content{
+font-size:22px;
+line-height:2;
+text-align:justify;
+}
+
+.sign{
+margin-top:120px;
+text-align:right;
+font-size:22px;
+}
+
+canvas{
+border:1px solid #000;
+margin-top:10px;
+touch-action:none;
+}
+
+.clear{
+background:red;
+margin-top:5px;
+}
+
+@media print{
+
+body{
+background:white;
+}
+
+.form-box{
+display:none;
+}
+
+.paper{
+box-shadow:none;
+margin:0;
+}
+
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<div class="form-box">
+
+<h2>User Details</h2>
+
+<input id="name" placeholder="पूर्ण नाव">
+
+<input id="father" placeholder="वडिलांचे नाव">
+
+<input id="gender" placeholder="श्री./श्रीमती/कु.">
+
+<input id="age" placeholder="वय">
+
+<input id="aadhar" placeholder="आधार क्रमांक">
+
+
+<input id="occupation" placeholder="व्यवसाय">
+
+<input id="village" placeholder="गाव">
+
+<input id="taluka" placeholder="तालुका">
+
+<input id="district" placeholder="जिल्हा">
+
+<input id="pincode" placeholder="पिनकोड">
+
+<input id="year" placeholder="किती वर्ष राहत आहेत">
+
+<button onclick="generate()">Generate</button>
+
+<button onclick="window.print()">Print</button>
+
+<h3 style="margin-top:20px">येथे सही करा</h3>
+
+<canvas id="signature" width="280" height="120"></canvas>
+
+<button class="clear" onclick="clearSign()">Clear Signature</button>
+
+</div>
+
+<div class="paper" id="certificate">
+
+<div class="header">
+
+शासन निर्णय क्र. आर.टी.एस.2018/प्र.क्र.145/आस्था-5 दिनांक 13/02/2019
+
+</div>
+
+<div class="date">
+
+दिनांक :
+<span id="today"></span>
+
+</div>
+
+<div class="title">
+
+रहिवासी स्वयं घोषणा पत्र
+
+</div>
+
+<div class="content">
+
+मी
+<b id="pname">______________</b>
+
+श्री.
+<b id="pfather">______________</b>
+
+यांचा मुलगा/मुलगी,
+
+वय
+<b id="page">__</b>
+
+वर्ष,
+
+आधार क्र.
+<b id="paadhar">______________</b>
+
+व्यवसाय
+<b id="poccupation">______________</b>
+
+रा.
+<b id="pvillage">______________</b>
+
+ता.
+<b id="ptaluka">______________</b>
+
+जि.
+<b id="pdistrict">______________</b>
+
+पिन
+<b id="ppincode">______________</b>
+
+येथील रहिवासी असून मी नमूद करतो की मी मागील
+
+<b id="pyear">__</b>
+
+वर्षापासून सदर पत्त्यावर राहत आहे.
+
+<br><br>
+
+वरील माहिती माझ्या माहितीनुसार खरी असून ती चुकीची आढळल्यास संबंधित कायद्यानुसार माझ्यावर कारवाई करण्यात यावी यास माझी संमती आहे.
+
+</div>
+
+<div class="sign">
+
+अर्जदाराची सही
+
+<br><br>
+
+<img id="signImg" width="200">
+
+<br>
+
+नाव :
+<b id="signname"></b>
+
+</div>
+
+</div>
+
+</div>
+
+<script>
+
+// पुढील भागात JavaScript:
+function generate(){
+
+document.getElementById("pname").innerHTML =
+document.getElementById("name").value;
+
+document.getElementById("pfather").innerHTML =
+document.getElementById("father").value;
+
+document.getElementById("page").innerHTML =
+document.getElementById("age").value;
+
+document.getElementById("paadhar").innerHTML =
+document.getElementById("aadhar").value;
+
+document.getElementById("poccupation").innerHTML =
+document.getElementById("occupation").value;
+
+document.getElementById("pvillage").innerHTML =
+document.getElementById("village").value;
+
+document.getElementById("ptaluka").innerHTML =
+document.getElementById("taluka").value;
+
+document.getElementById("pdistrict").innerHTML =
+document.getElementById("district").value;
+
+document.getElementById("ppincode").innerHTML =
+document.getElementById("pincode").value;
+
+document.getElementById("pyear").innerHTML =
+document.getElementById("year").value;
+
+document.getElementById("signname").innerHTML =
+document.getElementById("name").value;
+
+document.getElementById("today").innerHTML =
+new Date().toLocaleDateString('mr-IN');
+
+}
+// generate()
+// manual signature
+// PDF download
+// clear signature
+
+</script>
+
+</body>
+</html>
