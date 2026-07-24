@@ -1,0 +1,763 @@
+<html lang="en"><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="google-adsense-account" content="ca-pub-1827543863954848">
+    <title>PDF Signature Verifier Online Free — Check DSC Validity in PAN/Aadhaar PDFs | PC Tool</title>
+    <meta name="description" content="Verify digital signatures (DSC) in PDF documents — PAN, Aadhaar, e-PAN, and other Indian government PDFs. See an Adobe-style validity mark (green / yellow / red) right on the signature, then preview, print, or download the verified copy.">
+    <meta name="theme-color" content="#7c3aed">
+        <link rel="canonical" href="https://pctool.in/pdf/pdf-signature-verify/">
+    
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="PDF Signature Verifier Online Free — Check DSC Validity in PAN/Aadhaar PDFs | PC Tool">
+    <meta property="og:description" content="Verify digital signatures (DSC) in PDF documents — PAN, Aadhaar, e-PAN, and other Indian government PDFs. See an Adobe-style validity mark (green / yellow / red) right on the signature, then preview, print, or download the verified copy.">
+    <meta property="og:site_name" content="PC Tool">
+    <meta property="og:url" content="https://pctool.in/pdf/pdf-signature-verify/">
+    <meta property="og:locale" content="en_IN">
+
+        <meta property="og:image" content="https://pctool.in/assets/img/logo.png">
+    <meta property="og:image:width" content="512">
+    <meta property="og:image:height" content="512">
+    <meta name="twitter:card" content="summary">
+    
+        <meta name="twitter:description" content="Verify digital signatures (DSC) in PDF documents — PAN, Aadhaar, e-PAN, and other Indian government PDFs. See an Adobe-style validity mark (green / yellow / red) right on the signature, then preview, print, or download the verified copy.">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://pctool.in/assets/css/design-system.css?v=2">
+    <link rel="stylesheet" href="https://pctool.in/assets/css/components.css?v=2">
+    <link rel="stylesheet" href="https://pctool.in/assets/css/icons.css?v=2">
+
+    <link rel="icon" type="image/png" href="https://pctool.in/assets/img/favicon.png">
+    <link rel="manifest" href="https://pctool.in/manifest.json">
+
+    <style>
+        /* ═══════════════════════════════════════════════
+   Posters CTA — highlighted button in header
+   ═══════════════════════════════════════════════ */
+
+.posters-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 14px;
+    background: linear-gradient(135deg, #7c3aed 0%, #ec4899 50%, #f59e0b 100%);
+    background-size: 200% 200%;
+    color: #fff;
+    border-radius: 99px;
+    font-size: 13px;
+    font-weight: 700;
+    text-decoration: none;
+    white-space: nowrap;
+    position: relative;
+    box-shadow: 0 2px 10px rgba(124, 58, 237, 0.35), 0 0 0 0 rgba(236, 72, 153, 0.4);
+    animation: posters-cta-pulse 2.4s ease-in-out infinite, posters-cta-shimmer 6s ease infinite;
+    transition: transform 0.15s ease;
+}
+
+.posters-cta:hover {
+    transform: translateY(-1px);
+    color: #fff;
+    box-shadow: 0 6px 18px rgba(124, 58, 237, 0.5);
+}
+
+.posters-cta__icon {
+    display: inline-flex;
+    width: 18px;
+    height: 18px;
+    flex-shrink: 0;
+}
+
+.posters-cta__icon svg {
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+
+@keyframes posters-cta-pulse {
+    0%, 100% { box-shadow: 0 2px 10px rgba(124, 58, 237, 0.35), 0 0 0 0 rgba(236, 72, 153, 0.5); }
+    50%      { box-shadow: 0 2px 14px rgba(124, 58, 237, 0.55), 0 0 0 8px rgba(236, 72, 153, 0); }
+}
+
+@keyframes posters-cta-shimmer {
+    0%   { background-position: 0% 50%; }
+    50%  { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* Hide text label on small screens — keep only icon */
+
+        .header__logo-img {
+            height: 40px;
+            width: auto;
+            object-fit: contain;
+            flex-shrink: 0;
+        }
+        @media (max-width: 768px) {
+            .header__logo-img { height: 34px; }
+        }
+        @media (max-width: 480px) {
+            .header__logo-img { height: 30px; }
+        }
+        .wallet-badge--low { background: #fff7ed; color: #c2410c; }
+        .wallet-badge--empty { background: var(--error-light); color: var(--error); }
+        .user-menu__item--highlight { color: var(--primary-600); font-weight: 600; }
+
+        /* ═══ Refer Button ═══ */
+        .refer-btn {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            padding: 5px 11px;
+            background: linear-gradient(135deg, #f59e0b, #f97316);
+            color: #fff;
+            border: none;
+            border-radius: 99px;
+            font-size: 13px;
+            font-weight: 600;
+            cursor: pointer;
+            text-decoration: none;
+            white-space: nowrap;
+            transition: transform 0.15s, box-shadow 0.15s;
+            box-shadow: 0 2px 8px rgba(245, 158, 11, 0.3);
+        }
+        .refer-btn:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(245, 158, 11, 0.4);
+        }
+        .refer-btn__icon {
+            width: 15px;
+            height: 15px;
+            flex-shrink: 0;
+        }
+        .category-btn__icon svg {
+    width: 20px;
+    height: 20px;
+    display: block;
+}
+        @media (max-width: 640px) {
+            .refer-btn span { display: none; }
+            .refer-btn { padding: 8px; border-radius: 50%; }
+            .refer-btn__icon { width: 20px; height: 20px; }
+        }
+    </style>
+    <script src="https://pagead2.googlesyndication.com/pagead/managed/js/adsense/m202606150101/show_ads_impl_fy2021.js"></script><script async="" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1827543863954848" crossorigin="anonymous" data-checked-head="true"></script>
+    <!-- Google tag (gtag.js) -->
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-09F1T92VBH"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-09F1T92VBH');
+</script> 
+<meta http-equiv="origin-trial" content="AlK2UR5SkAlj8jjdEc9p3F3xuFYlF6LYjAML3EOqw1g26eCwWPjdmecULvBH5MVPoqKYrOfPhYVL71xAXI1IBQoAAAB8eyJvcmlnaW4iOiJodHRwczovL2RvdWJsZWNsaWNrLm5ldDo0NDMiLCJmZWF0dXJlIjoiV2ViVmlld1hSZXF1ZXN0ZWRXaXRoRGVwcmVjYXRpb24iLCJleHBpcnkiOjE3NTgwNjcxOTksImlzU3ViZG9tYWluIjp0cnVlfQ=="><meta http-equiv="origin-trial" content="Amm8/NmvvQfhwCib6I7ZsmUxiSCfOxWxHayJwyU1r3gRIItzr7bNQid6O8ZYaE1GSQTa69WwhPC9flq/oYkRBwsAAACCeyJvcmlnaW4iOiJodHRwczovL2dvb2dsZXN5bmRpY2F0aW9uLmNvbTo0NDMiLCJmZWF0dXJlIjoiV2ViVmlld1hSZXF1ZXN0ZWRXaXRoRGVwcmVjYXRpb24iLCJleHBpcnkiOjE3NTgwNjcxOTksImlzU3ViZG9tYWluIjp0cnVlfQ=="><meta http-equiv="origin-trial" content="A9nrunKdU5m96PSN1XsSGr3qOP0lvPFUB2AiAylCDlN5DTl17uDFkpQuHj1AFtgWLxpLaiBZuhrtb2WOu7ofHwEAAACKeyJvcmlnaW4iOiJodHRwczovL2RvdWJsZWNsaWNrLm5ldDo0NDMiLCJmZWF0dXJlIjoiQUlQcm9tcHRBUElNdWx0aW1vZGFsSW5wdXQiLCJleHBpcnkiOjE3NzQzMTA0MDAsImlzU3ViZG9tYWluIjp0cnVlLCJpc1RoaXJkUGFydHkiOnRydWV9"><meta http-equiv="origin-trial" content="A93bovR+QVXNx2/38qDbmeYYf1wdte9EO37K9eMq3r+541qo0byhYU899BhPB7Cv9QqD7wIbR1B6OAc9kEfYCA4AAACQeyJvcmlnaW4iOiJodHRwczovL2dvb2dsZXN5bmRpY2F0aW9uLmNvbTo0NDMiLCJmZWF0dXJlIjoiQUlQcm9tcHRBUElNdWx0aW1vZGFsSW5wdXQiLCJleHBpcnkiOjE3NzQzMTA0MDAsImlzU3ViZG9tYWluIjp0cnVlLCJpc1RoaXJkUGFydHkiOnRydWV9"><meta http-equiv="origin-trial" content="A1S5fojrAunSDrFbD8OfGmFHdRFZymSM/1ss3G+NEttCLfHkXvlcF6LGLH8Mo5PakLO1sCASXU1/gQf6XGuTBgwAAACQeyJvcmlnaW4iOiJodHRwczovL2dvb2dsZXRhZ3NlcnZpY2VzLmNvbTo0NDMiLCJmZWF0dXJlIjoiQUlQcm9tcHRBUElNdWx0aW1vZGFsSW5wdXQiLCJleHBpcnkiOjE3NzQzMTA0MDAsImlzU3ViZG9tYWluIjp0cnVlLCJpc1RoaXJkUGFydHkiOnRydWV9"></head>
+
+<body>
+
+<header class="header">
+    <div class="header__inner">
+
+        <!-- Hamburger (mobile only) -->
+        <button class="header__hamburger" id="headerHamburger" aria-label="Open menu">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+        </button>
+
+        <a href="/" class="header__logo">
+            <img src="https://pctool.in/assets/img/logo.png" alt="PC Tool" class="header__logo-img">
+        </a>
+
+        <nav class="header__nav" id="headerNav">
+            <button class="header__nav-close" id="headerNavClose" aria-label="Close menu">×</button>
+            <a href="/" class="category-btn active" data-category="all">
+                <span class="category-btn__icon"><svg class="icon icon--sm"><use href="/assets/img/icons.svg#i-all-tools"></use></svg></span>
+                <span class="category-btn__text">All Tools</span>
+            </a>
+            <a href="/?cat=image" class="category-btn" data-category="image">
+                <span class="category-btn__icon"><svg class="icon icon--sm"><use href="/assets/img/icons.svg#i-image"></use></svg></span>
+                <span class="category-btn__text">Image</span>
+            </a>
+            <a href="/?cat=pdf" class="category-btn" data-category="pdf">
+                <span class="category-btn__icon"><svg class="icon icon--sm"><use href="/assets/img/icons.svg#i-pdf"></use></svg></span>
+                <span class="category-btn__text">PDF</span>
+            </a>
+            <a href="/?cat=id-card" class="category-btn" data-category="id-card">
+                <span class="category-btn__icon"><svg class="icon icon--sm"><use href="/assets/img/icons.svg#i-id-card"></use></svg></span>
+                <span class="category-btn__text">ID Card</span>
+            </a>
+            <a href="/?cat=documents" class="category-btn" data-category="documents">
+                <span class="category-btn__icon"><svg class="icon icon--sm"><use href="/assets/img/icons.svg#i-documents"></use></svg></span>
+                <span class="category-btn__text">Documents</span>
+            </a>
+            <a href="/?cat=event-card" class="category-btn" data-category="event-card">
+                <span class="category-btn__icon"><svg class="icon icon--sm"><use href="/assets/img/icons.svg#i-event-card"></use></svg></span>
+                <span class="category-btn__text">Event Cards</span>
+            </a>
+        </nav>
+
+        <div class="header__search">
+            <span class="header__search-icon"><svg class="icon icon--sm"><use href="/assets/img/icons.svg#i-search"></use></svg></span>
+            <input type="text" class="header__search-input" id="tools-search-input" placeholder="Search tools...">
+            <button class="header__search-clear hidden" id="search-clear"><svg class="icon icon--sm"><use href="/assets/img/icons.svg#i-close"></use></svg></button>
+        </div>
+
+        <div class="header__actions">
+
+            <!-- ═══ Posters Highlight Button ═══ -->
+            <a href="/posters/" class="posters-cta" title="Free Marathi Posters">
+                <span class="posters-cta__icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"></rect><circle cx="8.5" cy="8.5" r="1.5"></circle><path d="m21 15-5-5L5 21"></path></svg>
+                </span>
+                <span class="posters-cta__text">Posters</span>
+            </a>
+
+            <!-- ═══ Refer & Earn Button ═══ -->
+            <a href="#" class="refer-btn" id="referBtn" onclick="showReferLoginModal(); return false;" title="Refer &amp; Earn Coins">
+                <img src="https://pctool.in/assets/img/refer-icon.png" alt="" class="refer-btn__icon">
+                <span>Refer &amp; Earn</span>
+            </a>
+
+                            <a href="/login.php" class="btn btn--ghost btn--sm">Log in</a>
+                <a href="/register.php" class="btn btn--primary btn--sm">Sign up</a>
+                    </div>
+    </div>
+
+    <!-- Backdrop for mobile nav drawer -->
+    <div class="header__nav-backdrop" id="headerNavBackdrop"></div>
+</header>
+
+<!-- ═══ Refer Login Modal (for non-logged-in users) ═══ -->
+<script>
+function showReferLoginModal() {
+    document.getElementById('referLoginModal')?.remove();
+    const modal = document.createElement('div');
+    modal.id = 'referLoginModal';
+    modal.style.cssText = 'position:fixed; inset:0; background:rgba(15,23,42,0.6); backdrop-filter:blur(4px); z-index:500; display:flex; align-items:center; justify-content:center;';
+    modal.innerHTML = `
+        <div style="background:var(--bg-secondary, #fff); border-radius:20px; padding:32px; max-width:380px; width:90%; text-align:center; box-shadow:0 25px 50px rgba(0,0,0,0.15);">
+            <div style="font-size:48px; margin-bottom:16px;">🎁</div>
+            <h3 style="font-size:18px; font-weight:700; margin-bottom:8px; color:var(--text-primary, #111);">Refer & Earn Coins</h3>
+            <p style="font-size:14px; color:var(--text-secondary, #666); margin-bottom:24px; line-height:1.5;">
+                Sign up to get your referral link. Earn <strong>5 coins</strong> for every friend who joins + <strong>50%</strong> of their first recharge!
+            </p>
+            <div style="display:flex; gap:12px;">
+                <button onclick="document.getElementById('referLoginModal').remove()" style="flex:1; padding:10px; border:1px solid var(--gray-200, #e5e7eb); background:transparent; border-radius:10px; font-size:14px; font-weight:500; cursor:pointer; color:var(--text-secondary, #666);">Cancel</button>
+                <a href="/register.php" style="flex:1; padding:10px; background:linear-gradient(135deg, #f59e0b, #f97316); color:#fff; border-radius:10px; font-size:14px; font-weight:600; text-decoration:none; text-align:center;">Sign Up Free</a>
+            </div>
+            <p style="margin-top:16px; font-size:12px; color:var(--text-tertiary, #999);">Already have an account? <a href="/login.php" style="color:var(--primary-600, #2563eb); font-weight:600; text-decoration:none;">Login</a></p>
+        </div>
+    `;
+    document.body.appendChild(modal);
+    modal.addEventListener('click', (e) => { if (e.target === modal) modal.remove(); });
+}
+</script>
+<script>
+(function () {
+    'use strict';
+
+    // Element may not exist for logged-out users
+    const btn = document.getElementById('installAppBtn');
+
+    // ── Detect platform ──
+    const ua = navigator.userAgent || '';
+    const isIOS = /iPad|iPhone|iPod/.test(ua) && !window.MSStream;
+    const isStandalone = window.matchMedia('(display-mode: standalone)').matches
+                      || window.navigator.standalone === true;
+
+    // Already installed → never show button
+    if (isStandalone) return;
+
+    // ── Capture the install prompt when Chrome fires it ──
+    let deferredPrompt = null;
+
+    // In header.php, inside the existing beforeinstallprompt handler, add one line:
+window.addEventListener('beforeinstallprompt', (e) => {
+    e.preventDefault();
+    deferredPrompt = e;
+    window._deferredInstallPrompt = e;  // ← add this line
+    if (btn) btn.classList.remove('hidden');
+});
+
+    // ── If iOS Safari, show the button (different click handler below) ──
+    if (isIOS && btn) {
+        btn.classList.remove('hidden');
+    }
+
+    // ── Click handler ──
+    if (btn) {
+        btn.addEventListener('click', async (e) => {
+            e.preventDefault();
+
+            if (deferredPrompt) {
+                // Native install dialog (Chrome/Edge/Brave/Samsung/Opera)
+                deferredPrompt.prompt();
+                try {
+                    const { outcome } = await deferredPrompt.userChoice;
+                    if (outcome === 'accepted') {
+                        btn.classList.add('hidden');
+                    }
+                } catch (err) {}
+                deferredPrompt = null;
+                return;
+            }
+
+            if (isIOS) {
+                showIOSInstallHint();
+                return;
+            }
+
+            // Fallback (rare): some browsers don't expose the prompt.
+            // Show a minimal hint so the click isn't a dead end.
+            alert('Open the browser menu (⋮) and choose "Install app" or "Add to Home Screen".');
+        });
+    }
+
+    // ── Hide on successful install ──
+    window.addEventListener('appinstalled', () => {
+        if (btn) btn.classList.add('hidden');
+        deferredPrompt = null;
+    });
+
+    // ── iOS hint modal ──
+    function showIOSInstallHint() {
+        const existing = document.getElementById('iosInstallHint');
+        if (existing) existing.remove();
+        const m = document.createElement('div');
+        m.id = 'iosInstallHint';
+        m.style.cssText = 'position:fixed;inset:0;background:rgba(15,23,42,.6);backdrop-filter:blur(4px);z-index:9999;display:flex;align-items:flex-end;justify-content:center;padding:20px;';
+        m.innerHTML = `
+            <div style="background:#fff;border-radius:18px;padding:24px;max-width:400px;width:100%;text-align:center;box-shadow:0 25px 50px rgba(0,0,0,0.2);">
+                <div style="font-size:42px;margin-bottom:12px">📱</div>
+                <h3 style="margin:0 0 8px;font-size:17px;font-weight:700;color:#111">Install PC Tool</h3>
+                <p style="margin:0 0 16px;font-size:14px;color:#4b5563;line-height:1.55;">
+                    On iPhone/iPad, tap the <strong>Share</strong> button
+                    <span style="display:inline-block;vertical-align:-4px">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#4f46e5" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/><polyline points="16 6 12 2 8 6"/><line x1="12" y1="2" x2="12" y2="15"/></svg>
+                    </span>
+                    in Safari, then choose <strong>"Add to Home Screen"</strong>.
+                </p>
+                <button onclick="document.getElementById('iosInstallHint').remove()"
+                        style="padding:9px 24px;background:#4338ca;color:#fff;border:none;border-radius:10px;font-size:14px;font-weight:600;cursor:pointer;">
+                    Got it
+                </button>
+            </div>
+        `;
+        document.body.appendChild(m);
+        m.addEventListener('click', (e) => { if (e.target === m) m.remove(); });
+    }
+})();
+</script>
+<script>
+/* ═══ Mobile hamburger drawer ═══ */
+(function () {
+    const btn      = document.getElementById('headerHamburger');
+    const nav      = document.getElementById('headerNav');
+    const closeBtn = document.getElementById('headerNavClose');
+    const backdrop = document.getElementById('headerNavBackdrop');
+    if (!btn || !nav || !backdrop) return;
+
+    function open()  { nav.classList.add('is-open'); backdrop.classList.add('is-open'); document.body.style.overflow = 'hidden'; }
+    function close() { nav.classList.remove('is-open'); backdrop.classList.remove('is-open'); document.body.style.overflow = ''; }
+
+    btn.addEventListener('click', open);
+    if (closeBtn) closeBtn.addEventListener('click', close);
+    backdrop.addEventListener('click', close);
+
+    // Close when a category link is clicked
+    nav.querySelectorAll('a').forEach(a => a.addEventListener('click', close));
+
+    // Close on Escape
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') close(); });
+})();
+</script>
+<link rel="stylesheet" href="/pdf/pdf-signature-verify/style.css?v=1">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script><ins class="adsbygoogle adsbygoogle-noablate" data-ad-hi="true" data-adsbygoogle-status="done" style="display: none !important;" data-ad-status="unfilled"><div id="aswift_0_host" style="border-width: medium; border-style: none; border-color: currentcolor; border-image: initial; height: 0px; width: 0px; margin: 0px; padding: 0px; position: relative; visibility: visible; background-color: transparent; display: inline-block;"><iframe id="aswift_0" name="aswift_0" style="left:0;position:absolute;top:0;border:0;width:undefinedpx;height:undefinedpx;min-height:auto;max-height:none;min-width:auto;max-width:none;" sandbox="allow-forms allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts allow-top-navigation-by-user-activation" frameborder="0" marginwidth="0" marginheight="0" vspace="0" hspace="0" allowtransparency="true" scrolling="no" allow="attribution-reporting; run-ad-auction" src="https://googleads.g.doubleclick.net/pagead/ads?client=ca-pub-1827543863954848&amp;output=html&amp;adk=1812271804&amp;adf=3025194257&amp;abgtt=6&amp;lmt=1781782044&amp;plat=3%3A2097152%2C4%3A2097152%2C9%3A32776%2C16%3A8388608%2C17%3A32%2C24%3A32%2C25%3A32%2C30%3A1081344%2C32%3A32%2C41%3A32%2C42%3A32%2C43%3A32%2C44%3A32&amp;format=0x0&amp;url=https%3A%2F%2Fpctool.in%2Fpdf%2Fpdf-signature-verify%2F&amp;pra=5&amp;asro=0&amp;aimartd=4&amp;aieuf=1&amp;aicrs=1&amp;uach=WyJXaW5kb3dzIiwiMTAuMC4wIiwieDg2IiwiIiwiMTQ5LjAuNzgyNy4xMDMiLG51bGwsMCxudWxsLCI2NCIsW1siR29vZ2xlIENocm9tZSIsIjE0OS4wLjc4MjcuMTAzIl0sWyJDaHJvbWl1bSIsIjE0OS4wLjc4MjcuMTAzIl0sWyJOb3QpQTtCcmFuZCIsIjI0LjAuMC4wIl1dLDBd&amp;dt=1781782043982&amp;bpp=20&amp;bdt=1456&amp;idt=755&amp;shv=r20260612&amp;mjsv=m202606150101&amp;ptt=9&amp;saldr=aa&amp;abxe=1&amp;cookie_enabled=1&amp;eoidce=1&amp;nras=1&amp;correlator=5915425883277&amp;frm=20&amp;pv=2&amp;u_tz=330&amp;u_his=2&amp;u_h=720&amp;u_w=1280&amp;u_ah=680&amp;u_aw=1280&amp;u_cd=32&amp;u_sd=1.5&amp;dmc=8&amp;adx=-12245933&amp;ady=-12245933&amp;biw=1265&amp;bih=578&amp;scr_x=0&amp;scr_y=0&amp;eid=42533293&amp;oid=2&amp;pvsid=4471823240701160&amp;tmod=966485501&amp;uas=0&amp;nvt=1&amp;fsapi=1&amp;fc=1920&amp;brdim=0%2C0%2C0%2C0%2C1280%2C0%2C1280%2C680%2C1280%2C593&amp;vis=1&amp;rsz=%7C%7Cs%7C&amp;abl=NS&amp;fu=33792&amp;bc=31&amp;bz=1&amp;ifi=1&amp;uci=a!1&amp;fsb=1&amp;dtd=1000" data-google-container-id="a!1" tabindex="0" title="Advertisement" aria-label="Advertisement" data-load-complete="true"></iframe></div></ins>
+
+<div class="tool-page container--narrow">
+    <nav class="tc-breadcrumb"><a href="/">Home</a><span>›</span><a href="/?cat=pdf">PDF Tools</a><span>›</span><span>PDF Signature Verifier</span></nav>
+    <div class="tc-header">
+        <div class="tc-header__icon"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path><polyline points="9 12 11 14 15 10"></polyline></svg></div>
+        <div><h1 class="tc-header__title">PDF Signature Verifier</h1><p class="tc-header__desc">Verify digital signatures (DSC) in PDF documents — PAN, Aadhaar, e-PAN, and other Indian government PDFs. See an Adobe-style validity mark (green / yellow / red) right on the signature, then preview, print, or download the verified copy.</p></div>
+    </div>
+
+    <div class="psv-ad psv-ad--top">
+        <div class="psv-ad__wrap psv-ad--728"><!-- AdSense --></div>
+        <div class="psv-ad__wrap psv-ad--300"><!-- AdSense --></div>
+    </div>
+
+    <div class="tool-page__content">
+        <div class="tool-preview">
+            <div class="tool-preview__image-area" id="preview-area">
+                <!-- Drop Zone -->
+                <div class="drop-zone" id="drop-zone">
+                    <input type="file" class="drop-zone__input" id="file-input" accept=".pdf,application/pdf">
+                    <div class="drop-zone__icon"><svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path><polyline points="9 12 11 14 15 10"></polyline></svg></div>
+                    <div class="drop-zone__text">Drop a signed PDF here or click to upload</div>
+                    <div class="drop-zone__hint">PAN, Aadhaar, e-PAN &amp; other DSC-signed PDFs · Max 25 MB</div>
+                </div>
+                <!-- Verified PDF Preview -->
+                <div id="pdf-preview" class="hidden psv-preview-pad">
+                    <canvas id="pdf-canvas" class="psv-canvas"></canvas>
+                    <div id="pdf-page-info" class="psv-page-info"></div>
+                </div>
+                <!-- Processing Overlay -->
+                <div id="processing-overlay" class="psv-overlay hidden">
+                    <div class="psv-spinner"></div>
+                    <div class="psv-overlay__text" id="processing-text">Verifying signature…</div>
+                </div>
+            </div>
+            <div class="tool-preview__filename hidden" id="filename-display"></div>
+            <div id="bottom-actions" class="tc-actions hidden">
+                <button class="btn btn--secondary btn--sm" id="btn-new-file"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line></svg> New PDF</button>
+                <button class="btn btn--secondary btn--sm" id="btn-clear"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path></svg> Clear</button>
+            </div>
+        </div>
+
+        <div class="tool-right-col">
+            <div class="tool-settings" id="settings-panel">
+                <!-- File status -->
+                <div class="tool-settings__section">
+                    <div class="psv-status-grid">
+                        <div class="psv-status-item"><div class="psv-status-label">File Size</div><div class="psv-status-value" id="file-size">--</div></div>
+                        <div class="psv-status-item"><div class="psv-status-label">Signatures</div><div class="psv-status-value" id="sig-count">--</div></div>
+                    </div>
+                </div>
+
+                <!-- Verdict badge (filled after verify) -->
+                <div id="verdict-badge" class="psv-verdict-badge hidden">
+                    <span class="psv-verdict-badge__icon" id="verdict-icon"></span>
+                    <span class="psv-verdict-badge__text" id="verdict-text"></span>
+                </div>
+
+                <!-- Password (shown only if needed) -->
+                <div class="tool-settings__section hidden" id="pw-section">
+                    <div class="tool-settings__label">PDF Password</div>
+                    <div class="psv-password-wrap">
+                        <input type="text" class="form-input psv-password-input" id="pw-input" placeholder="Enter PDF password" autocomplete="off" spellcheck="false" data-lpignore="true" style="-webkit-text-security: disc;">
+                        <button type="button" class="psv-password-toggle" id="toggle-pw"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg></button>
+                    </div>
+                    <p class="psv-pw-hint">This PDF is protected. Enter the password to verify.</p>
+                </div>
+
+                <!-- Action -->
+                <button class="btn btn--primary btn--full btn--lg" id="btn-verify" disabled=""><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path><polyline points="9 12 11 14 15 10"></polyline></svg> Upload a PDF first</button>
+
+                <!-- Signature details (filled after verify) -->
+                <div id="sig-details" class="psv-details hidden"></div>
+
+                <div class="tc-note"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg> Your PDF is sent securely for verification and is not stored.</div>
+            </div>
+            <div class="psv-ad psv-ad--sidebar"><!-- AdSense --></div>
+        </div>
+    </div>
+
+    <!-- Result -->
+    <div id="result-panel" class="hidden">
+        <div class="tc-result">
+            <div class="tc-result__header">
+                <div class="tc-result__icon" id="result-icon"><svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg></div>
+                <h2 class="tc-result__title" id="result-title">Verified</h2>
+                <p class="tc-result__meta" id="result-meta"></p>
+            </div>
+
+            <div class="psv-result-btns">
+                <button class="btn btn--primary btn--lg" id="btn-open-result"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg> Open Verified PDF</button>
+                <button class="btn btn--secondary btn--lg" id="btn-download-result"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg> Download PDF</button>
+            </div>
+            <p class="psv-open-hint"><strong>Open</strong> views it in a new tab. <strong>Download</strong> saves a flattened copy that opens cleanly everywhere (no “invalid signature” warning).</p>
+            
+            <div class="psv-verified-note" id="verified-note">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path><line x1="12" y1="9" x2="12" y2="13"></line><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>                <span>The opened file is a <strong>verification copy</strong> with the mark drawn on it (like a screenshot). It is not the original cryptographically-signed file — keep your source PDF as the legal original.</span>
+            </div>
+
+            <div class="psv-ad psv-ad--result"><!-- AdSense --></div>
+
+            <div class="tc-result__actions">
+                <button class="btn btn--secondary" id="btn-verify-another"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 4 23 10 17 10"></polyline><polyline points="1 20 1 14 7 14"></polyline><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"></path></svg> Verify Another</button>
+                <a href="/" class="btn btn--ghost"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg> Home</a>
+            </div>
+            <div class="tc-related">
+                <p class="tc-related__title">More Tools</p>
+                <div class="tc-related__grid">
+                    <a href="/pdf/pdf-lock-unlock/"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg> Lock / Unlock PDF</a>
+                    <a href="/pdf/pdf-compress/"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg> Compress PDF</a>
+                    <a href="/pdf/pdf-merge/"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line></svg> Merge PDF</a>
+                    <a href="/pdf/image-to-pdf/"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="17 1 21 5 17 9"></polyline><path d="M3 11V9a4 4 0 0 1 4-4h14"></path><polyline points="7 23 3 19 7 15"></polyline><path d="M21 13v2a4 4 0 0 1-4 4H3"></path></svg> Image to PDF</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container--narrow" style="margin:0 auto; padding:0 var(--space-6);">
+    <div class="psv-ad psv-ad--bottom">
+        <div class="psv-ad__wrap psv-ad--728"><!-- AdSense --></div>
+        <div class="psv-ad__wrap psv-ad--300"><!-- AdSense --></div>
+    </div>
+</div>
+
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"SoftwareApplication","name":"PDF Signature Verifier - PC Tool","description":"Verify digital signatures (DSC) in PDF documents — PAN, Aadhaar, e-PAN, and other Indian government PDFs. See an Adobe-style validity mark (green / yellow / red) right on the signature, then preview, print, or download the verified copy.","url":"https://pctool.in/pdf/pdf-signature-verify/","applicationCategory":"UtilitiesApplication","operatingSystem":"Web Browser","offers":{"@type":"Offer","price":"0","priceCurrency":"INR"}}
+</script>
+
+<script src="/assets/js/tool-gate.js"></script>
+<script src="/pdf/pdf-signature-verify/script.js?v=1"></script>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    window.toolGate.init({ toolId: 'pdf-signature-verify', coinCost: 0, tier: 'free' });
+    fetch('/api/log-usage.php', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ tool_slug: 'pdf-signature-verify' }) }).catch(() => {});
+});
+</script>
+
+
+<!-- Footer -->
+<footer class="footer" style="background:var(--gray-900, #1a1a2e); color:#ccc; padding:40px 0 0; margin-top:0;">
+    <div style="max-width:1100px; margin:0 auto; padding:0 var(--space-6);">
+        
+        <div style="display:flex; flex-wrap:wrap; gap:40px; margin-bottom:30px;">
+            <div style="flex:1; min-width:200px;">
+                <div style="font-size:16px; font-weight:700; color:#fff; margin-bottom:12px;">PC Tool</div>
+                <p style="font-size:13px; line-height:1.7; color:#999; margin:0 0 10px;">
+                    Free Online Image &amp; PDF Tools. All processing happens in your browser — your files never leave your device.
+                </p>
+            </div>
+            <div style="flex:1; min-width:140px;">
+                <div style="font-size:14px; font-weight:700; color:#fff; margin-bottom:12px;">Tools</div>
+                <div style="display:flex; flex-direction:column; gap:8px;">
+                    <a href="/img/" style="color:#999; text-decoration:none; font-size:13px;">Image Tools</a>
+                    <a href="/pdf/" style="color:#999; text-decoration:none; font-size:13px;">PDF Tools</a>
+                    <a href="/id-card/" style="color:#999; text-decoration:none; font-size:13px;">ID Card Tools</a>
+                    <a href="/documents/" style="color:#999; text-decoration:none; font-size:13px;">Documents</a>
+                    <a href="/event-card/" style="color:#999; text-decoration:none; font-size:13px;">Event Cards</a>
+                    <a href="/blog/" style="color:#999; text-decoration:none; font-size:13px;">Blog</a>
+                    <a href="/posters/" style="color:#999; text-decoration:none; font-size:13px;">Posters</a>
+                </div>
+            </div>
+            <div style="flex:1; min-width:140px;">
+                <div style="font-size:14px; font-weight:700; color:#fff; margin-bottom:12px;">Legal</div>
+                <div style="display:flex; flex-direction:column; gap:8px;">
+                    <a href="/terms.php" style="color:#999; text-decoration:none; font-size:13px;">Terms &amp; Conditions</a>
+                    <a href="/privacy.php" style="color:#999; text-decoration:none; font-size:13px;">Privacy Policy</a>
+                    <a href="/refund.php" style="color:#999; text-decoration:none; font-size:13px;">Refund &amp; Cancellation</a>
+                    <a href="/about.php" style="color:#999; text-decoration:none; font-size:13px;">About Us</a>
+                    <a href="/contact.php" style="color:#999; text-decoration:none; font-size:13px;">Contact Us</a>
+                    <a href="/shipping.php" style="color:#999; text-decoration:none; font-size:13px;">Shipping &amp; Delivery</a>
+                </div>
+            </div>
+            <div style="flex:1; min-width:140px;">
+                <div style="font-size:14px; font-weight:700; color:#fff; margin-bottom:12px;">Account</div>
+                <div style="display:flex; flex-direction:column; gap:8px;">
+                    <a href="/profile.php" style="color:#999; text-decoration:none; font-size:13px;">Profile</a>
+                    <a href="/coins.php" style="color:#999; text-decoration:none; font-size:13px;">Buy Coins</a>
+                    <a href="/suggestions.php" style="color:#999; text-decoration:none; font-size:13px;">Suggest a Tool</a>
+                    <a href="#" style="color:#999; text-decoration:none; font-size:13px;" onclick="showReferLoginModal(); return false;">Refer &amp; Earn</a>
+   <a href="#" id="footerInstallBtn" style="color: rgb(153, 153, 153); text-decoration: none; font-size: 13px; display: inline-flex; align-items: center; gap: 8px;">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#7c3aed" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg">
+        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+        <polyline points="7 10 12 15 17 10"></polyline>
+        <line x1="12" y1="15" x2="12" y2="3"></line>
+    </svg>
+    Install PC Tool
+</a>
+                </div>
+            </div>
+            <div style="flex:1; min-width:160px;">
+                <div style="font-size:14px; font-weight:700; color:#fff; margin-bottom:12px;">Connect</div>
+                <div style="display:flex; flex-direction:column; gap:8px;">
+                    <a href="https://t.me/+0KXWClhROAMyZmI1" target="_blank" rel="noopener noreferrer" style="color:#999; text-decoration:none; font-size:13px; display:inline-flex; align-items:center; gap:8px;">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="#229ED9" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221l-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.446 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.022c.242-.213-.054-.334-.373-.121L8.48 13.342l-2.96-.924c-.643-.204-.66-.643.136-.953l11.566-4.458c.538-.196 1.006.128.832.214z"></path>
+                        </svg>
+                        Telegram Group
+                    </a>
+                    <a href="https://whatsapp.com/channel/0029Va5Uhq34Y9ll7ThUH82O" target="_blank" rel="noopener noreferrer" style="color:#999; text-decoration:none; font-size:13px; display:inline-flex; align-items:center; gap:8px;">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="#25D366" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"></path>
+                        </svg>
+                        WhatsApp Channel
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div style="background:rgba(255,255,255,0.05); padding:16px; border-radius:8px; text-align:center; margin-bottom:24px;">
+            <div style="font-size:11px; color:#666; text-transform:uppercase; letter-spacing:1px; margin-bottom:10px;">Secure Payments Powered by Razorpay</div>
+            <div style="display:flex; flex-wrap:wrap; justify-content:center; gap:8px;">
+                <span style="background:rgba(255,255,255,0.08); color:#bbb; padding:4px 12px; border-radius:4px; font-size:12px;">UPI</span>
+                <span style="background:rgba(255,255,255,0.08); color:#bbb; padding:4px 12px; border-radius:4px; font-size:12px;">Credit Card</span>
+                <span style="background:rgba(255,255,255,0.08); color:#bbb; padding:4px 12px; border-radius:4px; font-size:12px;">Debit Card</span>
+                <span style="background:rgba(255,255,255,0.08); color:#bbb; padding:4px 12px; border-radius:4px; font-size:12px;">Net Banking</span>
+                <span style="background:rgba(255,255,255,0.08); color:#bbb; padding:4px 12px; border-radius:4px; font-size:12px;">Wallets</span>
+            </div>
+        </div>
+
+        <div style="border-top:1px solid rgba(255,255,255,0.1); padding:16px 0; text-align:center;">
+            <p style="font-size:12px; color:#666; margin:0 0 8px;">
+                © 2026 PC Tool. All Rights Reserved.
+            </p>
+            <div style="display:flex; justify-content:center; gap:12px; flex-wrap:wrap;">
+                <a href="/terms.php" style="color:#777; text-decoration:none; font-size:12px;">Terms</a>
+                <span style="color:#444;">·</span>
+                <a href="/privacy.php" style="color:#777; text-decoration:none; font-size:12px;">Privacy</a>
+                <span style="color:#444;">·</span>
+                <a href="/refund.php" style="color:#777; text-decoration:none; font-size:12px;">Refunds</a>
+                <span style="color:#444;">·</span>
+                <a href="/contact.php" style="color:#777; text-decoration:none; font-size:12px;">Support</a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<div class="toast-container" id="toast-container"></div>
+<div class="modal-backdrop" id="modal-backdrop"></div>
+
+<script src="/assets/js/utils.js"></script>
+
+<script>
+window.app = window.app || {};
+window.app.showHome = function() { window.location.href = '/'; };
+window.app.openTool = function(toolId) { window.location.href = '/tool/' + toolId + '/'; };
+
+document.addEventListener('DOMContentLoaded', async () => {
+    try {
+        const res = await fetch('/api/check-auth.php');
+        const data = await res.json();
+        if (!data.loggedIn) return;
+
+        // ═══ Store CSRF token globally — required for coin deduction & all POST APIs ═══
+        if (data.csrf_token) {
+            window._csrfToken = data.csrf_token;
+        }
+
+        // Coin badge
+        const coinEl = document.getElementById('coin-balance');
+        if (coinEl) {
+            coinEl.textContent = data.coins;
+            const badge = document.getElementById('wallet-badge');
+            if (data.coins < 10 && data.coins > 0 && badge) badge.classList.add('wallet-badge--low');
+            if (data.coins === 0 && badge) {
+                badge.classList.add('wallet-badge--empty');
+                coinEl.textContent = 'Buy';
+            }
+        }
+    } catch (e) {}
+
+    // User menu toggle
+    const trigger = document.getElementById('user-menu-trigger');
+    const dropdown = document.getElementById('user-dropdown');
+    if (trigger && dropdown) {
+        trigger.addEventListener('click', () => dropdown.classList.toggle('active'));
+        document.addEventListener('click', (e) => {
+            if (!trigger.contains(e.target) && !dropdown.contains(e.target))
+                dropdown.classList.remove('active');
+        });
+    }
+
+    // Search
+    const searchInput = document.getElementById('tools-search-input');
+    const clearBtn = document.getElementById('search-clear');
+    if (searchInput && clearBtn) {
+        searchInput.addEventListener('input', () => clearBtn.classList.toggle('hidden', !searchInput.value));
+        clearBtn.addEventListener('click', () => {
+            searchInput.value = '';
+            clearBtn.classList.add('hidden');
+            searchInput.focus();
+            searchInput.dispatchEvent(new Event('input'));
+        });
+    }
+});
+
+if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+        navigator.serviceWorker.register('/sw.js')
+            .then(reg => console.log('SW registered:', reg.scope))
+            .catch(err => console.error('SW registration failed:', err));
+    });
+}
+</script>
+<script>
+(function () {
+    const btn = document.getElementById('footerInstallBtn');
+    if (!btn) return;
+
+    const ua = navigator.userAgent || '';
+    const isIOS = /iPad|iPhone|iPod/.test(ua) && !window.MSStream;
+    const isStandalone = window.matchMedia('(display-mode: standalone)').matches
+                      || window.navigator.standalone === true;
+
+    if (isStandalone) return;
+
+    let deferredPrompt = null;
+
+    function showBtn() {
+        btn.style.display = 'inline-flex';
+    }
+
+    // Capture the install prompt
+    window.addEventListener('beforeinstallprompt', (e) => {
+        e.preventDefault();
+        deferredPrompt = e;
+        showBtn();
+    });
+
+    // iOS Safari has no beforeinstallprompt — show button anyway
+    if (isIOS) showBtn();
+
+    // Click handler
+    btn.addEventListener('click', async (e) => {
+        e.preventDefault();
+
+        if (deferredPrompt) {
+            deferredPrompt.prompt();
+            try {
+                const { outcome } = await deferredPrompt.userChoice;
+                if (outcome === 'accepted') btn.style.display = 'none';
+            } catch (err) {}
+            deferredPrompt = null;
+            return;
+        }
+
+        if (isIOS) {
+            showIOSInstallHint();
+            return;
+        }
+
+        alert('Open the browser menu (⋮) and choose "Install app" or "Add to Home Screen".');
+    });
+
+    window.addEventListener('appinstalled', () => {
+        btn.style.display = 'none';
+        deferredPrompt = null;
+    });
+
+    // iOS hint modal
+    function showIOSInstallHint() {
+        const existing = document.getElementById('iosInstallHint');
+        if (existing) existing.remove();
+        const m = document.createElement('div');
+        m.id = 'iosInstallHint';
+        m.style.cssText = 'position:fixed;inset:0;background:rgba(15,23,42,.6);backdrop-filter:blur(4px);z-index:9999;display:flex;align-items:flex-end;justify-content:center;padding:20px;';
+        m.innerHTML = `
+            <div style="background:#fff;border-radius:18px;padding:24px;max-width:400px;width:100%;text-align:center;box-shadow:0 25px 50px rgba(0,0,0,0.2);">
+                <div style="font-size:42px;margin-bottom:12px">📱</div>
+                <h3 style="margin:0 0 8px;font-size:17px;font-weight:700;color:#111">Install PC Tool</h3>
+                <p style="margin:0 0 16px;font-size:14px;color:#4b5563;line-height:1.55;">
+                    On iPhone/iPad, tap the <strong>Share</strong> button in Safari, then choose <strong>"Add to Home Screen"</strong>.
+                </p>
+                <button onclick="document.getElementById('iosInstallHint').remove()"
+                        style="padding:9px 24px;background:#4338ca;color:#fff;border:none;border-radius:10px;font-size:14px;font-weight:600;cursor:pointer;">
+                    Got it
+                </button>
+            </div>
+        `;
+        document.body.appendChild(m);
+        m.addEventListener('click', (e) => { if (e.target === m) m.remove(); });
+    }
+})();
+</script>
+
+
+<iframe src="https://ep2.adtrafficquality.google/sodar/sodar2/254/runner.html" width="0" height="0" style="display: none;"></iframe><iframe src="https://www.google.com/recaptcha/api2/aframe" width="0" height="0" style="display: none;"></iframe></body><iframe id="google_esf" name="google_esf" src="https://googleads.g.doubleclick.net/pagead/html/r20260612/r20190131/zrt_lookup_fy2021.html" style="display: none;"></iframe></html>

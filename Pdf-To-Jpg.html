@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PDF To JPG Converter | Dipak CSC Center</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+</head>
+
+<body>
+
+<!-- Header -->
+
+<header>
+
+<div class="logo">
+<i class="fa-solid fa-file-pdf"></i>
+<span>Dipak CSC Center</span>
+</div>
+
+<nav>
+
+<a href="index.html">
+<i class="fa fa-home"></i> Home
+</a>
+
+<a href="#">
+<i class="fa fa-toolbox"></i> PDF Tools
+</a>
+
+<a href="#">
+<i class="fa fa-image"></i> Image Tools
+</a>
+
+<a href="#">
+<i class="fa fa-phone"></i> Contact
+</a>
+
+</nav>
+
+</header>
+
+<!-- Hero -->
+
+<section class="hero">
+
+<h1>
+<i class="fa-solid fa-file-pdf"></i>
+PDF To JPG Converter
+</h1>
+
+<p>
+Convert PDF Pages into High Quality JPG Images Instantly.
+</p>
+
+</section>
+
+<!-- Main Card -->
+
+<div class="container">
+
+<div class="card">
+
+<h2>
+<i class="fa-solid fa-cloud-arrow-up"></i>
+Upload PDF
+</h2>
+
+<div class="drop-area" id="dropArea">
+
+<i class="fa-solid fa-file-arrow-up upload-icon"></i>
+
+<h3>Drag & Drop PDF Here</h3>
+
+<p>OR</p>
+
+<label for="pdfFile" class="browse-btn">
+Choose PDF
+</label>
+
+<input
+type="file"
+id="pdfFile"
+accept="application/pdf"
+hidden>
+
+<p id="fileName">
+No File Selected
+</p>
+
+</div>
+
+<button id="convertBtn">
+<i class="fa-solid fa-wand-magic-sparkles"></i>
+Convert PDF
+</button>
+
+<div class="progress-box">
+
+<div class="progress">
+
+<div class="progress-bar" id="progressBar"></div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- Output -->
+
+<section class="output">
+
+<h2>
+
+<i class="fa-solid fa-images"></i>
+
+Converted Images
+
+</h2>
+
+<div id="imageContainer" class="image-grid">
+
+<div class="empty">
+
+<i class="fa-solid fa-image"></i>
+
+<p>Your JPG Images will appear here.</p>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- Footer -->
+
+<footer>
+
+<div class="footer-content">
+
+<h3>Dipak CSC Center</h3>
+
+<p>
+
+<i class="fa-solid fa-location-dot"></i>
+
+Dabha, Jintur, Parbhani
+
+</p>
+
+<p>
+
+<i class="fa-solid fa-envelope"></i>
+
+support@dipakcsccenter.com
+
+</p>
+
+<p>
+
+<i class="fa-solid fa-phone"></i>
+
++91 XXXXX XXXXX
+
+</p>
+
+<div class="social">
+
+<a href="#"><i class="fab fa-facebook-f"></i></a>
+
+<a href="#"><i class="fab fa-instagram"></i></a>
+
+<a href="#"><i class="fab fa-whatsapp"></i></a>
+
+<a href="#"><i class="fab fa-youtube"></i></a>
+
+</div>
+
+<hr>
+
+<p>
+
+© 2026 Dipak CSC Center |
+All Rights Reserved
+
+</p>
+
+</div>
+
+</footer>
+
+<script src="script.js"></script>
+
+</body>
+</html>
