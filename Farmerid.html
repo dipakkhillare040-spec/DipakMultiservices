@@ -1,0 +1,2365 @@
+<!DOCTYPE html>
+<html lang="mr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Farmer Card Generator</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Devanagari:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+
+/* =====================================================
+   BASIC
+===================================================== */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:"Noto Sans Devanagari",Arial,sans-serif;
+    background:linear-gradient(135deg,#e9f6ee,#f8fff9);
+    color:#193d2b;
+    padding:25px;
+}
+
+.container{
+    width:100%;
+    max-width:1250px;
+    margin:auto;
+}
+
+
+/* =====================================================
+   TITLE
+===================================================== */
+
+.page-title{
+    text-align:center;
+    margin-bottom:25px;
+}
+
+.page-title h1{
+    font-size:35px;
+    color:#075d3b;
+    font-weight:800;
+}
+
+.page-title p{
+    color:#678172;
+    margin-top:5px;
+}
+
+
+/* =====================================================
+   FORM CARD
+===================================================== */
+
+.form-card{
+    background:#ffffff;
+    padding:27px;
+    border-radius:20px;
+    box-shadow:0 15px 45px rgba(0,80,50,.12);
+    margin-bottom:30px;
+}
+
+.form-card h2{
+    color:#075d3b;
+    margin-bottom:22px;
+}
+
+.form-grid{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:16px;
+}
+
+.form-group{
+    width:100%;
+}
+
+.form-group.full{
+    grid-column:1/-1;
+}
+
+.form-group label{
+    display:block;
+    font-size:14px;
+    font-weight:700;
+    color:#315c48;
+    margin-bottom:7px;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea{
+    width:100%;
+    border:1px solid #cbded3;
+    background:#fbfffc;
+    border-radius:10px;
+    padding:12px;
+    font-family:inherit;
+    font-size:14px;
+    outline:none;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus{
+    border-color:#087b4c;
+    box-shadow:0 0 0 3px rgba(8,123,76,.10);
+}
+
+.form-group textarea{
+    min-height:80px;
+    resize:vertical;
+}
+
+
+/* =====================================================
+   PHOTO
+===================================================== */
+
+.photo-upload{
+    border:2px dashed #9ccbb0;
+    border-radius:12px;
+    background:#f5fff8;
+    padding:17px;
+    text-align:center;
+}
+
+.photo-upload input{
+    border:0;
+    background:transparent;
+}
+
+.photo-upload small{
+    display:block;
+    color:#718779;
+    margin-top:6px;
+}
+
+
+/* =====================================================
+   BUTTONS
+===================================================== */
+
+.action-buttons{
+    display:flex;
+    justify-content:center;
+    flex-wrap:wrap;
+    gap:13px;
+    margin-top:25px;
+}
+
+.action-buttons button{
+    border:0;
+    color:#fff;
+    padding:13px 24px;
+    border-radius:11px;
+    font-size:15px;
+    font-weight:800;
+    cursor:pointer;
+    box-shadow:0 7px 18px rgba(0,0,0,.15);
+    transition:.2s;
+}
+
+.action-buttons button:hover{
+    transform:translateY(-2px);
+}
+
+.print-btn{
+    background:#37474f;
+}
+
+.pdf-btn{
+    background:#d62828;
+}
+
+.png-btn{
+    background:#078b52;
+}
+
+
+/* =====================================================
+   STATUS
+===================================================== */
+
+.status{
+    text-align:center;
+    min-height:25px;
+    margin-top:12px;
+    font-size:13px;
+    font-weight:600;
+}
+
+
+/* =====================================================
+   PREVIEW
+===================================================== */
+
+.preview-title{
+    text-align:center;
+    color:#075d3b;
+    margin:15px 0;
+}
+
+.card-stage{
+    width:100%;
+    overflow:auto;
+    padding:10px 0 25px;
+}
+
+.card-wrapper{
+    width:1000px;
+    height:400px;
+    margin:auto;
+    display:flex;
+    gap:20px;
+    overflow:hidden;
+    background:#fff;
+}
+
+
+/* =====================================================
+   CARD
+===================================================== */
+
+.farmer-card,
+.back-card{
+    width:490px;
+    height:400px;
+    min-width:490px;
+    position:relative;
+    overflow:hidden;
+    border:1px solid #dbe9df;
+}
+
+.farmer-card{
+    background:linear-gradient(135deg,#f7fbf7,#e9f5eb);
+}
+
+
+/* =====================================================
+   CARD HEADER
+===================================================== */
+
+.card-header{
+    height:70px;
+    background:linear-gradient(100deg,#005036,#087c4b);
+    display:flex;
+    align-items:center;
+    padding:0 18px;
+    position:relative;
+}
+
+.card-logo{
+    border:1px solid #e4b629;
+    padding:5px 11px;
+    color:#fff;
+    font-size:25px;
+}
+
+.card-logo span{
+    color:#f1bd24;
+    font-weight:700;
+}
+
+.farmer-symbol{
+    position:absolute;
+    right:25px;
+    bottom:0;
+    font-size:37px;
+}
+
+
+/* =====================================================
+   FRONT BODY
+===================================================== */
+
+.front-body{
+    position:relative;
+    height:330px;
+    padding:25px 20px;
+}
+
+
+/* =====================================================
+   PHOTO FRAME
+===================================================== */
+
+.photo-frame{
+    position:absolute;
+    left:25px;
+    top:25px;
+    width:76px;
+    height:105px;
+    background:#fff;
+    border:2px solid #222;
+    overflow:hidden;
+    z-index:3;
+}
+
+.photo-frame img{
+    width:100%;
+    height:100%;
+    display:block;
+    object-fit:cover;
+    object-position:center;
+}
+
+
+/* =====================================================
+   DETAILS
+===================================================== */
+
+.personal-details{
+    position:absolute;
+    left:150px;
+    top:27px;
+    width:220px;
+    z-index:3;
+}
+
+.name-marathi{
+    color:#008040;
+    font-weight:700;
+    font-size:15px;
+    margin-bottom:3px;
+    white-space:nowrap;
+    overflow:hidden;
+    text-overflow:ellipsis;
+}
+
+.name-english{
+    color:#222;
+    font-size:15px;
+    margin-left:12px;
+    margin-bottom:8px;
+    white-space:nowrap;
+    overflow:hidden;
+    text-overflow:ellipsis;
+}
+
+.detail-row{
+    display:flex;
+    gap:5px;
+    margin-bottom:7px;
+    white-space:nowrap;
+}
+
+.detail-label{
+    color:#008040;
+    font-weight:800;
+    font-size:14px;
+}
+
+.detail-value{
+    color:#222;
+    font-size:14px;
+    overflow:hidden;
+    text-overflow:ellipsis;
+}
+
+
+/* =====================================================
+   QR CODE
+===================================================== */
+
+.qr-box{
+    position:absolute;
+    right:18px;
+    top:23px;
+
+    width:110px;
+    height:110px;
+
+    background:#fff;
+
+    border:2px solid #075d3b;
+
+    padding:5px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    z-index:10;
+}
+
+#qrcode{
+    width:98px;
+    height:98px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+}
+
+#qrcode img,
+#qrcode canvas{
+    width:98px !important;
+    height:98px !important;
+}
+
+
+/* =====================================================
+   FARMER ID
+===================================================== */
+
+.farmer-id-bar{
+    position:absolute;
+
+    left:0;
+    right:0;
+    bottom:40px;
+
+    height:60px;
+
+    background:
+    linear-gradient(
+        90deg,
+        #005a3b,
+        #087d4d
+    );
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    gap:15px;
+}
+
+.farmer-id-title{
+    color:#f5b72b;
+    font-size:24px;
+    font-weight:800;
+}
+
+.farmer-id-number{
+    color:#fff;
+    font-size:24px;
+    font-weight:800;
+    letter-spacing:2px;
+}
+
+
+/* =====================================================
+   FOOTER
+===================================================== */
+
+.card-footer{
+    position:absolute;
+
+    left:18px;
+    right:18px;
+    bottom:8px;
+
+    height:23px;
+
+    border-top:1.5px solid #5f8c74;
+
+    display:flex;
+    justify-content:center;
+    align-items:end;
+}
+
+.card-footer span{
+    font-family:Arial,sans-serif;
+    color:#4c6255;
+    font-size:10px;
+}
+
+
+/* =====================================================
+   BACK CARD
+===================================================== */
+
+.back-card{
+    background:
+    linear-gradient(
+        135deg,
+        #f7fbf7,
+        #edf7ef
+    );
+
+    padding:35px;
+}
+
+.back-leaf{
+    position:absolute;
+    right:22px;
+    top:18px;
+    font-size:65px;
+    opacity:.16;
+}
+
+.back-title{
+    color:#286348;
+    font-size:20px;
+    font-weight:800;
+    margin-bottom:10px;
+}
+
+.address-text{
+    color:#222;
+    font-family:Arial,sans-serif;
+    font-size:14px;
+    line-height:1.5;
+    width:390px;
+    min-height:50px;
+}
+
+.land-title{
+    color:#286348;
+    font-size:18px;
+    font-weight:800;
+    margin-top:25px;
+    margin-bottom:10px;
+}
+
+
+/* =====================================================
+   LAND TABLE
+===================================================== */
+
+.land-table{
+    width:100%;
+    border-collapse:collapse;
+    font-family:Arial,sans-serif;
+    table-layout:fixed;
+}
+
+.land-table th{
+    text-align:left;
+    color:#3e5e4d;
+    font-size:10px;
+    padding:5px 3px;
+    white-space:nowrap;
+}
+
+.land-table td{
+    color:#222;
+    font-size:11px;
+    padding:7px 3px;
+    border-bottom:1px solid #aec8b7;
+    white-space:nowrap;
+    overflow:hidden;
+    text-overflow:ellipsis;
+}
+
+
+/* =====================================================
+   MOBILE
+===================================================== */
+
+@media(max-width:800px){
+
+    body{
+        padding:12px;
+    }
+
+    .form-grid{
+        grid-template-columns:1fr;
+    }
+
+    .form-group.full{
+        grid-column:auto;
+    }
+
+    .card-wrapper{
+        margin-left:0;
+        transform:scale(.62);
+        transform-origin:top left;
+        margin-bottom:-150px;
+    }
+
+    .card-stage{
+        height:270px;
+    }
+}
+
+
+/* =====================================================
+   PRINT A4
+===================================================== */
+
+@media print{
+
+    @page{
+        size:A4 landscape;
+        margin:0;
+    }
+
+    html,
+    body{
+        width:297mm;
+        height:210mm;
+
+        margin:0;
+        padding:0;
+
+        background:#fff;
+    }
+
+    body>*{
+        display:none !important;
+    }
+
+    .card-stage{
+        display:block !important;
+
+        width:297mm !important;
+        height:210mm !important;
+
+        overflow:visible !important;
+
+        padding:0 !important;
+    }
+
+    .card-wrapper{
+
+        display:flex !important;
+
+        position:absolute;
+
+        left:8mm;
+        top:48mm;
+
+        width:1000px;
+        height:400px;
+
+        transform:scale(.281);
+
+        transform-origin:top left;
+
+        margin:0 !important;
+    }
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<div class="container">
+
+
+<!-- =====================================================
+     TITLE
+===================================================== -->
+
+<header class="page-title">
+
+<h1>
+🌾 Agri Record
+</h1>
+
+<p>
+Professional Farmer Card Generator
+</p>
+
+</header>
+
+
+<!-- =====================================================
+     FORM
+===================================================== -->
+
+<section class="form-card">
+
+
+<h2>
+👨‍🌾 शेतकरी माहिती भरा
+</h2>
+
+
+<div class="form-grid">
+
+
+<!-- FULL NAME -->
+
+<div class="form-group">
+
+<label>
+👤 शेतकऱ्याचे पूर्ण नाव / Full Name
+</label>
+
+<input
+type="text"
+id="farmerName"
+placeholder="उदा. देवानंद संभाजी खिल्लारे"
+>
+
+</div>
+
+
+<!-- MARATHI NAME -->
+
+<div class="form-group">
+
+<label>
+📝 मराठी पूर्ण नाव
+</label>
+
+<input
+type="text"
+id="marathiName"
+placeholder="शेतकऱ्याचे नाव मराठीत लिहा"
+>
+
+</div>
+
+
+<!-- DOB -->
+
+<div class="form-group">
+
+<label>
+🎂 जन्म तारीख / Date of Birth
+</label>
+
+<input
+type="date"
+id="dob"
+>
+
+</div>
+
+
+<!-- GENDER -->
+
+<div class="form-group">
+
+<label>
+⚧️ लिंग / Gender
+</label>
+
+<select id="gender">
+
+<option value="">
+लिंग निवडा
+</option>
+
+<option value="Male / पुरुष">
+Male / पुरुष
+</option>
+
+<option value="Female / महिला">
+Female / महिला
+</option>
+
+<option value="Other / इतर">
+Other / इतर
+</option>
+
+</select>
+
+</div>
+
+
+<!-- MOBILE -->
+
+<div class="form-group">
+
+<label>
+📱 मोबाईल नंबर
+</label>
+
+<input
+type="text"
+id="mobile"
+maxlength="10"
+inputmode="numeric"
+placeholder="शेतकऱ्याचा 10 अंकी मोबाईल नंबर लिहा"
+>
+
+</div>
+
+
+<!-- AADHAAR -->
+
+<div class="form-group">
+
+<label>
+🪪 आधार / वैयक्तिक ओळख क्रमांक
+</label>
+
+<input
+type="text"
+id="aadhaar"
+maxlength="12"
+inputmode="numeric"
+placeholder="आधार क्रमांक / वैयक्तिक ID लिहा"
+>
+
+</div>
+
+
+<!-- FARMER ID -->
+
+<div class="form-group">
+
+<label>
+🌾 शेतकरी ID
+</label>
+
+<input
+type="text"
+id="farmerId"
+placeholder="शेतकरी ID क्रमांक लिहा"
+>
+
+</div>
+
+
+<!-- PHOTO -->
+
+<div class="form-group">
+
+<label>
+📷 शेतकऱ्याचा फोटो
+</label>
+
+<div class="photo-upload">
+
+<input
+type="file"
+id="photoInput"
+accept="image/png,image/jpeg,image/webp"
+>
+
+<small>
+शेतकऱ्याचा स्पष्ट फोटो निवडा — JPG / PNG / WEBP
+</small>
+
+</div>
+
+</div>
+
+
+<!-- ADDRESS -->
+
+<div class="form-group full">
+
+<label>
+🏠 शेतकऱ्याचा पूर्ण पत्ता / Complete Address
+</label>
+
+<textarea
+id="address"
+placeholder="उदा. मु.पो. दाभा, ता. जिंतूर, जि. परभणी"
+></textarea>
+
+</div>
+
+
+<!-- DISTRICT -->
+
+<div class="form-group">
+
+<label>
+📍 जिल्हा / District
+</label>
+
+<input
+type="text"
+id="district"
+placeholder="शेतकऱ्याचा जिल्हा लिहा"
+>
+
+</div>
+
+
+<!-- TALUKA -->
+
+<div class="form-group">
+
+<label>
+📍 तालुका / Taluka
+</label>
+
+<input
+type="text"
+id="taluka"
+placeholder="शेतकऱ्याचा तालुका लिहा"
+>
+
+</div>
+
+
+<!-- VILLAGE -->
+
+<div class="form-group">
+
+<label>
+🏡 गावाचे नाव / Village Name
+</label>
+
+<input
+type="text"
+id="village"
+placeholder="शेतकऱ्याचे गावाचे नाव लिहा"
+>
+
+</div>
+
+
+<!-- KHATA -->
+
+<div class="form-group">
+
+<label>
+📒 खाता क्रमांक / Khata
+</label>
+
+<input
+type="text"
+id="khata"
+placeholder="7/12 वरील खाता क्रमांक लिहा"
+>
+
+</div>
+
+
+<!-- KHASRA -->
+
+<div class="form-group">
+
+<label>
+🌱 गट नंबर / सर्वे नंबर
+</label>
+
+<input
+type="text"
+id="khasra"
+placeholder="7/12 वरील गट नंबर किंवा सर्वे नंबर लिहा"
+>
+
+</div>
+
+
+<!-- AREA -->
+
+<div class="form-group">
+
+<label>
+📐 शेतजमिनीचे क्षेत्रफळ / Area
+</label>
+
+<input
+type="text"
+id="area"
+placeholder="उदा. 0.67 हेक्टर"
+>
+
+</div>
+
+
+</div>
+
+
+<!-- =====================================================
+     BUTTONS
+===================================================== -->
+
+<div class="action-buttons">
+
+
+<button
+class="print-btn"
+onclick="printCard()"
+>
+
+🖨️ A4 Print
+
+</button>
+
+
+<button
+class="pdf-btn"
+onclick="downloadPDF()"
+>
+
+📄 A4 Download PDF
+
+</button>
+
+
+<button
+class="png-btn"
+onclick="downloadPNG()"
+>
+
+🖼️ Download PNG
+
+</button>
+
+
+</div>
+
+
+<div
+id="status"
+class="status"
+></div>
+
+
+</section>
+
+
+<!-- =====================================================
+     PREVIEW
+===================================================== -->
+
+<h2 class="preview-title">
+
+Generated Farmer Card
+
+</h2>
+
+
+<div class="card-stage">
+
+
+<div
+class="card-wrapper"
+id="cardWrapper"
+>
+
+
+<!-- =====================================================
+     FRONT CARD
+===================================================== -->
+
+<div class="farmer-card">
+
+
+<div class="card-header">
+
+
+<div class="card-logo">
+
+Agri
+<span>
+record
+</span>
+
+</div>
+
+
+<div class="farmer-symbol">
+
+👨‍🌾
+
+</div>
+
+
+</div>
+
+
+<div class="front-body">
+
+
+<!-- PHOTO -->
+
+<div class="photo-frame">
+
+<img
+id="cardPhoto"
+alt="Farmer Photo"
+>
+
+</div>
+
+
+<!-- DETAILS -->
+
+<div class="personal-details">
+
+
+<div
+class="name-marathi"
+id="cardMarathiName"
+>
+
+नाव : शेतकरी
+
+</div>
+
+
+<div
+class="name-english"
+id="cardEnglishName"
+>
+
+Farmer Name
+
+</div>
+
+
+<div class="detail-row">
+
+<span class="detail-label">
+DOB :
+</span>
+
+<span
+class="detail-value"
+id="cardDob"
+>
+
+DD/MM/YYYY
+
+</span>
+
+</div>
+
+
+<div class="detail-row">
+
+<span class="detail-label">
+Gender :
+</span>
+
+<span
+class="detail-value"
+id="cardGender"
+>
+
+लिंग
+
+</span>
+
+</div>
+
+
+<div class="detail-row">
+
+<span class="detail-label">
+Mobile :
+</span>
+
+<span
+class="detail-value"
+id="cardMobile"
+>
+
+XXXXXXXXXX
+
+</span>
+
+</div>
+
+
+<div class="detail-row">
+
+<span class="detail-label">
+ID :
+</span>
+
+<span
+class="detail-value"
+id="cardAadhaar"
+>
+
+XXXXXXXXXXXX
+
+</span>
+
+</div>
+
+
+</div>
+
+
+<!-- QR -->
+
+<div class="qr-box">
+
+<div
+id="qrcode"
+></div>
+
+</div>
+
+
+<!-- FARMER ID -->
+
+<div class="farmer-id-bar">
+
+
+<span
+class="farmer-id-title"
+>
+
+Farmer ID
+
+</span>
+
+
+<span
+class="farmer-id-number"
+id="cardFarmerId"
+>
+
+000 00 00 00 00
+
+</span>
+
+
+</div>
+
+
+<div class="card-footer">
+
+<span>
+
+This card is only for personal use not for Govt. identity
+
+</span>
+
+</div>
+
+
+</div>
+
+</div>
+
+
+<!-- =====================================================
+     BACK CARD
+===================================================== -->
+
+<div class="back-card">
+
+
+<div class="back-leaf">
+
+🌿
+
+</div>
+
+
+<div class="back-title">
+
+🏠 पूर्ण पत्ता / Address
+
+</div>
+
+
+<div
+class="address-text"
+id="cardAddress"
+>
+
+शेतकऱ्याचा पूर्ण पत्ता
+
+</div>
+
+
+<div class="land-title">
+
+🌱 जमीन माहिती / Land Details
+
+</div>
+
+
+<table class="land-table">
+
+
+<thead>
+
+<tr>
+
+<th>
+जिल्हा
+</th>
+
+<th>
+तालुका
+</th>
+
+<th>
+गाव
+</th>
+
+<th>
+खाता
+</th>
+
+<th>
+गट/सर्वे
+</th>
+
+<th>
+क्षेत्रफळ
+</th>
+
+</tr>
+
+</thead>
+
+
+<tbody>
+
+<tr>
+
+<td
+id="cardDistrict"
+>
+जिल्हा
+</td>
+
+
+<td
+id="cardTaluka"
+>
+तालुका
+</td>
+
+
+<td
+id="cardVillage"
+>
+गाव
+</td>
+
+
+<td
+id="cardKhata"
+>
+खाता
+</td>
+
+
+<td
+id="cardKhasra"
+>
+गट नंबर
+</td>
+
+
+<td
+id="cardArea"
+>
+क्षेत्रफळ
+</td>
+
+</tr>
+
+</tbody>
+
+
+</table>
+
+
+<div class="card-footer">
+
+<span>
+
+This card is only for personal use not for Govt. identity
+
+</span>
+
+</div>
+
+
+</div>
+
+
+</div>
+
+</div>
+
+
+</div>
+
+
+<!-- =====================================================
+     EXTERNAL LIBRARIES
+===================================================== -->
+
+<script
+src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js">
+</script>
+
+
+<script
+src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js">
+</script>
+
+
+<script
+src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js">
+</script>
+
+
+<script>
+
+/* =====================================================
+   ELEMENT HELPER
+===================================================== */
+
+const $ = id =>
+document.getElementById(id);
+
+
+/* =====================================================
+   DEFAULT PHOTO
+===================================================== */
+
+const defaultPhoto =
+"data:image/svg+xml;charset=UTF-8," +
+
+encodeURIComponent(`
+
+<svg
+xmlns="http://www.w3.org/2000/svg"
+width="76"
+height="105"
+>
+
+<rect
+width="76"
+height="105"
+fill="#eeeeee"
+/>
+
+<circle
+cx="38"
+cy="34"
+r="17"
+fill="#b7b7b7"
+/>
+
+<path
+d="M10 98 C12 68 64 68 66 98"
+fill="#b7b7b7"
+/>
+
+<text
+x="38"
+y="101"
+text-anchor="middle"
+font-size="6"
+fill="#777"
+>
+
+PHOTO
+
+</text>
+
+</svg>
+
+`);
+
+
+$("cardPhoto").src =
+defaultPhoto;
+
+
+/* =====================================================
+   VALUE
+===================================================== */
+
+function val(id){
+
+const e =
+$(id);
+
+if(!e)
+return "";
+
+return e.value.trim();
+
+}
+
+
+/* =====================================================
+   DATE
+===================================================== */
+
+function formatDate(value){
+
+if(!value)
+return "DD/MM/YYYY";
+
+const parts =
+value.split("-");
+
+if(parts.length === 3){
+
+return (
+parts[2] +
+"/" +
+parts[1] +
+"/" +
+parts[0]
+);
+
+}
+
+return value;
+
+}
+
+
+/* =====================================================
+   FILE NAME
+===================================================== */
+
+function safeFileName(){
+
+let name =
+val("farmerName");
+
+if(!name)
+name =
+"Farmer";
+
+return name
+.replace(
+/[^a-zA-Z0-9\u0900-\u097F]+/g,
+"-"
+)
+.replace(
+/^-+|-+$/g,
+"");
+
+}
+
+
+/* =====================================================
+   NAME SIZE
+===================================================== */
+
+function fitName(){
+
+const marathi =
+$("cardMarathiName");
+
+const english =
+$("cardEnglishName");
+
+
+marathi.style.fontSize =
+"15px";
+
+english.style.fontSize =
+"15px";
+
+
+if(
+marathi.scrollWidth >
+marathi.clientWidth
+){
+
+marathi.style.fontSize =
+"11px";
+
+}
+
+
+if(
+english.scrollWidth >
+english.clientWidth
+){
+
+english.style.fontSize =
+"11px";
+
+}
+
+}
+
+
+/* =====================================================
+   QR CODE
+   IMPORTANT FIX
+===================================================== */
+
+function generateQR(){
+
+const qr =
+$("qrcode");
+
+qr.innerHTML =
+"";
+
+
+/*
+   आधी QR मध्ये खूप मोठा Marathi text
+   जात होता.
+
+   त्यामुळे:
+
+   code length overflow
+   4028 > 2960
+
+   error येत होता.
+
+   आता QR मध्ये फक्त compact data आहे.
+*/
+
+
+if(
+typeof QRCode ===
+"undefined"
+){
+
+qr.innerHTML =
+"<small>QR</small>";
+
+return;
+
+}
+
+
+/* Compact QR Data */
+
+const qrText =
+
+"AGRI|" +
+
+(val("farmerId") || "-") +
+
+"|" +
+
+(val("farmerName") || "-") +
+
+"|" +
+
+(val("mobile") || "-") +
+
+"|" +
+
+(val("district") || "-") +
+
+"|" +
+
+(val("taluka") || "-") +
+
+"|" +
+
+(val("village") || "-") +
+
+"|" +
+
+(val("khata") || "-") +
+
+"|" +
+
+(val("khasra") || "-") +
+
+"|" +
+
+(val("area") || "-");
+
+
+/*
+   QR Version automatically choose
+   होईल.
+
+   Error correction L ठेवले आहे,
+   त्यामुळे data capacity जास्त मिळते.
+*/
+
+
+new QRCode(
+qr,
+{
+
+text:
+qrText,
+
+width:
+98,
+
+height:
+98,
+
+colorDark:
+"#075d3b",
+
+colorLight:
+"#ffffff",
+
+correctLevel:
+QRCode.CorrectLevel.L
+
+}
+);
+
+}
+
+
+/* =====================================================
+   UPDATE CARD
+===================================================== */
+
+function generateCard(){
+
+
+/* FRONT */
+
+$("cardMarathiName").textContent =
+
+"नाव : " +
+
+(
+val("marathiName") ||
+"शेतकरी"
+);
+
+
+$("cardEnglishName").textContent =
+
+val("farmerName") ||
+"Farmer Name";
+
+
+$("cardDob").textContent =
+
+formatDate(
+val("dob")
+);
+
+
+$("cardGender").textContent =
+
+val("gender") ||
+"लिंग";
+
+
+$("cardMobile").textContent =
+
+val("mobile") ||
+"XXXXXXXXXX";
+
+
+$("cardAadhaar").textContent =
+
+val("aadhaar") ||
+"XXXXXXXXXXXX";
+
+
+$("cardFarmerId").textContent =
+
+val("farmerId") ||
+"000 00 00 00 00";
+
+
+/* BACK */
+
+$("cardAddress").textContent =
+
+val("address") ||
+"शेतकऱ्याचा पूर्ण पत्ता";
+
+
+$("cardDistrict").textContent =
+
+val("district") ||
+"जिल्हा";
+
+
+$("cardTaluka").textContent =
+
+val("taluka") ||
+"तालुका";
+
+
+$("cardVillage").textContent =
+
+val("village") ||
+"गाव";
+
+
+$("cardKhata").textContent =
+
+val("khata") ||
+"खाता";
+
+
+$("cardKhasra").textContent =
+
+val("khasra") ||
+"गट नंबर";
+
+
+$("cardArea").textContent =
+
+val("area") ||
+"क्षेत्रफळ";
+
+
+fitName();
+
+
+generateQR();
+
+}
+
+
+/* =====================================================
+   PHOTO
+===================================================== */
+
+$("photoInput")
+.addEventListener(
+"change",
+function(event){
+
+const file =
+event.target.files[0];
+
+if(!file)
+return;
+
+
+if(
+!file.type.startsWith("image/")
+){
+
+alert(
+"कृपया JPG, PNG किंवा WEBP फोटो निवडा."
+);
+
+return;
+
+}
+
+
+const reader =
+new FileReader();
+
+
+reader.onload =
+function(e){
+
+$("cardPhoto").src =
+e.target.result;
+
+};
+
+
+reader.readAsDataURL(file);
+
+}
+);
+
+
+/* =====================================================
+   LIVE UPDATE
+===================================================== */
+
+document
+.querySelectorAll(
+".form-card input," +
+".form-card select," +
+".form-card textarea"
+)
+.forEach(
+element => {
+
+
+element.addEventListener(
+"input",
+generateCard
+);
+
+
+element.addEventListener(
+"change",
+generateCard
+);
+
+
+}
+);
+
+
+/* =====================================================
+   WAIT
+===================================================== */
+
+function wait(ms){
+
+return new Promise(
+resolve =>
+setTimeout(
+resolve,
+ms
+)
+);
+
+}
+
+
+/* =====================================================
+   CANVAS
+===================================================== */
+
+async function getCanvas(){
+
+generateCard();
+
+
+/*
+   QR render होण्यासाठी wait
+*/
+
+await wait(500);
+
+
+if(
+typeof html2canvas ===
+"undefined"
+){
+
+throw new Error(
+"html2canvas library load झाली नाही."
+);
+
+}
+
+
+/*
+   IMPORTANT:
+
+   scale = 1
+
+   आधी scale 2/3 मुळे
+   मोठा canvas तयार होत होता.
+
+   आता 1000 x 400 canvas
+   पुरेसा आहे.
+*/
+
+
+const canvas =
+await html2canvas(
+$("cardWrapper"),
+{
+
+scale:1,
+
+width:1000,
+
+height:400,
+
+useCORS:true,
+
+allowTaint:false,
+
+backgroundColor:"#ffffff",
+
+logging:false
+
+}
+);
+
+
+return canvas;
+
+}
+
+
+/* =====================================================
+   PNG DOWNLOAD
+===================================================== */
+
+async function downloadPNG(){
+
+try{
+
+
+$("status").textContent =
+
+"PNG तयार होत आहे...";
+
+
+const canvas =
+await getCanvas();
+
+
+const data =
+canvas.toDataURL(
+"image/png"
+);
+
+
+const link =
+document.createElement("a");
+
+
+link.download =
+
+safeFileName() +
+
+"-Farmer-Card.png";
+
+
+link.href =
+data;
+
+
+document.body.appendChild(
+link
+);
+
+
+link.click();
+
+
+link.remove();
+
+
+$("status").textContent =
+
+"✅ PNG Download झाले.";
+
+
+}
+
+catch(error){
+
+console.error(error);
+
+
+$("status").textContent =
+
+"❌ PNG Error: " +
+
+error.message;
+
+
+alert(
+
+"PNG तयार करताना Error आला.\n\n" +
+
+error.message
+
+);
+
+}
+
+}
+
+
+/* =====================================================
+   A4 PDF DOWNLOAD
+===================================================== */
+
+async function downloadPDF(){
+
+try{
+
+
+$("status").textContent =
+
+"A4 PDF तयार होत आहे...";
+
+
+/*
+   CHECK HTML2CANVAS
+*/
+
+if(
+typeof html2canvas ===
+"undefined"
+){
+
+throw new Error(
+"html2canvas load झाले नाही. Internet तपासा."
+);
+
+}
+
+
+/*
+   CHECK JSPDF
+*/
+
+if(
+!window.jspdf ||
+!window.jspdf.jsPDF
+){
+
+throw new Error(
+"jsPDF load झाले नाही. Internet तपासा."
+);
+
+}
+
+
+/*
+   CREATE CANVAS
+*/
+
+const canvas =
+await getCanvas();
+
+
+/*
+   PNG FORMAT
+
+   JPEG पेक्षा PNG मध्ये
+   Marathi text आणि QR
+   चांगले येतात.
+*/
+
+const imageData =
+
+canvas.toDataURL(
+"image/png"
+);
+
+
+if(
+!imageData ||
+imageData.length < 100
+){
+
+throw new Error(
+"Card image तयार झाली नाही."
+);
+
+}
+
+
+/*
+   JSPDF
+*/
+
+const jsPDF =
+window.jspdf.jsPDF;
+
+
+const pdf =
+new jsPDF(
+{
+
+orientation:
+"landscape",
+
+unit:
+"mm",
+
+format:
+"a4",
+
+compress:true
+
+}
+);
+
+
+/*
+   A4 SIZE
+*/
+
+const pageWidth =
+pdf.internal.pageSize.getWidth();
+
+const pageHeight =
+pdf.internal.pageSize.getHeight();
+
+
+/*
+   MARGIN
+*/
+
+const margin =
+8;
+
+
+/*
+   CARD RATIO
+
+   1000 x 400
+*/
+
+const ratio =
+canvas.width /
+canvas.height;
+
+
+let width =
+pageWidth -
+(
+margin * 2
+);
+
+
+let height =
+width /
+ratio;
+
+
+/*
+   Fit inside A4
+*/
+
+if(
+height >
+pageHeight -
+(
+margin * 2
+)
+){
+
+height =
+pageHeight -
+(
+margin * 2
+);
+
+
+width =
+height *
+ratio;
+
+}
+
+
+/*
+   CENTER
+*/
+
+const x =
+(
+pageWidth -
+width
+) /
+2;
+
+
+const y =
+(
+pageHeight -
+height
+) /
+2;
+
+
+/*
+   WHITE BACKGROUND
+*/
+
+pdf.setFillColor(
+255,
+255,
+255
+);
+
+
+pdf.rect(
+0,
+0,
+pageWidth,
+pageHeight,
+"F"
+);
+
+
+/*
+   ADD CARD
+*/
+
+pdf.addImage(
+imageData,
+"PNG",
+x,
+y,
+width,
+height,
+undefined,
+"FAST"
+);
+
+
+/*
+   DOWNLOAD
+*/
+
+pdf.save(
+
+safeFileName() +
+
+"-Farmer-Card-A4.pdf"
+
+);
+
+
+$("status").textContent =
+
+"✅ A4 PDF Download झाले.";
+
+
+}
+
+catch(error){
+
+
+console.error(
+"PDF ERROR:",
+error
+);
+
+
+$("status").textContent =
+
+"❌ PDF Error: " +
+
+error.message;
+
+
+alert(
+
+"A4 PDF तयार करताना Error आला.\n\n" +
+
+error.message +
+
+"\n\nInternet connection तपासा आणि page reload करा."
+
+);
+
+}
+
+}
+
+
+/* =====================================================
+   PRINT
+===================================================== */
+
+function printCard(){
+
+window.print();
+
+}
+
+
+/* =====================================================
+   START
+===================================================== */
+
+generateCard();
+
+</script>
+
+
+</body>
+</html>

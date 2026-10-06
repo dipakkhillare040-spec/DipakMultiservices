@@ -1,0 +1,1520 @@
+<!DOCTYPE html>
+<html lang="mr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Maha DBT Scholarship Application Portal</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Devanagari:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:"Noto Sans Devanagari",Arial,sans-serif;
+    background:
+        linear-gradient(135deg,#eaf8ef,#f7fff9);
+    color:#173d2a;
+    min-height:100vh;
+}
+
+.container{
+    max-width:1100px;
+    margin:auto;
+    padding:25px 15px 50px;
+}
+
+/* HEADER */
+
+.header{
+    text-align:center;
+    margin-bottom:25px;
+}
+
+.header h1{
+    color:#087443;
+    font-size:34px;
+    font-weight:800;
+}
+
+.header p{
+    color:#60766a;
+    margin-top:5px;
+}
+
+/* NOTICE */
+
+.notice{
+    background:#fff8d9;
+    border:1px solid #e8d486;
+    padding:15px;
+    border-radius:12px;
+    margin-bottom:20px;
+    line-height:1.7;
+}
+
+/* CARD */
+
+.card{
+    background:#fff;
+    border-radius:20px;
+    padding:28px;
+    box-shadow:0 15px 45px rgba(0,70,40,.12);
+    margin-bottom:25px;
+}
+
+.card h2{
+    color:#087443;
+    margin-bottom:20px;
+    font-size:23px;
+}
+
+/* FORM GRID */
+
+.form-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:17px;
+}
+
+.full{
+    grid-column:1/-1;
+}
+
+.form-group label{
+    display:block;
+    font-size:14px;
+    font-weight:800;
+    color:#315c48;
+    margin-bottom:7px;
+}
+
+.required{
+    color:red;
+}
+
+input,
+select,
+textarea{
+    width:100%;
+    padding:13px 14px;
+    border:1px solid #c7ddd0;
+    border-radius:10px;
+    background:#fbfffc;
+    font-family:inherit;
+    font-size:15px;
+    outline:none;
+    transition:.2s;
+}
+
+input:focus,
+select:focus,
+textarea:focus{
+    border-color:#087b4c;
+    box-shadow:0 0 0 3px rgba(8,123,76,.10);
+}
+
+textarea{
+    min-height:90px;
+    resize:vertical;
+}
+
+/* DOCUMENTS */
+
+.documents{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:14px;
+}
+
+.document-box{
+    border:2px dashed #9bc9ad;
+    background:#f7fff9;
+    border-radius:12px;
+    padding:15px;
+}
+
+.document-box label{
+    display:block;
+    font-weight:800;
+    margin-bottom:8px;
+    color:#245d40;
+}
+
+.document-box input{
+    border:0;
+    background:transparent;
+    padding:5px 0;
+}
+
+.document-info{
+    color:#72847a;
+    font-size:12px;
+    margin-top:5px;
+}
+
+/* FILE LIST */
+
+.file-list{
+    margin-top:20px;
+    display:grid;
+    gap:8px;
+}
+
+.file-item{
+    background:#f3faf5;
+    border:1px solid #d4e8da;
+    padding:10px 12px;
+    border-radius:8px;
+    display:flex;
+    justify-content:space-between;
+    gap:10px;
+    align-items:center;
+    font-size:13px;
+}
+
+.file-item span:last-child{
+    color:#087443;
+    font-weight:700;
+}
+
+/* CONSENT */
+
+.consent{
+    margin-top:22px;
+    background:#f5faf7;
+    padding:15px;
+    border-radius:10px;
+    border:1px solid #d9e9df;
+}
+
+.consent label{
+    display:flex;
+    gap:10px;
+    align-items:flex-start;
+    font-size:14px;
+}
+
+.consent input{
+    width:auto;
+    margin-top:4px;
+}
+
+/* BUTTON */
+
+.submit-area{
+    text-align:center;
+    margin-top:25px;
+}
+
+.submit-btn{
+    border:0;
+    background:linear-gradient(135deg,#087443,#0ba65e);
+    color:white;
+    padding:15px 35px;
+    border-radius:12px;
+    font-size:17px;
+    font-weight:800;
+    cursor:pointer;
+    box-shadow:0 8px 20px rgba(0,100,60,.22);
+}
+
+.submit-btn:hover{
+    transform:translateY(-2px);
+}
+
+/* RESULT */
+
+.result{
+    display:none;
+    background:#fff;
+    border-radius:20px;
+    padding:30px;
+    box-shadow:0 15px 40px rgba(0,70,40,.12);
+    text-align:center;
+}
+
+.success-icon{
+    font-size:55px;
+}
+
+.application-id{
+    background:#eafff1;
+    border:1px solid #9ed4af;
+    color:#087443;
+    font-size:25px;
+    font-weight:800;
+    padding:15px;
+    border-radius:12px;
+    margin:20px 0;
+}
+
+.result-buttons{
+    display:flex;
+    justify-content:center;
+    flex-wrap:wrap;
+    gap:12px;
+    margin-top:20px;
+}
+
+.result-buttons button{
+    border:0;
+    padding:12px 20px;
+    border-radius:9px;
+    color:white;
+    font-weight:700;
+    cursor:pointer;
+}
+
+.whatsapp{
+    background:#0a9f55;
+}
+
+.print{
+    background:#263238;
+}
+
+.new{
+    background:#087443;
+}
+
+.footer{
+    text-align:center;
+    margin-top:25px;
+    color:#6b7e73;
+    font-size:13px;
+}
+
+/* MOBILE */
+
+@media(max-width:750px){
+
+    .form-grid{
+        grid-template-columns:1fr;
+    }
+
+    .full{
+        grid-column:auto;
+    }
+
+    .documents{
+        grid-template-columns:1fr;
+    }
+
+    .header h1{
+        font-size:25px;
+    }
+
+    .card{
+        padding:18px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<!-- HEADER -->
+
+<div class="header">
+
+    <h1>🌾 Maha DBT Scholarship Portal</h1>
+
+    <p>
+        शिष्यवृत्ती अर्ज व कागदपत्रे जमा करण्यासाठी Online Application
+    </p>
+
+</div>
+
+
+<!-- NOTICE -->
+
+<div class="notice">
+
+<b>📢 महत्त्वाची सूचना</b><br>
+
+कृपया खालील सर्व माहिती अचूक भरा.
+आवश्यक कागदपत्रे स्पष्ट PDF / JPG / PNG स्वरूपात upload करा.
+
+अर्ज Submit केल्यानंतर Application ID तयार होईल.
+तुमच्या अर्जाची माहिती सेवा केंद्राकडे पाठवण्यासाठी WhatsApp पर्याय उपलब्ध आहे.
+
+</div>
+
+
+<!-- MAIN FORM -->
+
+<div class="card" id="applicationCard">
+
+<h2>👨‍🎓 विद्यार्थी / अर्जदार माहिती</h2>
+
+<form id="applicationForm">
+
+<div class="form-grid">
+
+
+<!-- NAME -->
+
+<div class="form-group">
+
+<label>
+विद्यार्थ्याचे पूर्ण नाव
+<span class="required">*</span>
+</label>
+
+<input
+type="text"
+id="fullName"
+placeholder="उदा. अमोल संभाजी खिल्लारे"
+required>
+
+</div>
+
+
+<!-- PARENT -->
+
+<div class="form-group">
+
+<label>
+आई / वडील / पालकांचे पूर्ण नाव
+<span class="required">*</span>
+</label>
+
+<input
+type="text"
+id="parentName"
+placeholder="उदा. संभाजी खिल्लारे"
+required>
+
+</div>
+
+
+<!-- MOBILE -->
+
+<div class="form-group">
+
+<label>
+📱 मोबाईल नंबर
+<span class="required">*</span>
+</label>
+
+<input
+type="tel"
+id="mobile"
+maxlength="10"
+pattern="[0-9]{10}"
+placeholder="10 अंकी मोबाईल नंबर"
+required>
+
+</div>
+
+
+<!-- EMAIL -->
+
+<div class="form-group">
+
+<label>
+📧 Email
+<span class="required">*</span>
+</label>
+
+<input
+type="email"
+id="email"
+placeholder="example@gmail.com"
+required>
+
+</div>
+
+
+<!-- DOB -->
+
+<div class="form-group">
+
+<label>
+जन्म तारीख
+</label>
+
+<input
+type="date"
+id="dob">
+
+</div>
+
+
+<!-- GENDER -->
+
+<div class="form-group">
+
+<label>
+लिंग
+</label>
+
+<select id="gender">
+
+<option value="पुरुष">पुरुष</option>
+<option value="महिला">महिला</option>
+<option value="इतर">इतर</option>
+
+</select>
+
+</div>
+
+
+<!-- COURSE -->
+
+<div class="form-group">
+
+<label>
+🎓 Course
+<span class="required">*</span>
+</label>
+
+<select id="course" required>
+
+<option value="">Course निवडा</option>
+
+<option>BCA</option>
+<option>MCA</option>
+<option>BA</option>
+<option>B.Com</option>
+<option>M.Com</option>
+<option>B.Sc</option>
+<option>M.Sc</option>
+<option>BE / B.Tech</option>
+<option>ME / M.Tech</option>
+<option>Diploma</option>
+<option>ITI</option>
+<option>Other</option>
+
+</select>
+
+</div>
+
+
+<!-- YEAR -->
+
+<div class="form-group">
+
+<label>
+📚 Year / Semester
+</label>
+
+<input
+type="text"
+id="semester"
+placeholder="उदा. FY / SY / TY / Semester 1">
+
+</div>
+
+
+<!-- COLLEGE -->
+
+<div class="form-group">
+
+<label>
+🏫 महाविद्यालयाचे पूर्ण नाव
+<span class="required">*</span>
+</label>
+
+<input
+type="text"
+id="college"
+placeholder="महाविद्यालयाचे पूर्ण नाव"
+required>
+
+</div>
+
+
+<!-- SCHOLARSHIP -->
+
+<div class="form-group">
+
+<label>
+🎯 Scholarship / योजना
+<span class="required">*</span>
+</label>
+
+<select id="scholarship" required>
+
+<option value="">योजना निवडा</option>
+
+<option>Maha DBT Scholarship</option>
+<option>Post Matric Scholarship</option>
+<option>Fee Reimbursement</option>
+<option>Government Scholarship</option>
+<option>Other</option>
+
+</select>
+
+</div>
+
+
+<!-- DISTRICT -->
+
+<div class="form-group">
+
+<label>
+📍 जिल्हा / District
+</label>
+
+<input
+type="text"
+id="district"
+placeholder="उदा. परभणी">
+
+</div>
+
+
+<!-- TALUKA -->
+
+<div class="form-group">
+
+<label>
+📍 तालुका / Taluka
+</label>
+
+<input
+type="text"
+id="taluka"
+placeholder="उदा. जिंतूर">
+
+</div>
+
+
+<!-- VILLAGE -->
+
+<div class="form-group">
+
+<label>
+🏠 गावाचे पूर्ण नाव / Village Name
+</label>
+
+<input
+type="text"
+id="village"
+placeholder="उदा. दाभा">
+
+</div>
+
+
+<!-- PIN -->
+
+<div class="form-group">
+
+<label>
+पिनकोड
+</label>
+
+<input
+type="text"
+id="pincode"
+maxlength="6"
+placeholder="431509">
+
+</div>
+
+
+<!-- ADDRESS -->
+
+<div class="form-group full">
+
+<label>
+🏠 पूर्ण पत्ता
+</label>
+
+<textarea
+id="address"
+placeholder="घर नं., गल्ली, गाव, तालुका, जिल्हा, पिनकोड">
+</textarea>
+
+</div>
+
+
+</div>
+
+
+<!-- DOCUMENT SECTION -->
+
+<h2 style="margin-top:30px">
+📄 आवश्यक कागदपत्रे Upload करा
+</h2>
+
+
+<div class="documents">
+
+
+<!-- AADHAAR -->
+
+<div class="document-box">
+
+<label>🪪 Aadhaar Card</label>
+
+<input
+type="file"
+id="aadhaar"
+accept=".pdf,.jpg,.jpeg,.png,.webp">
+
+<div class="document-info">
+PDF / JPG / PNG — Maximum 10 MB
+</div>
+
+</div>
+
+
+<!-- BONAFIDE -->
+
+<div class="document-box">
+
+<label>📜 Bonafide Certificate</label>
+
+<input
+type="file"
+id="bonafide"
+accept=".pdf,.jpg,.jpeg,.png,.webp">
+
+<div class="document-info">
+महाविद्यालयाचे Bonafide
+</div>
+
+</div>
+
+
+<!-- CASTE -->
+
+<div class="document-box">
+
+<label>📜 Caste Certificate</label>
+
+<input
+type="file"
+id="caste"
+accept=".pdf,.jpg,.jpeg,.png,.webp">
+
+</div>
+
+
+<!-- VALIDITY -->
+
+<div class="document-box">
+
+<label>📜 Caste Validity</label>
+
+<input
+type="file"
+id="validity"
+accept=".pdf,.jpg,.jpeg,.png,.webp">
+
+</div>
+
+
+<!-- INCOME -->
+
+<div class="document-box">
+
+<label>💰 Income Certificate</label>
+
+<input
+type="file"
+id="income"
+accept=".pdf,.jpg,.jpeg,.png,.webp">
+
+</div>
+
+
+<!-- DOMICILE -->
+
+<div class="document-box">
+
+<label>🏠 Domicile / Residence</label>
+
+<input
+type="file"
+id="domicile"
+accept=".pdf,.jpg,.jpeg,.png,.webp">
+
+</div>
+
+
+<!-- 10TH -->
+
+<div class="document-box">
+
+<label>📚 10th Marksheet</label>
+
+<input
+type="file"
+id="marksheet10"
+accept=".pdf,.jpg,.jpeg,.png,.webp">
+
+</div>
+
+
+<!-- 12TH -->
+
+<div class="document-box">
+
+<label>📚 12th Marksheet</label>
+
+<input
+type="file"
+id="marksheet12"
+accept=".pdf,.jpg,.jpeg,.png,.webp">
+
+</div>
+
+
+<!-- GRADUATION -->
+
+<div class="document-box">
+
+<label>🎓 Graduation Marksheet</label>
+
+<input
+type="file"
+id="graduation"
+accept=".pdf,.jpg,.jpeg,.png,.webp">
+
+</div>
+
+
+<!-- BANK -->
+
+<div class="document-box">
+
+<label>🏦 Bank Passbook</label>
+
+<input
+type="file"
+id="bank"
+accept=".pdf,.jpg,.jpeg,.png,.webp">
+
+</div>
+
+
+<!-- OTHER -->
+
+<div class="document-box">
+
+<label>📄 Other Document</label>
+
+<input
+type="file"
+id="other"
+accept=".pdf,.jpg,.jpeg,.png,.webp">
+
+</div>
+
+
+</div>
+
+
+<!-- SELECTED FILES -->
+
+<div
+class="file-list"
+id="fileList">
+</div>
+
+
+<!-- CONSENT -->
+
+<div class="consent">
+
+<label>
+
+<input
+type="checkbox"
+id="consent"
+required>
+
+<span>
+
+मी दिलेली सर्व माहिती माझ्या माहितीनुसार खरी आहे.
+अपलोड केलेली कागदपत्रे तपासणीसाठी देत आहे.
+
+</span>
+
+</label>
+
+</div>
+
+
+<!-- SUBMIT -->
+
+<div class="submit-area">
+
+<button
+type="submit"
+class="submit-btn">
+
+✅ अर्ज Submit करा
+
+</button>
+
+</div>
+
+
+</form>
+
+</div>
+
+
+<!-- RESULT -->
+
+<div
+class="result"
+id="result">
+
+<div class="success-icon">
+✅
+</div>
+
+<h2>
+अर्ज यशस्वीरीत्या तयार झाला
+</h2>
+
+<p>
+आपली माहिती तयार झाली आहे.
+</p>
+
+
+<div class="application-id">
+
+Application ID<br>
+
+<span id="applicationId">
+MDBT000000
+</span>
+
+</div>
+
+
+<p>
+📧 Email confirmation साठी दिलेल्या Email चा वापर करा.
+</p>
+
+<p style="margin-top:8px">
+
+📱 खालील WhatsApp button दाबून अर्जाची माहिती
+सेवा केंद्राला पाठवा.
+
+</p>
+
+
+<div class="result-buttons">
+
+<button
+class="whatsapp"
+onclick="sendWhatsApp()">
+
+📱 WhatsApp वर पाठवा
+
+</button>
+
+
+<button
+class="print"
+onclick="window.print()">
+
+🖨️ Print
+
+</button>
+
+
+<button
+class="new"
+onclick="newApplication()">
+
+➕ नवीन अर्ज
+
+</button>
+
+</div>
+
+</div>
+
+
+<div class="footer">
+
+© Maha DBT Application Portal
+
+</div>
+
+</div>
+
+
+<script>
+
+/* =====================================================
+   SETTINGS
+===================================================== */
+
+/*
+   येथे तुमचा WhatsApp नंबर द्या.
+
+   India example:
+   919359563098
+
+   + चिन्ह वापरू नका.
+*/
+
+const ADMIN_WHATSAPP = "919359563098";
+
+
+/* =====================================================
+   ELEMENTS
+===================================================== */
+
+const form =
+document.getElementById("applicationForm");
+
+const result =
+document.getElementById("result");
+
+const applicationCard =
+document.getElementById("applicationCard");
+
+const applicationId =
+document.getElementById("applicationId");
+
+const fileList =
+document.getElementById("fileList");
+
+
+/* =====================================================
+   DOCUMENT INPUTS
+===================================================== */
+
+const documentInputs = [
+
+    "aadhaar",
+    "bonafide",
+    "caste",
+    "validity",
+    "income",
+    "domicile",
+    "marksheet10",
+    "marksheet12",
+    "graduation",
+    "bank",
+    "other"
+
+];
+
+
+/* =====================================================
+   FILE SIZE VALIDATION
+===================================================== */
+
+documentInputs.forEach(function(id){
+
+    const input =
+    document.getElementById(id);
+
+    input.addEventListener("change",function(){
+
+        if(!input.files.length){
+            return;
+        }
+
+        const file =
+        input.files[0];
+
+        const maxSize =
+        10 * 1024 * 1024;
+
+        if(file.size > maxSize){
+
+            alert(
+                "File 10 MB पेक्षा मोठी आहे.\nकृपया छोटी file upload करा."
+            );
+
+            input.value="";
+
+            return;
+        }
+
+        updateFileList();
+
+    });
+
+});
+
+
+/* =====================================================
+   FILE LIST
+===================================================== */
+
+function updateFileList(){
+
+    fileList.innerHTML="";
+
+    let count=0;
+
+    documentInputs.forEach(function(id){
+
+        const input =
+        document.getElementById(id);
+
+        if(input.files.length){
+
+            const file =
+            input.files[0];
+
+            count++;
+
+            const div =
+            document.createElement("div");
+
+            div.className="file-item";
+
+            div.innerHTML=
+
+            `
+            <span>
+            📎 ${escapeHTML(getDocumentName(id))}
+            </span>
+
+            <span>
+            ${escapeHTML(file.name)}
+            </span>
+            `;
+
+            fileList.appendChild(div);
+
+        }
+
+    });
+
+    if(count===0){
+
+        fileList.innerHTML=
+        `
+        <div class="file-item">
+        <span>📄 कोणतेही document निवडलेले नाही</span>
+        </div>
+        `;
+
+    }
+
+}
+
+
+/* =====================================================
+   DOCUMENT NAME
+===================================================== */
+
+function getDocumentName(id){
+
+    const names={
+
+        aadhaar:"Aadhaar Card",
+        bonafide:"Bonafide Certificate",
+        caste:"Caste Certificate",
+        validity:"Caste Validity",
+        income:"Income Certificate",
+        domicile:"Domicile / Residence",
+        marksheet10:"10th Marksheet",
+        marksheet12:"12th Marksheet",
+        graduation:"Graduation Marksheet",
+        bank:"Bank Passbook",
+        other:"Other Document"
+
+    };
+
+    return names[id] || id;
+
+}
+
+
+/* =====================================================
+   HTML ESCAPE
+===================================================== */
+
+function escapeHTML(value){
+
+    return String(value)
+    .replace(/&/g,"&amp;")
+    .replace(/</g,"&lt;")
+    .replace(/>/g,"&gt;")
+    .replace(/"/g,"&quot;")
+    .replace(/'/g,"&#039;");
+
+}
+
+
+/* =====================================================
+   APPLICATION ID
+===================================================== */
+
+function generateApplicationID(){
+
+    const now =
+    new Date();
+
+    const year =
+    now.getFullYear();
+
+    const month =
+    String(now.getMonth()+1)
+    .padStart(2,"0");
+
+    const day =
+    String(now.getDate())
+    .padStart(2,"0");
+
+    const random =
+    Math.floor(
+        100000 + Math.random()*900000
+    );
+
+    return "MDBT"
+    + year
+    + month
+    + day
+    + random;
+
+}
+
+
+/* =====================================================
+   GET FORM DATA
+===================================================== */
+
+function getFormData(){
+
+    return {
+
+        id:
+        applicationId.textContent,
+
+        fullName:
+        document.getElementById("fullName").value.trim(),
+
+        parentName:
+        document.getElementById("parentName").value.trim(),
+
+        mobile:
+        document.getElementById("mobile").value.trim(),
+
+        email:
+        document.getElementById("email").value.trim(),
+
+        dob:
+        document.getElementById("dob").value,
+
+        gender:
+        document.getElementById("gender").value,
+
+        course:
+        document.getElementById("course").value,
+
+        semester:
+        document.getElementById("semester").value.trim(),
+
+        college:
+        document.getElementById("college").value.trim(),
+
+        scholarship:
+        document.getElementById("scholarship").value,
+
+        district:
+        document.getElementById("district").value.trim(),
+
+        taluka:
+        document.getElementById("taluka").value.trim(),
+
+        village:
+        document.getElementById("village").value.trim(),
+
+        pincode:
+        document.getElementById("pincode").value.trim(),
+
+        address:
+        document.getElementById("address").value.trim()
+
+    };
+
+}
+
+
+/* =====================================================
+   SUBMIT
+===================================================== */
+
+form.addEventListener(
+"submit",
+function(event){
+
+    event.preventDefault();
+
+
+    /* CHECK MOBILE */
+
+    const mobile =
+    document.getElementById("mobile").value.trim();
+
+    if(!/^[0-9]{10}$/.test(mobile)){
+
+        alert(
+            "कृपया 10 अंकी योग्य मोबाईल नंबर टाका."
+        );
+
+        return;
+
+    }
+
+
+    /* APPLICATION ID */
+
+    const id =
+    generateApplicationID();
+
+    applicationId.textContent =
+    id;
+
+
+    /* DATA */
+
+    const data =
+    getFormData();
+
+
+    data.id=id;
+
+
+    /*
+       Browser मध्ये temporarily save.
+
+       हा server database नाही.
+    */
+
+    localStorage.setItem(
+        "lastMahaDBTApplication",
+        JSON.stringify(data)
+    );
+
+
+    /* SHOW RESULT */
+
+    applicationCard.style.display="none";
+
+    result.style.display="block";
+
+
+    window.scrollTo({
+        top:0,
+        behavior:"smooth"
+    });
+
+});
+
+
+/* =====================================================
+   WHATSAPP MESSAGE
+===================================================== */
+
+function sendWhatsApp(){
+
+    const data =
+    getFormData();
+
+
+    let message =
+
+`🌾 MAHA DBT SCHOLARSHIP APPLICATION
+
+🆔 Application ID:
+${data.id}
+
+👤 अर्जदाराचे पूर्ण नाव:
+${data.fullName}
+
+👨‍👩‍👦 पालकांचे नाव:
+${data.parentName}
+
+📱 मोबाईल:
+${data.mobile}
+
+📧 Email:
+${data.email}
+
+🎂 जन्म तारीख:
+${data.dob || "नमूद नाही"}
+
+⚧ लिंग:
+${data.gender}
+
+🎓 Course:
+${data.course}
+
+📚 Year / Semester:
+${data.semester || "नमूद नाही"}
+
+🏫 College:
+${data.college}
+
+🎯 Scholarship:
+${data.scholarship}
+
+📍 जिल्हा:
+${data.district}
+
+📍 तालुका:
+${data.taluka}
+
+🏠 गाव:
+${data.village}
+
+📮 पिनकोड:
+${data.pincode}
+
+🏠 पूर्ण पत्ता:
+${data.address}
+
+📄 Documents:
+${getUploadedDocumentCount()} files
+
+━━━━━━━━━━━━━━
+अर्ज Portal वरून प्राप्त झाला आहे.
+━━━━━━━━━━━━━━`;
+
+
+    const url =
+    "https://wa.me/"
+    + ADMIN_WHATSAPP
+    + "?text="
+    + encodeURIComponent(message);
+
+
+    window.open(
+        url,
+        "_blank"
+    );
+
+}
+
+
+/* =====================================================
+   DOCUMENT COUNT
+===================================================== */
+
+function getUploadedDocumentCount(){
+
+    let count=0;
+
+    documentInputs.forEach(function(id){
+
+        const input =
+        document.getElementById(id);
+
+        if(input.files.length){
+            count++;
+        }
+
+    });
+
+    return count;
+
+}
+
+
+/* =====================================================
+   NEW APPLICATION
+===================================================== */
+
+function newApplication(){
+
+    location.reload();
+
+}
+
+
+/* =====================================================
+   EMAIL INFORMATION
+===================================================== */
+
+/*
+   Important:
+
+   HTML मधून automatic email send करण्यासाठी
+   backend किंवा email service आवश्यक आहे.
+
+   खालील function फक्त email application उघडतो.
+*/
+
+function openEmail(){
+
+    const data =
+    getFormData();
+
+    const subject =
+    "Maha DBT Application - "
+    + data.id;
+
+    const body =
+
+`नमस्कार,
+
+आपला Maha DBT अर्ज प्राप्त झाला आहे.
+
+Application ID:
+${data.id}
+
+नाव:
+${data.fullName}
+
+धन्यवाद.`;
+
+    window.location.href =
+    "mailto:"
+    + encodeURIComponent(data.email)
+    + "?subject="
+    + encodeURIComponent(subject)
+    + "&body="
+    + encodeURIComponent(body);
+
+}
+
+
+/* =====================================================
+   PRINT STYLE
+===================================================== */
+
+window.addEventListener(
+"beforeprint",
+function(){
+
+    document.body.style.background="#fff";
+
+});
+
+window.addEventListener(
+"afterprint",
+function(){
+
+    document.body.style.background="";
+
+});
+
+
+/* =====================================================
+   INITIAL FILE LIST
+===================================================== */
+
+updateFileList();
+
+</script>
+
+</body>
+</html>
