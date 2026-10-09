@@ -225,7 +225,7 @@ page-break-after:avoid;
 
 }
 
-}
+
 /* Top Right Buttons */
 .top-buttons{
     position: fixed;
@@ -328,11 +328,7 @@ placeholder="2025-2026">
 placeholder="XXXX XXXX XXXX">
 </div>
 
-<div class="input-box">
-<label>कोर्स / वर्ग</label>
-<input type="text" id="course"
-placeholder="BCA / MBA / Diploma">
-</div>
+
 
 <button class="btn generate-btn"
 onclick="generateCertificate()">
@@ -415,16 +411,16 @@ j
 प्रवेशित वर्ष प्रथम / द्वितीय / तुतीय / चौथे 
 
 
-</span>
+
 
 वर्ष मध्ये  प्रवेशित आहे.
-
+<br>
 मी सन
 <span class="bold" id="showYear3">
 2025-2026
 </span>
-
-मध्ये विद्यावेतन योजनेचा अर्ज भरला नाही.
+&nbsp; &nbsp;
+               मध्ये विद्यावेतन योजनेचा अर्ज भरला नाही.
 
 <br>
 <span style="margin-left:60px;display:inline-block;">
@@ -505,14 +501,14 @@ document.getElementById("year").value;
 document.getElementById("showAdhar").innerHTML =
 document.getElementById("adhar").value;
 
-document.getElementById("showCourse").innerHTML =
-document.getElementById("course").value;
 
 }
 
 /* DOWNLOAD PDF */
 
 function downloadPDF(){
+
+generateCertificate();
 
 const element =
 document.getElementById("certificate");
