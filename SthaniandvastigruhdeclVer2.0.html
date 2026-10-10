@@ -1,0 +1,444 @@
+
+<!DOCTYPE html>
+<html lang="mr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>शासकीय वसतिगृह व स्थानिक रहिवासी शपथपत्र</title>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+
+<style>
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 20px;
+    background: #0755a0;
+    font-family: Arial, "Noto Sans Devanagari", sans-serif;
+}
+
+.container {
+    max-width: 1400px;
+    margin: auto;
+    display: grid;
+    grid-template-columns: 360px minmax(0, 1fr);
+    gap: 20px;
+    align-items: start;
+}
+
+.form-box {
+    background: white;
+    padding: 24px;
+    border-radius: 14px;
+    position: sticky;
+    top: 15px;
+}
+
+.form-box h2 {
+    text-align: center;
+    color: #123b70;
+    font-size: 23px;
+}
+
+.input-box {
+    margin-bottom: 14px;
+}
+
+.input-box label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 6px;
+}
+
+.input-box input {
+    width: 100%;
+    padding: 11px;
+    border: 1px solid #bbb;
+    border-radius: 7px;
+    font-size: 16px;
+}
+
+.btn {
+    display: block;
+    width: 100%;
+    border: 0;
+    border-radius: 8px;
+    padding: 13px;
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 12px;
+}
+
+.generate-btn {
+    background: #0755a0;
+}
+
+.download-btn {
+    background: #118044;
+}
+
+.print-btn {
+    background: #673ab7;
+}
+
+.preview {
+    min-width: 0;
+    overflow-x: auto;
+    padding: 10px;
+    background: #dce7f1;
+    border-radius: 8px;
+}
+
+/* A4 DOCUMENT */
+.certificate {
+    position: relative;
+    width: 190mm;
+    min-height: 277mm;
+    margin: 0 auto;
+    padding: 38mm 17mm 18mm;
+    background: #fff;
+    color: #111;
+    box-shadow: 0 4px 20px #777;
+    font-family: "Noto Sans Devanagari", Arial, sans-serif;
+}
+
+.cert-title {
+    text-align: center;
+    font-size: 19px;
+    line-height: 1.8;
+    font-weight: bold;
+    text-decoration: underline;
+    margin-bottom: 20px;
+}
+
+.cert-body {
+    font-size: 16px;
+    line-height: 2.15;
+    text-align: justify;
+    overflow-wrap: anywhere;
+}
+
+.cert-body p {
+    margin: 0 0 14px;
+    text-indent: 35px;
+}
+
+.bold {
+    font-weight: bold;
+}
+
+.declaration {
+    margin-top: 20px !important;
+}
+
+.date-sign-row {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+    width: 100%;
+    margin-top: 25px;
+    font-size: 15px;
+    line-height: 2;
+    gap: 12px;
+}
+
+.date-sign-row .date-block {
+    width: 45%;
+    flex: 0 0 45%;
+    text-align: left;
+}
+
+.date-sign-row .signature-block {
+    width: 52%;
+    flex: 0 0 52%;
+    text-align: center;
+    overflow-wrap: anywhere;
+    margin-top: 0;
+}
+
+@media print {
+    .date-sign-row {
+        display: flex;
+        flex-direction: row;
+    }
+}
+
+
+.note {
+    font-size: 12px;
+    color: #444;
+    margin-top: 15px;
+}
+
+@media(max-width: 900px) {
+    .container {
+        grid-template-columns: 1fr;
+    }
+
+    .form-box {
+        position: static;
+    }
+
+    .preview {
+        padding: 5px;
+    }
+}
+
+@page {
+    size: A4 portrait;
+    margin: 0;
+}
+
+@media print {
+    body {
+        padding: 0;
+        background: white;
+    }
+
+    .form-box {
+        display: none;
+    }
+
+    .container {
+        display: block;
+    }
+
+    .preview {
+        padding: 0;
+        overflow: visible;
+        background: white;
+    }
+
+    .certificate {
+        margin: 0;
+        box-shadow: none;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<!-- FORM -->
+<div class="form-box">
+    <h2>📄 शपथपत्र जनरेटर</h2>
+    <p>विद्यार्थ्याची माहिती मराठीमध्ये भरा.</p>
+
+    <div class="input-box">
+        <label>विद्यार्थ्याचे पूर्ण नाव</label>
+        <input id="name" placeholder="उदा. First Middel Last Name">
+    </div>
+
+    <div class="input-box">
+        <label>वय (वर्षे)</label>
+        <input id="age" type="number" placeholder="उदा. 19">
+    </div>
+
+    <div class="input-box">
+        <label>विद्यार्थ्याचा संपूर्ण पत्ता</label>
+        <input id="address" placeholder="गाव, तालुका, जिल्हा">
+    </div>
+
+    <div class="input-box">
+        <label>कॉलेजचे नाव</label>
+        <input id="college" placeholder="कॉलेजचे पूर्ण नाव">
+    </div>
+
+    <div class="input-box">
+        <label>शिक्षण / कोर्स</label>
+        <input id="course" placeholder="उदा. Ba, Ma MCA BCA FY SY TY">
+    </div>
+
+    <div class="input-box">
+        <label>शैक्षणिक वर्ष</label>
+        <input id="year" value="2026 - 27">
+    </div>
+
+    <div class="input-box">
+        <label>कॉलेजचा पत्ता</label>
+        <input id="collegeAddress" placeholder="कॉलेजचे गाव, तालुका, जिल्हा">
+    </div>
+
+    <div class="input-box">
+        <label>शपथपत्राचे ठिकाण</label>
+        <input id="place" placeholder="उदा. जिंतूर">
+    </div>
+
+    <div class="input-box">
+        <label>दिनांक</label>
+        <input id="date" type="date">
+    </div>
+
+    <button class="btn generate-btn" onclick="generateCertificate()">
+        ✨ शपथपत्र तयार करा
+    </button>
+
+    <button class="btn download-btn" onclick="downloadPDF()">
+        ⬇ A4 PDF डाउनलोड करा
+    </button>
+
+    <button class="btn print-btn" onclick="window.print()">
+        🖨️ प्रिंट करा
+    </button>
+</div>
+
+<!-- DOCUMENT PREVIEW -->
+<div class="preview">
+
+<div class="certificate" id="certificate">
+
+    <div class="cert-title">
+        शासकीय वसतिगृहात राहत नसल्याबाबत व
+        स्थानिक रहिवासी नसल्याबाबतचे शपथपत्र
+    </div>
+
+    <div class="cert-body">
+
+        <p>
+            मी <span class="bold" id="showName">विद्यार्थ्याचे नाव</span>,
+            वय <span class="bold" id="showAge">___</span> वर्षे, धंदा <b>शिक्षण </b>
+            रा. <span class="bold" id="showAddress">विद्यार्थ्याचा संपूर्ण पत्ता</span>,
+           येथील रहिवाशी असून शपथेवर निवेदन करतो / करते की,  मी वरील ठिकाणी कायमचा   रहिवाशी    असून मी      &nbsp&nbsp<span class="bold" id="showCollege">कॉलेजचे नाव</span>,
+            <span class="bold" id="showCollegeAddress">कॉलेजचा पत्ता</span>
+            येथे <span class="bold" id="showCourse">शिक्षण / कोर्स</span>
+            या अभ्यासक्रमात शैक्षणिक वर्ष
+            <span class="bold" id="showYear">2026 - 27</span>
+            मध्ये शिक्षण घेत असून.
+       
+            मी कोणत्याही शासकीय वसतिगृहात प्रवेश घेतला नाही. तसेच मी शासकीय वसतिगृहात प्रवेश घेतल्याचे आढळून आल्यास शासनाकडून मिळणाऱ्या <b>डॉ. बाबासाहेब आंबेडकर स्वाधार योजना</b>
+          सन      &nbsp&nbsp<span class="bold" id="showYear">2026 - 27</span>
+        प्रवर्गातील विद्यार्थ्यांना योजनेचा लाभ घेण्यासाठी मी अपात्र ठरेल याची मला जाणीव आहे. तरी महाविद्यालयीन वसतिगृहात राहत नसल्याबाबत व स्थानिक रहिवासी नसल्याबाबत सदरील शपथपत्र लिहून देत आहे.
+
+वरीलप्रमाणे शपथपत्रामध्ये नमूद केलेली सर्व माहिती सत्य व बरोबर आहे ती खोटी अथवा चुकीची आढळून आल्यास मी भा.दं.वि. कलम 199 व 200 नुसार शिक्षेस पात्र राहील याची मला पूर्णपणे जाणीव आहे.
+        
+
+      
+    </div>
+
+    <div class="date-sign-row">
+        <!-- डाव्या बाजूला ठिकाण व दिनांक -->
+        <div class="date-block">
+            ठिकाण: <span class="bold" id="showPlace">________</span>
+            <br>
+            दिनांक: <span class="bold" id="showDate">________</span>
+        </div>
+
+        <!-- दिनांकाच्या उजव्या बाजूला विद्यार्थ्याचे नाव व पत्ता -->
+        <div class="signature-block">
+            <br> शपथपत्र लिहून देणार<br><br>
+
+            <b id="showName2">विद्यार्थ्याचे नाव</b>
+            <br>
+            <span id="showAddress2">विद्यार्थ्याचा पत्ता</span>
+        </div>
+    </div>
+
+    
+</div>
+</div>
+</div>
+
+<script>
+function getValue(id) {
+    return document.getElementById(id).value.trim();
+}
+
+function setText(id, value, fallback) {
+    document.getElementById(id).textContent = value || fallback;
+}
+
+function generateCertificate() {
+    const fields = [
+        ["name", "विद्यार्थ्याचे नाव"],
+        ["age", "वय"],
+        ["address", "विद्यार्थ्याचा संपूर्ण पत्ता"],
+        ["college", "कॉलेजचे नाव"],
+        ["course", "शिक्षण / कोर्स"]
+    ];
+
+    const missing = fields.filter(([id]) => !getValue(id));
+
+    if (missing.length) {
+        alert("कृपया ही माहिती भरा: " +
+            missing.map(([id, label]) => label).join(", "));
+        document.getElementById(missing[0][0]).focus();
+        return;
+    }
+
+    setText("showName", getValue("name"), "________");
+    setText("showName2", getValue("name"), "________");
+    setText("showAge", getValue("age"), "___");
+    setText("showAddress", getValue("address"), "________");
+    setText("showAddress2", getValue("address"), "________");
+    setText("showCollege", getValue("college"), "________");
+    setText("showCourse", getValue("course"), "________");
+    setText("showYear", getValue("year"), "________");
+    setText("showCollegeAddress",
+        getValue("collegeAddress"), "________");
+    setText("showPlace", getValue("place"), "________");
+
+    const date = getValue("date");
+    let formattedDate = "________";
+
+    if (date) {
+        const parts = date.split("-");
+        formattedDate = parts[2] + "/" + parts[1] + "/" + parts[0];
+    }
+
+    setText("showDate", formattedDate, "________");
+}
+
+async function downloadPDF() {
+    generateCertificate();
+
+    const name = getValue("name");
+    const certificate = document.getElementById("certificate");
+
+    if (!name || !getValue("age") ||
+        !getValue("address") || !getValue("college") ||
+        !getValue("course")) {
+        return;
+    }
+
+    const options = {
+        margin: 0,
+        filename: "Shapathpatra.pdf",
+        image: {
+            type: "jpeg",
+            quality: 0.98
+        },
+        html2canvas: {
+            scale: 2,
+            useCORS: true,
+            scrollX: 0,
+            scrollY: 0
+        },
+        jsPDF: {
+            unit: "mm",
+            format: "a4",
+            orientation: "portrait"
+        },
+        pagebreak: {
+            mode: ["css", "legacy"]
+        }
+    };
+
+    try {
+        await html2pdf().set(options).from(certificate).save();
+    } catch (error) {
+        alert("PDF तयार करताना त्रुटी आली. कृपया पुन्हा प्रयत्न करा.");
+        console.error(error);
+    }
+}
+</script>
+
+</body>
+</html>

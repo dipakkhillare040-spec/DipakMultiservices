@@ -1,0 +1,210 @@
+
+<!DOCTYPE html>
+<html lang="mr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>मराठी गॅप शपथपत्र जनरेटर</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;background:#eef2f7;color:#222;font-family:"Noto Sans Devanagari","Mangal",Arial,sans-serif}
+header{background:#123c79;color:white;text-align:center;padding:20px}
+header h2{margin:0}
+.layout{max-width:1250px;margin:22px auto;padding:12px;display:grid;grid-template-columns:340px 1fr;gap:20px}
+.form{background:white;padding:20px;border-radius:12px;height:max-content}
+label{display:block;margin:12px 0 5px;font-size:14px;font-weight:bold}
+input,textarea,select{width:100%;padding:10px;border:1px solid #cbd5e1;border-radius:6px;font:inherit}
+textarea{min-height:75px}
+button{padding:11px 14px;border:0;border-radius:6px;cursor:pointer;font-weight:bold;margin:10px 5px 0 0}
+.btn{background:#174ea6;color:white}
+.reset{background:#e5e7eb;color:#111}
+.preview{overflow:auto}
+.paper{width:210mm;min-height:297mm;margin:auto;background:white;padding:17mm 17mm 15mm;box-shadow:0 2px 15px #0002;font-size:15px;line-height:1.9}
+.paper h2{text-align:center;text-decoration:underline;font-size:22px;margin:0}
+.paper h4{text-align:center;text-decoration:underline;margin:5px 0 24px;font-size:15px}
+.paper p{text-align:justify;text-indent:32px;margin:12px 0}
+.paper .plain{text-indent:0}
+.bottom{display:flex;justify-content:space-between;align-items:flex-end;margin-top:40px;gap:20px}
+.bottom>div{width:48%}
+.stamp{width:125px;height:95px;border:1px dashed #999;display:flex;align-items:center;justify-content:center;text-align:center;color:#777;font-size:12px;margin-top:25px}
+.signature{text-align:center;margin-top:40px}
+@media(max-width:850px){.layout{grid-template-columns:1fr}.paper{width:100%;min-height:1000px;padding:25px;font-size:14px}}
+@page{size:A4;margin:0}
+@media print{
+ body{background:white}
+ header,.form,.preview-title{display:none!important}
+ .layout{display:block;margin:0;padding:0;max-width:none}
+ .preview{overflow:visible}
+ .paper{width:210mm;min-height:297mm;padding:17mm;box-shadow:none;font-size:13px;line-height:1.85}
+}
+</style>
+</head>
+<body>
+<header>
+<h2>गॅप सर्टिफिकेट जनरेटर</h2>
+<p>मराठी शपथपत्र तयार करा आणि PDF प्रिंट घ्या</p>
+</header>
+
+<div class="layout">
+<div class="form">
+<h3>अर्जदाराची माहिती</h3>
+<form id="myform">
+<label>पूर्ण नाव *</label>
+<input id="name" required placeholder="अर्जदाराचे पूर्ण नाव">
+
+<label>वय *</label>
+<input id="age" type="number" required min="1" placeholder="वय">
+
+<label>गाव *</label>
+<input id="village" required placeholder="गावाचे नाव">
+
+<label>तालुका</label>
+<input id="taluka" value="जिंतूर">
+
+<label>जिल्हा</label>
+<input id="district" value="परभणी">
+
+<label>शैक्षणिक वर्षापासून</label>
+<input id="from" placeholder="उदा. 2024-25">
+
+<label>शैक्षणिक वर्षापर्यंत</label>
+<input id="to" placeholder="उदा. 2025-26">
+
+<label>गॅप कालावधी</label>
+<input id="duration" placeholder="उदा. 01 (एक) वर्ष">
+
+<label>गॅप पडण्याचे कारण *</label>
+<textarea id="reason" required placeholder="गॅपचे कारण लिहा"></textarea>
+
+<label>शपथपत्राचा उद्देश</label>
+<select id="purpose">
+<option>प्रवेश / स्कॉलरशिप मिळण्याकरिता</option>
+<option>पुढील शिक्षणासाठी प्रवेश मिळण्याकरिता</option>
+<option>शिष्यवृत्ती मिळण्याकरिता</option>
+<option>इतर कारणासाठी</option>
+</select>
+
+<label>दिनांक</label>
+<input id="date" type="date">
+
+<label>ठिकाण</label>
+<input id="place" value="जिंतूर">
+
+<button class="btn" type="submit">माहिती अपडेट करा</button>
+<button class="btn" type="button" onclick="downloadPrint()">PDF / Print</button>
+<button class="reset" type="button" onclick="clearAll()">Reset</button>
+<p style="font-size:12px;color:#666">
+टीप: नोटरीचा शिक्का व अधिकृत सत्यापन प्रत्यक्ष अधिकृत व्यक्तीकडून करून घ्यावे.
+</p>
+</form>
+</div>
+
+<div class="preview">
+<h3 class="preview-title">शपथपत्राचा नमुना</h3>
+<article class="paper">
+<h2>शपथपत्र (स्वयंघोषणापत्र)</h2>
+<h4>गॅप सर्टिफिकेट (शिक्षण/स्कॉलरशिप साठी)</h4>
+
+<p>
+मी खालील सही करणार
+<strong id="vname">________________</strong>
+वय <strong id="vage">____</strong> वर्षे, धंदा शिक्षण,
+रा. <strong id="vvillage">________</strong>,
+ता. <strong id="vtaluka">________</strong>,
+जि. <strong id="vdistrict">________</strong>
+येथील रहिवासी असून शपथपूर्वक प्रतिज्ञापूर्वक कथन करतो/करते की,
+</p>
+
+<p>
+माझे शैक्षणिक वर्ष सन <strong id="vfrom">________</strong>
+ते <strong id="vto">________</strong> मध्ये या
+<strong id="vduration">________</strong> कालावधीचा माझ्या
+शैक्षणिक कारकिर्दीत आर्थिक कारणास्तव / इतर कारणास्तव खंड पडलेला
+असून, त्या वर्षी मी कुठल्याही शाळेत/कॉलेजात/शैक्षणिक किंवा
+निमशासकीय संस्थेत शिक्षण/स्कॉलरशिपची मदत घेतलेली नाही.
+गॅपचे कारण: <strong id="vreason">________</strong>.
+</p>
+
+<p>
+तरी माझा सदर शैक्षणिक खंड मान्य करून मला
+<strong id="vpurpose">प्रवेश / स्कॉलरशिप मिळण्याकरिता</strong>
+पुढील कार्यवाहीसाठी विचारात घ्यावे. करिता हे शपथपत्र लिहून देत आहे.
+</p>
+
+<p>
+वरील दिलेली माहिती सत्य व बरोबर असून यामध्ये काही खोटेपणा किंवा
+चुकीचे विधान नाही. जर यामध्ये काही खोटे अथवा चुकीचे आढळून
+आल्यास लागू कायद्यानुसार होणाऱ्या कारवाईस मी पात्र राहीन,
+याची मला पूर्णपणे जाणीव आहे.
+</p>
+
+<div class="bottom">
+<div>
+<p class="plain"><b>ठिकाण:</b> <span id="vplace">जिंतूर</span></p>
+<p class="plain"><b>दिनांक:</b> <span id="vdate">________</span></p>
+<div class="stamp">नोटरी / अधिकृत शिक्का<br>येथे लावावा</div>
+</div>
+<div class="signature">
+<p class="plain">निवेदक</p>
+<p class="plain" style="margin-top:20px">____________________</p>
+<p class="plain"><b id="vsign">अर्जदाराचे नाव</b></p>
+<p class="plain">अर्जदाराची सही / अंगठा</p>
+</div>
+</div>
+
+<p class="plain" style="margin-top:25px;font-size:12px">
+सत्यापन व नोटरी: आवश्यकतेनुसार अधिकृत व्यक्तीकडून तपासणी व
+सत्यापन करून घ्यावे. हा संगणकीय मसुदा आहे.
+</p>
+</article>
+</div>
+</div>
+
+<script>
+const mapping={
+name:"vname",age:"vage",village:"vvillage",taluka:"vtaluka",
+district:"vdistrict",from:"vfrom",to:"vto",duration:"vduration",
+reason:"vreason",purpose:"vpurpose",place:"vplace"
+};
+
+function update(){
+ for(const [inputId,outputId] of Object.entries(mapping)){
+   const value=document.getElementById(inputId).value.trim();
+   document.getElementById(outputId).textContent=value||"________";
+ }
+ document.getElementById("vsign").textContent=
+ document.getElementById("name").value.trim()||"अर्जदाराचे नाव";
+
+ const d=document.getElementById("date").value;
+ document.getElementById("vdate").textContent=d?
+ d.split("-").reverse().join("/"):"________";
+}
+
+document.getElementById("date").value=
+ new Date().toLocaleDateString("en-CA");
+
+document.getElementById("myform").addEventListener("input",update);
+document.getElementById("myform").addEventListener("change",update);
+document.getElementById("myform").addEventListener("submit",e=>{
+ e.preventDefault();update();
+});
+
+function downloadPrint(){
+ const form=document.getElementById("myform");
+ if(!form.reportValidity())return;
+ update();
+ window.print();
+}
+
+function clearAll(){
+ if(confirm("सर्व माहिती पुसायची आहे?")){
+   document.getElementById("myform").reset();
+   document.getElementById("date").value=
+    new Date().toLocaleDateString("en-CA");
+   update();
+ }
+}
+update();
+</script>
+</body>
+</html>
