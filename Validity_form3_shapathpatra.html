@@ -1,0 +1,470 @@
+
+<!DOCTYPE html>
+<html lang="mr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>नमुना क्रमांक ३ | शपथपत्र जनरेटर</title>
+
+<style>
+*{box-sizing:border-box}
+body{
+ margin:0;
+ background:#eef2f7;
+ color:#202020;
+ font-family:"Noto Sans Devanagari","Mangal",Arial,sans-serif
+}
+header{
+ background:linear-gradient(120deg,#102b46,#087e8b);
+ color:white;
+ text-align:center;
+ padding:24px 15px
+}
+header h1{margin:0;font-size:27px}
+header p{margin:8px 0 0}
+.container{max-width:1150px;margin:25px auto;padding:0 15px}
+.panel{
+ background:white;
+ border-radius:14px;
+ padding:22px;
+ box-shadow:0 8px 25px #102b4612;
+ margin-bottom:22px
+}
+.panel h2{color:#12677a;margin-top:0}
+.grid{
+ display:grid;
+ grid-template-columns:repeat(2,minmax(0,1fr));
+ gap:15px
+}
+label{display:block;font-weight:600;margin-bottom:6px}
+input,select,textarea{
+ width:100%;
+ padding:11px;
+ border:1px solid #cbd5e1;
+ border-radius:8px;
+ font:inherit;
+ background:white
+}
+textarea{min-height:75px;resize:vertical}
+.buttons{display:flex;flex-wrap:wrap;gap:10px;margin-top:20px}
+button{
+ border:0;
+ border-radius:8px;
+ padding:12px 17px;
+ font:inherit;
+ font-weight:bold;
+ cursor:pointer;
+ transition:.2s
+}
+button:hover{opacity:.88;transform:translateY(-1px)}
+.primary{background:#087e8b;color:white}
+.secondary{background:#e6edf3;color:#183247}
+.help{font-size:13px;color:#64748b;line-height:1.7}
+
+/* A4 DOCUMENT */
+.paper{
+ width:210mm;
+ min-height:297mm;
+ background:white;
+ margin:20px auto;
+ padding:16mm 17mm;
+ box-shadow:0 5px 24px #00000016;
+ font-size:14px;
+ line-height:1.7;
+ color:#202020;
+ overflow-wrap:anywhere
+}
+.paper .heading{text-align:center;line-height:1.65}
+.paper h2{
+ font-size:20px;
+ text-align:center;
+ margin:12px 0 22px;
+ text-decoration:underline
+}
+.paper p{text-align:justify;text-indent:30px;margin:10px 0}
+.paper .plain{text-indent:0}
+.tree{text-align:center;margin:18px auto;line-height:1.45}
+.tree-title{font-weight:bold;text-decoration:underline;margin-bottom:12px}
+.treebox{
+ display:inline-block;
+ border:1px solid #777;
+ border-radius:4px;
+ padding:6px 10px;
+ background:white;
+ min-width:200px;
+ max-width:100%
+}
+.connector{font-size:21px;line-height:1.1}
+.children{
+ display:flex;
+ justify-content:center;
+ gap:18px;
+ position:relative;
+ margin-top:4px
+}
+.children .treebox{min-width:175px;max-width:250px}
+.bottom{
+ display:flex;
+ justify-content:space-between;
+ gap:18px;
+ margin-top:25px;
+ align-items:flex-start
+}
+.bottom>div{width:50%}
+.right{text-align:center}
+.right p{text-align:center}
+@media(max-width:800px){
+ .paper{width:100%;min-height:0;padding:24px 20px}
+ .children{flex-wrap:wrap}
+}
+@media(max-width:600px){
+ .grid{grid-template-columns:1fr}
+ .bottom{flex-direction:column}
+ .bottom>div{width:100%}
+}
+
+/* PRINT */
+@page{size:A4;margin:0}
+@media print{
+ body{background:white}
+ header,.form-panel,.preview-title,.print-buttons{display:none!important}
+ .container{margin:0;padding:0;max-width:none}
+ .paper{
+  width:210mm;
+  min-height:297mm;
+  margin:0;
+  padding:16mm 17mm;
+  box-shadow:none;
+  font-size:12px;
+  line-height:1.55;
+  overflow:visible
+ }
+ .tree{margin:12px auto}
+ .treebox{padding:4px 7px}
+}
+</style>
+</head>
+
+<body>
+
+<header>
+ <h1>Dipak CSC Center</h1>
+ <p>नमुना क्रमांक ३ — शपथपत्र जनरेटर</p>
+</header>
+
+<div class="container">
+
+<section class="panel form-panel">
+ <h2>अर्जदाराची माहिती भरा</h2>
+
+ <div class="grid">
+
+  <div>
+   <label for="parentName">दावाकर्ता / पालकाचे पूर्ण नाव *</label>
+   <input id="parentName" placeholder="पालकाचे पूर्ण नाव">
+  </div>
+
+  <div>
+   <label for="grandfather">आजोबांचे पूर्ण नाव</label>
+   <input id="grandfather" placeholder="आजोबांचे पूर्ण नाव">
+  </div>
+
+  <div>
+   <label for="parentAge">पालकाचे वय</label>
+   <input id="parentAge" type="number" min="1" placeholder="वय">
+  </div>
+
+  <div>
+   <label for="occupation">पालकाचा व्यवसाय</label>
+   <input id="occupation" placeholder="उदा. शेती">
+  </div>
+
+  <div>
+   <label for="childName">लाभार्थीचे पूर्ण नाव *</label>
+   <input id="childName" placeholder="लाभार्थीचे पूर्ण नाव">
+  </div>
+
+  <div>
+   <label for="childAge">लाभार्थीचे वय</label>
+   <input id="childAge" type="number" min="1" placeholder="वय">
+  </div>
+
+  <div>
+   <label for="childStatus">लाभार्थ्याची स्थिती / नाते</label>
+   <select id="childStatus">
+    <option value="">निवडा</option>
+    <option>मुलगा</option>
+    <option>मुलगी</option>
+    <option>अल्पवयीन मुलगा</option>
+    <option>अल्पवयीन मुलगी</option>
+    <option>इतर</option>
+   </select>
+  </div>
+
+  <div>
+   <label for="village">गाव</label>
+   <input id="village" placeholder="गाव">
+  </div>
+
+  <div>
+   <label for="taluka">तालुका</label>
+   <input id="taluka" placeholder="तालुका">
+  </div>
+
+  <div>
+   <label for="district">जिल्हा</label>
+   <input id="district" placeholder="जिल्हा">
+  </div>
+
+  <div>
+   <label for="state">राज्य</label>
+   <input id="state" placeholder="राज्य">
+  </div>
+
+  <div>
+   <label for="caste">जात / समाज</label>
+   <input id="caste" placeholder="जात / समाज">
+  </div>
+
+  <div>
+   <label for="validityHolder">जात वैधताधारकाचे नाव</label>
+   <input id="validityHolder" placeholder="पूर्ण नाव">
+  </div>
+
+  <div>
+   <label for="holderRelation">जात वैधताधारकाशी नाते</label>
+   <input id="holderRelation" placeholder="उदा. सख्खा भाऊ">
+  </div>
+
+  <div>
+   <label for="place">शपथपत्राचे ठिकाण</label>
+   <input id="place" placeholder="ठिकाण">
+  </div>
+
+  <div>
+   <label for="date">दिनांक</label>
+   <input id="date" type="date">
+  </div>
+
+  <div style="grid-column:1/-1">
+   <label for="extra">अतिरिक्त निवेदन (ऐच्छिक)</label>
+   <textarea id="extra" placeholder="अतिरिक्त माहिती"></textarea>
+  </div>
+
+ </div>
+
+ <div class="buttons">
+  <button type="button" class="primary" onclick="generate()">
+   शपथपत्र तयार करा
+  </button>
+
+  <button type="button" class="secondary" onclick="printDocument()">
+   प्रिंट करा
+  </button>
+
+  <button type="button" class="secondary" onclick="downloadPDF()">
+   PDF डाउनलोड करा
+  </button>
+
+  <button type="button" class="secondary" onclick="resetForm()">
+   फॉर्म रिकामा करा
+  </button>
+ </div>
+
+ <p class="help">
+  सूचना: हा संपादनयोग्य मसुदा आहे. तो अधिकृत Form 3 चा शब्दशः नमुना नाही.
+  शासकीय वापरापूर्वी संबंधित अधिकृत नमुन्याशी मजकूर तपासा.
+ </p>
+</section>
+
+<h2 class="preview-title">शपथपत्राचे पूर्वदृश्य</h2>
+
+<section class="paper" id="paper">
+
+ <div class="heading">
+  <div>नमुना क्रमांक ३</div>
+  <div>(नियम ४(१) व (१४))</div>
+  <div>(दावाकर्त्यांचे / पालकाचे शपथपत्र)</div>
+  <div>(दिवाणी प्रक्रिया संहिता, १९०८ — आदेश १८ नियम ४)</div>
+ </div>
+
+ <h2>शपथपत्र</h2>
+
+ <div id="documentText">
+  <p>माहिती भरून “शपथपत्र तयार करा” बटण दाबा.</p>
+ </div>
+
+ <div class="tree">
+  <div class="tree-title">माझ्या जातीची वंशावळ</div>
+
+  <div class="treebox" id="treeGrandfather">आजोबांचे नाव</div>
+
+  <div class="connector">│</div>
+
+  <div class="treebox" id="treeParent">पालकाचे नाव</div>
+
+  <div class="connector">│</div>
+
+  <div style="border-top:1px solid #777;width:70%;margin:auto"></div>
+
+  <div class="children">
+   <div class="treebox" id="treeChild">लाभार्थीचे नाव</div>
+   <div class="treebox" id="treeHolder">जात वैधताधारकाचे नाव</div>
+  </div>
+ </div>
+
+ <div id="finalText"></div>
+
+ <div class="bottom">
+  <div>
+   <p class="plain">ठिकाण : <span id="pPlace">____________</span></p>
+   <p class="plain">दिनांक : <span id="pDate">____________</span></p>
+  </div>
+
+  <div class="right">
+   <strong>अर्जदाराचे / दावाकर्त्याचे नाव</strong>
+   <p class="plain" style="margin-top:24px" id="pParent">____________</p>
+   <p class="plain" id="pAddress">____________</p>
+  </div>
+ </div>
+
+</section>
+
+<div class="buttons print-buttons">
+ <button class="primary" onclick="printDocument()">प्रिंट करा</button>
+ <button class="secondary" onclick="downloadPDF()">PDF डाउनलोड करा</button>
+</div>
+
+</div>
+
+<!-- PDF डाउनलोड लायब्ररी -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+
+<script>
+const $ = id => document.getElementById(id);
+
+function v(id, fallback="____________"){
+ return $(id).value.trim() || fallback;
+}
+
+function safe(text){
+ return String(text).replace(/[&<>"']/g, c => ({
+  "&":"&amp;",
+  "<":"&lt;",
+  ">":"&gt;",
+  '"':"&quot;",
+  "'":"&#39;"
+ })[c]);
+}
+
+function dateText(){
+ const raw = $("date").value;
+ if(!raw) return "____________";
+ const [y,m,d] = raw.split("-");
+ return `${d}/${m}/${y}`;
+}
+
+function generate(){
+ const parentName = $("parentName").value.trim();
+ const childName = $("childName").value.trim();
+
+ if(!parentName || !childName){
+  alert("कृपया पालकाचे आणि लाभार्थीचे पूर्ण नाव भरा.");
+  return false;
+ }
+
+ const address =
+  `${v("village")}, ता. ${v("taluka")}, जि. ${v("district")}`;
+
+ $("documentText").innerHTML = `
+  <p>मी <b>${safe(parentName)}</b>, श्री. ${safe(v("grandfather"))} यांचा मुलगा / मुलगी, वय ${safe(v("parentAge"))} वर्षे, व्यवसाय ${safe(v("occupation"))}, रा. ${safe(address)} येथील रहिवासी असून माझा / माझी ${safe(v("childStatus"))} ${safe(childName)}, वय ${safe(v("childAge"))} वर्षे, यांच्याबाबत पुढीलप्रमाणे निवेदन करतो / करते.</p>
+
+  <p>मी पुढीलप्रमाणे शपथपूर्वक कथन करतो / करते की, माझ्या कुटुंबाची व नातेवाईकांची जात / समाजाची वंशावळ खाली दर्शविल्याप्रमाणे आहे.</p>
+
+  <p>माझ्या कुटुंबाची जात / समाजाची माहिती: ${safe(v("caste"))}.</p>
+ `;
+
+ const extra = $("extra").value.trim();
+
+ $("finalText").innerHTML = `
+  <p>कुटुंबातील जात वैधताधारकाचे नाव ${safe(v("validityHolder"))} असून त्यांचे नाते ${safe(v("holderRelation"))} असे आहे.</p>
+
+  ${extra ? `<p>${safe(extra)}</p>` : ""}
+
+  <p>वरील माहिती माझ्या माहितीनुसार खरी व बरोबर असल्याचे मी नमूद करतो / करते.</p>
+ `;
+
+ $("treeGrandfather").textContent = v("grandfather");
+ $("treeParent").textContent = v("parentName");
+ $("treeChild").textContent = v("childName");
+ $("treeHolder").textContent = v("validityHolder");
+
+ $("pPlace").textContent = v("place");
+ $("pDate").textContent = dateText();
+ $("pParent").textContent = parentName;
+ $("pAddress").textContent = "रा. " + address;
+
+ return true;
+}
+
+function printDocument(){
+ if(generate()) window.print();
+}
+
+function downloadPDF(){
+ if(!generate()) return;
+
+ if(typeof html2pdf === "undefined"){
+  alert("PDF लायब्ररी लोड झाली नाही. इंटरनेट तपासा किंवा Print करून Save as PDF निवडा.");
+  return;
+ }
+
+ const element = $("paper");
+
+ const options = {
+  margin: 0,
+  filename: "Shapathpatra_Form3.pdf",
+  image: {type:"jpeg",quality:0.98},
+  html2canvas: {
+   scale:2,
+   useCORS:true,
+   scrollY:0
+  },
+  jsPDF: {
+   unit:"mm",
+   format:"a4",
+   orientation:"portrait"
+  },
+  pagebreak: {mode:["css","legacy"]}
+ };
+
+ html2pdf().set(options).from(element).save();
+}
+
+function resetForm(){
+ if(!confirm("सर्व भरलेली माहिती काढून टाकायची का?")) return;
+
+ document.querySelectorAll(".form-panel input, .form-panel textarea")
+  .forEach(el => el.value = "");
+
+ $("childStatus").selectedIndex = 0;
+
+ $("documentText").innerHTML =
+  "<p>माहिती भरून “शपथपत्र तयार करा” बटण दाबा.</p>";
+
+ $("finalText").innerHTML = "";
+
+ $("treeGrandfather").textContent = "आजोबांचे नाव";
+ $("treeParent").textContent = "पालकाचे नाव";
+ $("treeChild").textContent = "लाभार्थीचे नाव";
+ $("treeHolder").textContent = "जात वैधताधारकाचे नाव";
+
+ $("pPlace").textContent = "____________";
+ $("pDate").textContent = "____________";
+ $("pParent").textContent = "____________";
+ $("pAddress").textContent = "____________";
+}
+</script>
+
+</body>
+</html>

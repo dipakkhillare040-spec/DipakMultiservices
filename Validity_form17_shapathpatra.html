@@ -1,0 +1,349 @@
+
+<!DOCTYPE html>
+<html lang="mr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>नमुना १७ | शपथपत्र जनरेटर</title>
+
+<style>
+*{box-sizing:border-box}
+body{
+ margin:0;background:#eef2f7;color:#222;
+ font-family:"Noto Sans Devanagari","Mangal",Arial,sans-serif
+}
+header{
+ background:linear-gradient(120deg,#102b46,#087e8b);
+ color:#fff;text-align:center;padding:23px 15px
+}
+header h1{margin:0;font-size:27px}
+header p{margin:8px 0 0}
+.container{max-width:1150px;margin:25px auto;padding:0 15px}
+.panel{
+ background:white;padding:22px;border-radius:14px;
+ box-shadow:0 7px 24px #102b4612;margin-bottom:22px
+}
+.panel h2{color:#12677a;margin-top:0}
+.grid{
+ display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:15px
+}
+label{display:block;font-weight:600;margin-bottom:6px}
+input,textarea,select{
+ width:100%;padding:11px;border:1px solid #cbd5e1;
+ border-radius:8px;font:inherit;background:white
+}
+textarea{min-height:85px;resize:vertical}
+.buttons{display:flex;flex-wrap:wrap;gap:10px;margin-top:20px}
+button{
+ border:0;border-radius:8px;padding:12px 17px;
+ font:inherit;font-weight:bold;cursor:pointer
+}
+.primary{background:#087e8b;color:white}
+.secondary{background:#e6edf3;color:#183247}
+.help{font-size:13px;color:#64748b;line-height:1.7}
+
+/* A4 शपथपत्र */
+.paper{
+ width:210mm;min-height:297mm;background:white;
+ margin:20px auto;padding:17mm 18mm;
+ box-shadow:0 5px 24px #00000015;
+ font-size:14px;line-height:1.75;color:#222;
+ overflow-wrap:anywhere
+}
+.paper .heading{text-align:center;line-height:1.7}
+.paper h2{
+ text-align:center;font-size:19px;text-decoration:underline;
+ margin:12px 0 23px
+}
+.paper p{text-align:justify;text-indent:30px;margin:11px 0}
+.paper .plain{text-indent:0}
+.signature{
+ display:flex;justify-content:space-between;gap:18px;
+ margin-top:25px;align-items:flex-start
+}
+.signature>div{width:50%}
+.signature .right{text-align:center}
+.signature .right p{text-align:center}
+@media(max-width:800px){
+ .paper{width:100%;min-height:0;padding:24px 20px}
+}
+@media(max-width:650px){
+ .grid{grid-template-columns:1fr}
+ .signature{flex-direction:column}
+ .signature>div{width:100%}
+}
+@page{size:A4;margin:0}
+@media print{
+ body{background:white}
+ header,.form-panel,.preview-title,.print-buttons{display:none!important}
+ .container{margin:0;padding:0;max-width:none}
+ .paper{
+  width:210mm;min-height:297mm;margin:0;
+  padding:17mm 18mm;box-shadow:none;
+  font-size:12px;line-height:1.6
+ }
+}
+</style>
+</head>
+
+<body>
+<header>
+ <h1>Dipak CSC Center</h1>
+ <p>नमुना क्रमांक १७ — शपथपत्र जनरेटर</p>
+</header>
+
+<div class="container">
+
+<section class="panel form-panel">
+ <h2>विद्यार्थी व पालकाची माहिती</h2>
+
+ <div class="grid">
+  <div>
+   <label for="parentName">पालकाचे पूर्ण नाव *</label>
+   <input id="parentName" placeholder="पालकाचे पूर्ण नाव">
+  </div>
+
+  <div>
+   <label for="parentAge">पालकाचे वय</label>
+   <input id="parentAge" type="number" min="1" placeholder="वय">
+  </div>
+
+  <div>
+   <label for="occupation">व्यवसाय</label>
+   <input id="occupation" placeholder="उदा. शेती">
+  </div>
+
+  <div>
+   <label for="studentName">विद्यार्थ्याचे पूर्ण नाव *</label>
+   <input id="studentName" placeholder="विद्यार्थ्याचे पूर्ण नाव">
+  </div>
+
+  <div>
+   <label for="studentAge">विद्यार्थ्याचे वय</label>
+   <input id="studentAge" type="number" min="1" placeholder="वय">
+  </div>
+
+  <div>
+   <label for="studentRelation">विद्यार्थ्याशी नाते</label>
+   <select id="studentRelation">
+    <option value="">निवडा</option>
+    <option>मुलगा</option>
+    <option>मुलगी</option>
+    <option>पाल्य</option>
+   </select>
+  </div>
+
+  <div>
+   <label for="village">गाव</label>
+   <input id="village" placeholder="गाव">
+  </div>
+
+  <div>
+   <label for="taluka">तालुका</label>
+   <input id="taluka" placeholder="तालुका">
+  </div>
+
+  <div>
+   <label for="district">जिल्हा</label>
+   <input id="district" placeholder="जिल्हा">
+  </div>
+
+  <div>
+   <label for="caste">जात</label>
+   <input id="caste" placeholder="जात">
+  </div>
+
+  <div>
+   <label for="authority">प्रमाणपत्र देणाऱ्या अधिकाऱ्याचे पद</label>
+   <input id="authority" placeholder="उदा. तहसीलदार">
+  </div>
+
+  <div>
+   <label for="certificateDate">जात प्रमाणपत्राचा दिनांक</label>
+   <input id="certificateDate" type="date">
+  </div>
+
+  <div>
+   <label for="certificateNo">जात प्रमाणपत्र क्रमांक</label>
+   <input id="certificateNo" placeholder="प्रमाणपत्र क्रमांक">
+  </div>
+
+  <div>
+   <label for="place">ठिकाण</label>
+   <input id="place" placeholder="ठिकाण">
+  </div>
+
+  <div>
+   <label for="date">शपथपत्राचा दिनांक</label>
+   <input id="date" type="date">
+  </div>
+
+  <div style="grid-column:1/-1">
+   <label for="extra">अतिरिक्त माहिती</label>
+   <textarea id="extra" placeholder="आवश्यक असल्यास अतिरिक्त माहिती"></textarea>
+  </div>
+ </div>
+
+ <div class="buttons">
+  <button type="button" class="primary" onclick="generate()">
+   शपथपत्र तयार करा
+  </button>
+  <button type="button" class="secondary" onclick="printDocument()">
+   प्रिंट करा
+  </button>
+  <button type="button" class="secondary" onclick="downloadPDF()">
+   PDF डाउनलोड करा
+  </button>
+  <button type="button" class="secondary" onclick="resetForm()">
+   फॉर्म रिकामा करा
+  </button>
+ </div>
+
+ <p class="help">
+  हा संपादनयोग्य मसुदा आहे. अधिकृत नमुना १७ मधील सर्व शब्द
+  व कायदेशीर अटी यांच्याशी तो तंतोतंत जुळतोच असे नाही.
+  सादर करण्यापूर्वी अधिकृत नमुना तपासा.
+ </p>
+</section>
+
+<h2 class="preview-title">शपथपत्राचे पूर्वदृश्य</h2>
+
+<section class="paper" id="paper">
+
+ <div class="heading">
+  <div><u>नमुना १७</u></div>
+  <div>(नियम १४)</div>
+  <div>विद्यार्थ्याकरिता जात प्रमाणपत्राच्या पडताळणीसाठी केलेल्या अर्जासोबत</div>
+  <div>सादर करावयाचे शपथपत्र</div>
+ </div>
+
+ <h2>शपथपत्र</h2>
+
+ <div id="documentText">
+  <p>कृपया माहिती भरा आणि शपथपत्र तयार करा.</p>
+ </div>
+
+ <div id="extraText"></div>
+
+ <div class="signature">
+  <div>
+   <p class="plain">ठिकाण : <span id="pPlace">____________</span></p>
+   <p class="plain">दिनांक : <span id="pDate">____________</span></p>
+  </div>
+
+  <div class="right">
+   <strong>शपथपत्र करणाऱ्याची सही</strong>
+   <p class="plain" style="margin-top:25px" id="pName">____________</p>
+   <p class="plain" id="pAddress">____________</p>
+  </div>
+ </div>
+
+</section>
+
+<div class="buttons print-buttons">
+ <button class="primary" onclick="printDocument()">प्रिंट करा</button>
+ <button class="secondary" onclick="downloadPDF()">PDF डाउनलोड करा</button>
+</div>
+
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+
+<script>
+const $ = id => document.getElementById(id);
+
+function v(id){
+ return $(id).value.trim() || "____________";
+}
+
+function safe(text){
+ return String(text).replace(/[&<>"']/g,c=>({
+  "&":"&amp;",
+  "<":"&lt;",
+  ">":"&gt;",
+  '"':"&quot;",
+  "'":"&#39;"
+ })[c]);
+}
+
+function dateText(id){
+ const raw=$(id).value;
+ if(!raw)return "____________";
+ const [y,m,d]=raw.split("-");
+ return `${d}/${m}/${y}`;
+}
+
+function generate(){
+ const parent=$("parentName").value.trim();
+ const student=$("studentName").value.trim();
+
+ if(!parent || !student){
+  alert("कृपया पालकाचे आणि विद्यार्थ्याचे पूर्ण नाव भरा.");
+  return false;
+ }
+
+ const address =
+  `${v("village")} ता. ${v("taluka")} जि. ${v("district")}`;
+
+ $("documentText").innerHTML=`
+  <p>मी <b>${safe(parent)}</b>, वय ${safe(v("parentAge"))} वर्षे, व्यवसाय ${safe(v("occupation"))}, रा. ${safe(address)} येथील रहिवासी असून माझा / माझी ${safe(v("studentRelation"))} ${safe(student)}, वय ${safe(v("studentAge"))} वर्षे, याच्या / हिच्या जात प्रमाणपत्राच्या पडताळणीसाठी खालीलप्रमाणे निवेदन करतो / करते.</p>
+
+  <p>माझ्या पाल्याच्या जात प्रमाणपत्रासंबंधी तपशील पुढीलप्रमाणे आहेत. जात: ${safe(v("caste"))}. प्रमाणपत्र देणारे अधिकारी: ${safe(v("authority"))}. प्रमाणपत्र दिनांक: ${safe(dateText("certificateDate"))}. प्रमाणपत्र क्रमांक: ${safe(v("certificateNo"))}.</p>
+
+  <p>सदर प्रमाणपत्राच्या पडताळणीसाठी संबंधित अर्जासोबत आवश्यक कागदपत्रे व पुरावे सादर करीत आहे. सादर केलेल्या माहितीची व कागदपत्रांची सत्यता तपासून घेणे आवश्यक आहे.</p>
+
+  <p>मी जाहीर करतो / करते की, या अर्जात दिलेली माहिती माझ्या माहितीनुसार खरी व बरोबर आहे.</p>
+ `;
+
+ const extra=$("extra").value.trim();
+ $("extraText").innerHTML=extra ? `<p>${safe(extra)}</p>` : "";
+
+ $("pPlace").textContent=v("place");
+ $("pDate").textContent=dateText("date");
+ $("pName").textContent=parent;
+ $("pAddress").textContent="रा. "+address;
+
+ return true;
+}
+
+function printDocument(){
+ if(generate()) window.print();
+}
+
+function downloadPDF(){
+ if(!generate())return;
+
+ if(typeof html2pdf==="undefined"){
+  alert("PDF सुविधा लोड झाली नाही. इंटरनेट तपासा किंवा प्रिंटमधून Save as PDF वापरा.");
+  return;
+ }
+
+ html2pdf().set({
+  margin:0,
+  filename:"Form_17_Shapathpatra.pdf",
+  image:{type:"jpeg",quality:0.98},
+  html2canvas:{scale:2,useCORS:true,scrollY:0},
+  jsPDF:{unit:"mm",format:"a4",orientation:"portrait"},
+  pagebreak:{mode:["css","legacy"]}
+ }).from($("paper")).save();
+}
+
+function resetForm(){
+ if(!confirm("सर्व भरलेली माहिती रिकामी करायची का?"))return;
+
+ document.querySelectorAll(".form-panel input,.form-panel textarea")
+  .forEach(el=>el.value="");
+
+ $("studentRelation").selectedIndex=0;
+ $("documentText").innerHTML="<p>कृपया माहिती भरा आणि शपथपत्र तयार करा.</p>";
+ $("extraText").innerHTML="";
+ $("pPlace").textContent="____________";
+ $("pDate").textContent="____________";
+ $("pName").textContent="____________";
+ $("pAddress").textContent="____________";
+}
+
+$("date").value=new Date().toLocaleDateString("en-CA");
+</script>
+</body>
+</html>

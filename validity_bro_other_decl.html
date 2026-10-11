@@ -1,0 +1,253 @@
+
+<!DOCTYPE html>
+<html lang="mr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>शपथपत्र जनरेटर | Dipak CSC Center</title>
+
+<style>
+*{box-sizing:border-box}
+body{
+ margin:0;background:#edf2f7;color:#202020;
+ font-family:"Noto Sans Devanagari","Mangal",Arial,sans-serif
+}
+header{
+ background:linear-gradient(120deg,#102b46,#087e8b);
+ color:#fff;text-align:center;padding:24px 15px
+}
+header h1{margin:0;font-size:27px}
+header p{margin:8px 0 0}
+.wrap{max-width:1150px;margin:25px auto;padding:0 15px}
+.panel{
+ background:white;padding:22px;border-radius:14px;
+ box-shadow:0 8px 28px #16324f13;margin-bottom:22px
+}
+.panel h2{margin-top:0;color:#12677a}
+.formgrid{
+ display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:15px
+}
+label{display:block;font-weight:600;margin-bottom:6px}
+input,textarea{
+ width:100%;padding:11px;border:1px solid #ccd6e0;
+ border-radius:8px;font:inherit;background:#fff
+}
+textarea{min-height:70px}
+.buttons{display:flex;flex-wrap:wrap;gap:10px;margin-top:20px}
+button{
+ border:0;padding:12px 18px;border-radius:8px;
+ cursor:pointer;font:inherit;font-weight:700
+}
+.btn{background:#087e8b;color:white}
+.btn2{background:#e6edf3;color:#183247}
+.help{font-size:13px;color:#697586;line-height:1.7}
+
+/* A4 शपथपत्र */
+.paper{
+ width:210mm;min-height:297mm;background:white;
+ margin:20px auto;padding:20mm 19mm;
+ box-shadow:0 5px 24px #00000015;
+ font-size:15px;line-height:1.85;color:#222
+}
+.paper .topline{text-align:center;text-decoration:underline}
+.paper h2{
+ text-align:center;text-decoration:underline;
+ font-size:23px;margin:16px 0 24px
+}
+.paper p{text-align:justify;margin:11px 0;text-indent:35px}
+.paper .noindent{text-indent:0}
+.paper .signature{
+ display:flex;justify-content:space-between;gap:20px;
+ margin-top:30px;align-items:flex-start
+}
+.paper .signright{text-align:center;min-width:220px}
+.paper .signline{margin-top:35px}
+@media(max-width:800px){
+ .paper{width:100%;min-height:0;padding:25px 20px}
+}
+@media(max-width:650px){.formgrid{grid-template-columns:1fr}}
+@page{size:A4;margin:0}
+@media print{
+ body{background:white}
+ header,.form-panel,.preview-title,.print-buttons{display:none!important}
+ .wrap{padding:0;margin:0;max-width:none}
+ .paper{
+  width:210mm;min-height:297mm;margin:0;padding:20mm 19mm;
+  box-shadow:none;font-size:14px;line-height:1.75
+ }
+}
+</style>
+</head>
+
+<body>
+<header>
+ <h1>Dipak CSC Center</h1>
+ <p>मराठी शपथपत्र जनरेटर</p>
+</header>
+
+<div class="wrap">
+<section class="panel form-panel">
+ <h2>अर्जदाराची माहिती भरा</h2>
+
+ <div class="formgrid">
+  <div><label>अर्जदाराचे पूर्ण नाव *</label>
+   <input id="name" placeholder="पूर्ण नाव"></div>
+
+  <div><label>वय *</label>
+   <input id="age" type="number" placeholder="वय वर्षे"></div>
+
+  <div><label>शिक्षण</label>
+   <input id="education" placeholder="शिक्षण"></div>
+
+  <div><label>गाव</label>
+   <input id="village" value="दाभा"></div>
+
+  <div><label>तालुका</label>
+   <input id="taluka" value="जिंतूर"></div>
+
+  <div><label>जिल्हा</label>
+   <input id="district" value="परभणी"></div>
+
+  <div><label>जात</label>
+   <input id="caste" placeholder="जात"></div>
+
+  <div><label>समाज / धर्म</label>
+   <input id="religion" placeholder="समाज / धर्म"></div>
+
+  <div><label>जात वैधता प्रमाणपत्र दिनांक</label>
+   <input id="validityDate" type="date"></div>
+
+  <div><label>Committee Decision No.</label>
+   <input id="decision" placeholder="निर्णय क्रमांक"></div>
+
+  <div><label>VC No. / प्रमाणपत्र क्रमांक</label>
+   <input id="vcno" placeholder="प्रमाणपत्र क्रमांक"></div>
+
+  <div><label>नातेवाईकाचे नाव</label>
+   <input id="relative" placeholder="उदा. बहिणीचे नाव"></div>
+
+  <div><label>नाते</label>
+   <input id="relation" value="सख्खी बहीण"></div>
+
+  <div><label>नातेवाईकाचे गाव</label>
+   <input id="relativeVillage" placeholder="गाव"></div>
+
+  <div><label>ठिकाण</label>
+   <input id="place" value="जिंतूर"></div>
+
+  <div><label>शपथपत्राचा दिनांक</label>
+   <input id="date" type="date"></div>
+ </div>
+
+ <div class="buttons">
+  <button class="btn" onclick="generate()">शपथपत्र तयार करा</button>
+  <button class="btn2" onclick="window.print()">प्रिंट / PDF सेव्ह</button>
+  <button class="btn2" onclick="resetForm()">माहिती रिकामी करा</button>
+ </div>
+
+ <p class="help">हा मसुदा आहे. सादर करण्यापूर्वी संबंधित अधिकृत नमुन्याशी मजकूर तपासा.</p>
+</section>
+
+<h2 class="preview-title">शपथपत्र — पूर्वदृश्य</h2>
+
+<section class="paper">
+ <div class="topline">
+  (वैधता प्रमाणपत्र सोबत जोडणाऱ्या नातेवाईकाचे)
+ </div>
+
+ <h2>शपथपत्र</h2>
+
+ <div id="output">
+  <p>वरील फॉर्ममध्ये माहिती भरून “शपथपत्र तयार करा” बटण दाबा.</p>
+ </div>
+
+ <div class="signature">
+  <div>
+   <p class="noindent">ठिकाण : <span id="pPlace">जिंतूर</span></p>
+   <p class="noindent">दिनांक : <span id="pDate">____________</span></p>
+  </div>
+
+  <div class="signright">
+   <strong>निवेदक</strong>
+   <div class="signline">____________________</div>
+   <span id="pName">अर्जदाराचे पूर्ण नाव</span>
+   <p class="noindent" id="pAddress">रा. दाभा, ता. जिंतूर, जि. परभणी</p>
+  </div>
+ </div>
+</section>
+
+<div class="buttons print-buttons">
+ <button class="btn" onclick="window.print()">प्रिंट / PDF सेव्ह करा</button>
+</div>
+</div>
+
+<script>
+const $ = id => document.getElementById(id);
+
+function val(id){
+ return $(id).value.trim() || "____________";
+}
+
+function dateText(id){
+ const v=$(id).value;
+ if(!v)return "____________";
+ const [y,m,d]=v.split("-");
+ return d+"/"+m+"/"+y;
+}
+
+function safe(s){
+ return String(s).replace(/[&<>"']/g,c=>({
+  "&":"&amp;","<":"&lt;",">":"&gt;",
+  '"':"&quot;","'":"&#39;"
+ })[c]);
+}
+
+function generate(){
+ if(!val("name") || val("name")==="____________" ||
+    !val("age") || val("age")==="____________"){
+  alert("कृपया अर्जदाराचे नाव आणि वय भरा.");
+  return;
+ }
+
+ const address=`${val("village")} ता. ${val("taluka")} जि. ${val("district")}`;
+ const relAddress=`${val("relativeVillage")}, ता. ${val("taluka")} जि. ${val("district")}`;
+
+ $("output").innerHTML=`
+ <p>मी <b>${safe(val("name"))}</b> वय ${safe(val("age"))} वर्षे, धंदा ${safe(val("education"))}, रा. ${safe(address)}, याद्वारे शपथपूर्वक निवेदन करतो / करते की, मी ${safe(val("village"))} येथील मूळ रहिवासी असून मी ${safe(val("caste"))} या जातीचा / जातीची आहे. माझा समाज / धर्म ${safe(val("religion"))} असा आहे.</p>
+
+ <p>तसेच माझे जात वैधता प्रमाणपत्र दिनांक ${safe(dateText("validityDate"))} रोजी झाले असून त्याचा क्रमांक Committee Decision No. ${safe(val("decision"))} हा आहे व प्रमाणपत्र क्रमांक VC No. ${safe(val("vcno"))} हा आहे.</p>
+
+ <p>सदर जात वैधता प्रमाणपत्र पडताळणी समितीने निर्गमित केलेले असून ${safe(val("relative"))} हे माझे ${safe(val("relation"))} आहेत. त्यांचा पत्ता ${safe(relAddress)} असा आहे. त्यांचे जात वैधता प्रमाणपत्र संबंधित अर्जासोबत सादर करण्यासाठी ही माहिती देत आहे.</p>
+
+ <p>मी जाहीर करतो / करते की, मी दिलेली माहिती माझ्या माहितीनुसार सत्य व बरोबर आहे. कोणतीही माहिती खोटी आढळून आल्यास लागू कायद्यानुसार होणाऱ्या परिणामांची मला जाणीव आहे.</p>
+
+ <p>करिता हे शपथपत्र लिहून दिले.</p>
+ `;
+
+ $("pName").textContent=val("name");
+ $("pPlace").textContent=val("place");
+ $("pDate").textContent=dateText("date");
+ $("pAddress").textContent="रा. "+address;
+}
+
+function resetForm(){
+ if(!confirm("भरलेली माहिती रिकामी करायची का?"))return;
+ document.querySelectorAll(".form-panel input").forEach(el=>{
+  if(el.id==="village")el.value="दाभा";
+  else if(el.id==="taluka")el.value="जिंतूर";
+  else if(el.id==="district")el.value="परभणी";
+  else if(el.id==="place")el.value="जिंतूर";
+  else if(el.id==="relation")el.value="सख्खी बहीण";
+  else el.value="";
+ });
+ $("output").innerHTML="<p>वरील फॉर्ममध्ये माहिती भरून “शपथपत्र तयार करा” बटण दाबा.</p>";
+ $("pName").textContent="अर्जदाराचे पूर्ण नाव";
+ $("pDate").textContent="____________";
+ $("pPlace").textContent="जिंतूर";
+ $("pAddress").textContent="रा. दाभा, ता. जिंतूर, जि. परभणी";
+}
+
+$("date").value=new Date().toLocaleDateString("en-CA");
+</script>
+</body>
+</html>
