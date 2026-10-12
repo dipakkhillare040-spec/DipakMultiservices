@@ -1,0 +1,451 @@
+
+<!DOCTYPE html>
+<html lang="mr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>जात वैधता मार्गदर्शन | Dipak CSC Center</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Devanagari:wght@400;500;600;700;800&display=swap');
+
+:root{
+ --blue:#174ea6;--navy:#102747;--light:#eaf2ff;
+ --bg:#f4f7fc;--text:#1d2d46;--muted:#64748b;
+ --border:#e0e8f2;--white:#fff;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+ margin:0;background:var(--bg);color:var(--text);
+ font-family:'Noto Sans Devanagari',Arial,sans-serif
+}
+a{text-decoration:none;color:inherit}
+button,input,select{font:inherit}
+.wrap{max-width:1250px;margin:auto;padding:24px 18px}
+header{
+ background:linear-gradient(120deg,#102747,#174ea6,#2879c8);
+ color:white;padding:17px 5%;
+}
+.header-inner{
+ max-width:1300px;margin:auto;display:flex;
+ justify-content:space-between;align-items:center;
+ flex-wrap:wrap;gap:16px
+}
+.brand{display:flex;align-items:center;gap:12px}
+.logo{
+ width:53px;height:53px;border-radius:15px;
+ display:grid;place-items:center;background:#ffffff20;
+ font-size:27px;border:1px solid #ffffff40
+}
+.brand h1{font-size:20px;margin:0}
+.brand p{font-size:11px;color:#dbeafe;margin:5px 0 0}
+.btn{
+ display:inline-flex;align-items:center;justify-content:center;
+ gap:7px;background:var(--blue);color:white;
+ padding:12px 16px;border-radius:9px;
+ font-size:12px;font-weight:800;border:0;cursor:pointer;
+ transition:.2s
+}
+.btn:hover{background:#10366d;transform:translateY(-2px)}
+.btn-white{background:white;color:var(--blue)}
+.btn-outline{background:transparent;border:1px solid #ffffff80;color:white}
+.hero{
+ background:linear-gradient(120deg,#fff,#eaf2ff);
+ border:1px solid #dce7f7;border-radius:22px;
+ padding:34px;position:relative;overflow:hidden
+}
+.hero:after{
+ content:"⚖";position:absolute;right:30px;top:8px;
+ font-size:120px;color:#174ea6;opacity:.06
+}
+.pill{
+ display:inline-block;background:#dfeaff;color:#174ea6;
+ padding:7px 11px;border-radius:30px;font-size:11px;font-weight:800
+}
+.hero h2{font-size:clamp(25px,4vw,36px);line-height:1.55;margin:16px 0 9px}
+.hero p{font-size:13px;line-height:2;color:#566983;max-width:780px}
+.actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:20px}
+.stats{
+ display:grid;grid-template-columns:repeat(4,minmax(0,1fr));
+ gap:13px;margin:20px 0 30px
+}
+.stat{
+ background:white;border:1px solid var(--border);
+ padding:16px;border-radius:13px;display:flex;gap:11px;align-items:center
+}
+.stat-icon{
+ width:44px;height:44px;display:grid;place-items:center;
+ background:var(--light);border-radius:12px;font-size:22px;flex-shrink:0
+}
+.stat strong{font-size:12px;display:block}
+.stat small{font-size:10px;color:var(--muted);display:block;margin-top:5px}
+.section-head{
+ display:flex;justify-content:space-between;align-items:center;
+ gap:12px;flex-wrap:wrap;margin:32px 0 16px
+}
+.section-head h2{font-size:22px;margin:0}
+.section-head p{font-size:12px;color:var(--muted);margin:6px 0 0}
+.section{margin-top:28px}
+.section-panel{
+ background:white;border:1px solid var(--border);
+ padding:22px;border-radius:16px;margin-top:16px
+}
+.section-panel h3{font-size:17px;margin:0 0 12px}
+.section-panel p{font-size:12px;line-height:2;color:var(--muted)}
+.affidavit{
+ display:grid;grid-template-columns:auto 1fr;gap:20px;
+ padding:27px;border-radius:19px;color:white;
+ background:linear-gradient(120deg,#102747,#174ea6,#2879c8);
+ box-shadow:0 12px 30px #174ea620
+}
+.aff-icon{
+ width:64px;height:64px;border-radius:16px;
+ display:grid;place-items:center;font-size:32px;
+ background:#ffffff20;border:1px solid #ffffff40
+}
+.affidavit h2{font-size:23px;line-height:1.6;margin:8px 0}
+.affidavit p{font-size:12px;line-height:2;color:#e1ebff}
+.aff-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:15px}
+.search-panel{
+ display:flex;gap:10px;flex-wrap:wrap;padding:14px;
+ background:white;border:1px solid var(--border);
+ border-radius:13px;margin-bottom:17px
+}
+.search-panel input,.search-panel select{
+ padding:12px;border:1px solid #d9e2ef;border-radius:9px;
+ background:#fff;font-size:12px
+}
+.search-panel input{flex:1;min-width:220px}
+.search-panel select{min-width:165px}
+.cards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:15px}
+.card{
+ display:flex;flex-direction:column;background:white;
+ border:1px solid var(--border);border-radius:15px;
+ padding:20px;transition:.2s;min-height:225px
+}
+.card:hover{transform:translateY(-3px);border-color:#a8c6f2;box-shadow:0 10px 25px #12305010}
+.card-head{display:flex;justify-content:space-between;align-items:center}
+.card-icon{
+ width:46px;height:46px;border-radius:12px;
+ background:var(--light);display:grid;place-items:center;font-size:23px
+}
+.tag{font-size:9px;background:#edf3fc;color:#355c8c;padding:6px 8px;border-radius:30px;font-weight:800}
+.card h3{font-size:15px;line-height:1.8;margin:14px 0 7px}
+.card p{font-size:12px;line-height:1.9;color:var(--muted);flex:1}
+.card a{margin-top:10px;text-align:center}
+.doc-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.doc-item{
+ display:flex;align-items:flex-start;gap:10px;
+ padding:12px;background:#f8faff;border:1px solid #e4ebf5;
+ border-radius:10px;font-size:12px;line-height:1.8
+}
+.doc-item input{margin-top:5px;accent-color:#174ea6;flex-shrink:0}
+.doc-item small{display:block;color:var(--muted);margin-top:3px;font-size:10px}
+.steps{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
+.step{
+ padding:17px;background:#f8faff;border:1px solid var(--border);border-radius:12px
+}
+.step b{
+ width:30px;height:30px;display:grid;place-items:center;
+ border-radius:50%;background:#174ea6;color:white;margin-bottom:10px
+}
+.step h4{font-size:13px;margin:0 0 7px}
+.step p{font-size:11px;line-height:1.9;color:var(--muted);margin:0}
+.notice{
+ background:#fff8e8;border:1px solid #f0dfad;
+ border-radius:12px;padding:15px 18px;
+ color:#765516;font-size:12px;line-height:2;margin-top:18px
+}
+.contact{
+ display:flex;justify-content:space-between;align-items:center;
+ gap:15px;flex-wrap:wrap;padding:22px;border-radius:15px;
+ background:#eaf2ff;border:1px solid #d5e4fa;margin-top:24px
+}
+.contact h3{margin:0 0 7px;font-size:16px}
+.contact p{font-size:12px;color:#5e6f87;line-height:1.9;margin:0}
+footer{
+ margin-top:35px;background:#102747;color:#dbeafe;
+ text-align:center;padding:25px 15px;font-size:11px;line-height:2
+}
+footer strong{font-size:15px;color:white}
+footer a{text-decoration:underline;color:white}
+.hidden{display:none!important}
+@media(max-width:900px){
+ .cards{grid-template-columns:repeat(2,minmax(0,1fr))}
+ .stats{grid-template-columns:repeat(2,minmax(0,1fr))}
+ .steps{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media(max-width:600px){
+ .wrap{padding:16px 12px}
+ .hero{padding:22px}
+ .hero:after{font-size:70px;right:5px}
+ .stats,.cards,.doc-list,.steps{grid-template-columns:1fr}
+ .affidavit{grid-template-columns:1fr;padding:21px}
+ .affidavit h2{font-size:20px}
+ .aff-actions .btn{width:100%}
+ .search-panel input,.search-panel select{width:100%}
+}
+</style>
+</head>
+<body>
+
+<header>
+ <div class="header-inner">
+  <div class="brand">
+   <div class="logo">⚖️</div>
+   <div>
+    <h1>Dipak CSC Center, Dabha</h1>
+    <p>CASTE VALIDITY DOCUMENT & GUIDANCE PORTAL</p>
+   </div>
+  </div>
+  <a class="btn btn-white"
+     href="https://cvc.barti.in/home/pages/downloadForm"
+     target="_blank" rel="noopener">अधिकृत फॉर्म ↗</a>
+ </div>
+</header>
+
+<main class="wrap">
+
+<section class="hero">
+ <span class="pill">माहिती • कागदपत्रे • शपथपत्र</span>
+ <h2>जात वैधता प्रमाणपत्रासाठी संपूर्ण मार्गदर्शन</h2>
+ <p>
+  विद्यार्थी, नोकरी, निवडणूक किंवा इतर कारणांसाठी जात वैधता
+  अर्ज करताना आवश्यक माहिती, शपथपत्रांचे नमुने आणि कागदपत्रांची
+  चेकलिस्ट येथे पाहा. अंतिम आवश्यकतांसाठी अधिकृत BARTI पोर्टलवरील
+  सूचना तपासा.
+ </p>
+ <div class="actions">
+  <a class="btn" href="#documents">📁 कागदपत्रांची यादी</a>
+  <a class="btn btn-outline"
+     href="https://cvc.barti.in/home/pages/downloadForm"
+     target="_blank" rel="noopener">अधिकृत फॉर्म डाउनलोड ↗</a>
+ </div>
+</section>
+
+<section class="stats">
+ <div class="stat"><div class="stat-icon">📜</div><div><strong>शपथपत्रे</strong><small>Form 3 व Form 17 ची माहिती</small></div></div>
+ <div class="stat"><div class="stat-icon">🎓</div><div><strong>शिक्षण</strong><small>विद्यार्थ्यांसाठी मार्गदर्शन</small></div></div>
+ <div class="stat"><div class="stat-icon">💼</div><div><strong>सेवा / नोकरी</strong><small>सेवा अर्जाची माहिती</small></div></div>
+ <div class="stat"><div class="stat-icon">📂</div><div><strong>कागदपत्रे</strong><small>तयारीसाठी चेकलिस्ट</small></div></div>
+</section>
+
+<!-- AFFIDAVIT GENERATOR -->
+<section class="section affidavit" id="affidavit">
+ <div class="aff-icon">📜</div>
+ <div>
+  <span class="pill">SPECIAL SERVICE</span>
+  <h2>शपथपत्र तयार करण्यासाठी येथे क्लिक करा</h2>
+  <p>
+   जात वैधता अर्जासाठी आवश्यक शपथपत्र तयार करण्याच्या पेजवर जा.
+   अर्जदाराची माहिती भरणे, मसुदा पाहणे आणि प्रिंट/PDF सुविधा
+   वापरण्यासाठी स्वतंत्र जनरेटर पेज तयार असणे आवश्यक आहे.
+  </p>
+  <div class="aff-actions">
+   <a class="btn btn-white" href="Validity_decleration.html">✍️ शपथपत्र तयार करा</a>
+   <a class="btn btn-outline"
+      href="Validity_decleration.html"
+      target="_blank" rel="noopener">📄 अधिकृत शपथपत्र नमुने ↗</a>
+  </div>
+ </div>
+</section>
+
+<section class="section" id="documents">
+ <div class="section-head">
+  <div>
+   <h2>जात वैधतेसाठी लागणारी कागदपत्रे</h2>
+   <p>खालील चेकलिस्ट अर्ज तयार करताना उपयोगी पडेल.</p>
+  </div>
+ </div>
+
+ <div class="section-panel">
+  <h3>शैक्षणिक अर्जासाठी प्राथमिक कागदपत्रे</h3>
+  <p>
+   BARTI च्या उपलब्ध FAQ मध्ये शिक्षणाच्या अर्जासाठी खालील
+   कागदपत्रे नमूद आहेत. पोर्टलवरील सध्याच्या सूचनांशी यादी पडताळा.
+  </p>
+
+  <div class="doc-list">
+   <label class="doc-item"><input type="checkbox">
+    <span><b>अर्जदाराचे जात प्रमाणपत्र</b><small>जात प्रमाणपत्राची स्कॅन प्रत.</small></span>
+   </label>
+   <label class="doc-item"><input type="checkbox">
+    <span><b>Form 17 शपथपत्र</b><small>अधिकृत नमुन्यातील शपथपत्र.</small></span>
+   </label>
+   <label class="doc-item"><input type="checkbox">
+    <span><b>Form 3 शपथपत्र</b><small>अर्जदार / पालकांचे शपथपत्र.</small></span>
+   </label>
+   <label class="doc-item"><input type="checkbox">
+    <span><b>Form 15A</b><small>शाळा / महाविद्यालयाच्या प्राचार्यांचे प्रमाणपत्र.</small></span>
+   </label>
+   <label class="doc-item"><input type="checkbox">
+    <span><b>अर्जदाराचा फोटो</b><small>पोर्टलने सांगितलेल्या फॉरमॅट व आकारात.</small></span>
+   </label>
+   <label class="doc-item"><input type="checkbox">
+    <span><b>अर्जदाराची सही</b><small>पोर्टलच्या निर्देशांनुसार अपलोड करा.</small></span>
+   </label>
+   <label class="doc-item"><input type="checkbox">
+    <span><b>पालकांची सही</b><small>पोर्टलवर आवश्यक असल्यास अपलोड करा.</small></span>
+   </label>
+   <label class="doc-item"><input type="checkbox">
+    <span><b>जुने जातपुरावे</b><small>जन्म नोंद, शाळा सोडल्याचा दाखला किंवा जुन्या नोंदी.</small></span>
+   </label>
+   <label class="doc-item"><input type="checkbox">
+    <span><b>वडिलांचे / आजोबांचे शैक्षणिक पुरावे</b><small>उपलब्ध असल्यास संबंधित नोंदी.</small></span>
+   </label>
+   <label class="doc-item"><input type="checkbox">
+    <span><b>पितृकडील नातेवाईकांचे पुरावे</b><small>लागू असल्यास सख्खे काका, आत्या किंवा आजोबा यांच्या नोंदी.</small></span>
+   </label>
+   <label class="doc-item"><input type="checkbox">
+    <span><b>जुने महसूल किंवा इतर अभिलेख</b><small>जात दावा सिद्ध करण्यासाठी उपलब्ध संबंधित नोंदी.</small></span>
+   </label>
+   <label class="doc-item"><input type="checkbox">
+    <span><b>नातेवाईकाचे जात वैधता प्रमाणपत्र</b><small>लागू असल्यास व पोर्टलच्या नियमांनुसार.</small></span>
+   </label>
+  </div>
+
+  <div class="notice">
+   <b>टीप:</b> ही मार्गदर्शक चेकलिस्ट आहे, प्रत्येक अर्जासाठी अंतिम किंवा संपूर्ण यादी नाही.
+   नोकरी, निवडणूक व इतर कारणांसाठी आवश्यक फॉर्म वेगळे असू शकतात.
+   पोर्टलवर दाखवलेला फॉरमॅट, फाईलचा आकार व अनिवार्य कागदपत्रेच अंतिम माना.
+  </div>
+ </div>
+</section>
+
+<section class="section" id="application-types">
+ <div class="section-head">
+  <div>
+   <h2>अर्जाचे प्रकार आणि फॉर्म</h2>
+   <p>आपल्या कारणानुसार अधिकृत फॉर्मची यादी उघडा.</p>
+  </div>
+ </div>
+
+ <div class="search-panel">
+  <input id="search" type="search" placeholder="विभाग किंवा फॉर्म शोधा...">
+  <select id="filter">
+   <option value="all">सर्व विभाग</option>
+   <option value="student">शिक्षण</option>
+   <option value="service">सेवा / नोकरी</option>
+   <option value="election">निवडणूक</option>
+   <option value="other">इतर</option>
+   <option value="affidavit">शपथपत्र</option>
+  </select>
+ </div>
+
+ <div class="cards" id="cards">
+  <article class="card" data-type="student" data-search="student education शिक्षण form 16 form 15a">
+   <div class="card-head"><div class="card-icon">🎓</div><span class="tag">EDUCATION</span></div>
+   <h3>शिक्षणासाठी अर्ज</h3>
+   <p>विद्यार्थ्यांसाठी अर्ज आणि शाळा / महाविद्यालयाच्या प्रमाणपत्रांची माहिती.</p>
+   <a class="btn" target="_blank" rel="noopener" href="https://cvc.barti.in/home/pages/downloadForm">फॉर्म पहा ↗</a>
+  </article>
+
+  <article class="card" data-type="service" data-search="service नोकरी सेवा form 18 form 19">
+   <div class="card-head"><div class="card-icon">💼</div><span class="tag">SERVICE</span></div>
+   <h3>सेवा / नोकरीसाठी अर्ज</h3>
+   <p>सेवा प्रकरणासाठी लागू अर्ज व नियुक्ती प्राधिकाऱ्याच्या प्रमाणपत्राची माहिती.</p>
+   <a class="btn" target="_blank" rel="noopener" href="https://cvc.barti.in/home/pages/downloadForm">फॉर्म पहा ↗</a>
+  </article>
+
+  <article class="card" data-type="election" data-search="election निवडणूक form 20 form 21">
+   <div class="card-head"><div class="card-icon">🗳️</div><span class="tag">ELECTION</span></div>
+   <h3>निवडणुकीसाठी अर्ज</h3>
+   <p>निवडणूक प्रकरणासाठी लागू अर्ज व संबंधित अधिकाऱ्यांच्या प्रमाणपत्रांची माहिती.</p>
+   <a class="btn" target="_blank" rel="noopener" href="https://cvc.barti.in/home/pages/downloadForm">फॉर्म पहा ↗</a>
+  </article>
+
+  <article class="card" data-type="other" data-search="other इतर form 22 form 23">
+   <div class="card-head"><div class="card-icon">📋</div><span class="tag">OTHER</span></div>
+   <h3>इतर कारणांसाठी अर्ज</h3>
+   <p>इतर प्रकरणांसाठी लागू अर्ज व संस्था / आस्थापनेच्या प्रमाणपत्रांची माहिती.</p>
+   <a class="btn" target="_blank" rel="noopener" href="https://cvc.barti.in/home/pages/downloadForm">फॉर्म पहा ↗</a>
+  </article>
+
+  <article class="card" data-type="affidavit" data-search="affidavit शपथपत्र form 3 form 17">
+   <div class="card-head"><div class="card-icon">📜</div><span class="tag">AFFIDAVIT</span></div>
+   <h3>शपथपत्रांचे नमुने</h3>
+   <p>Form 3, Form 17 आणि लागू शपथपत्रांचे अधिकृत नमुने पाहा.</p>
+   <a class="btn" target="_blank" rel="noopener" href="https://cvc.barti.in/home/pages/downloadForm">नमुने पहा ↗</a>
+  </article>
+
+  <article class="card" data-type="student" data-search="caste list जात यादी caste list">
+   <div class="card-head"><div class="card-icon">📚</div><span class="tag">REFERENCE</span></div>
+   <h3>जात यादी व नियम</h3>
+   <p>जात यादी आणि संबंधित नियम / सूचना अधिकृत वेबसाइटवर तपासा.</p>
+   <a class="btn" target="_blank" rel="noopener" href="https://ccvis.barti.in/acts_rules.php">नियम पहा ↗</a>
+  </article>
+ </div>
+
+ <div id="empty" class="section-panel hidden">
+  शोधाशी जुळणारा विभाग सापडला नाही. दुसरा शब्द वापरून पहा.
+ </div>
+</section>
+
+<section class="section">
+ <div class="section-head">
+  <div>
+   <h2>अर्ज करण्याच्या महत्त्वाच्या पायऱ्या</h2>
+   <p>सामान्य मार्गदर्शन — पोर्टलवरील प्रत्यक्ष सूचना अंतिम आहेत.</p>
+  </div>
+ </div>
+ <div class="steps">
+  <div class="step"><b>1</b><h4>अधिकृत पोर्टल उघडा</h4><p>अर्जाचा प्रकार आणि लागू प्रक्रिया निवडा.</p></div>
+  <div class="step"><b>2</b><h4>फॉर्म वाचा</h4><p>योग्य नमुने आणि आवश्यक कागदपत्रे तपासा.</p></div>
+  <div class="step"><b>3</b><h4>कागदपत्रे तयार करा</h4><p>स्पष्ट स्कॅन, योग्य आकार आणि आवश्यक सह्या ठेवा.</p></div>
+  <div class="step"><b>4</b><h4>अर्ज सबमिट करा</h4><p>तपशील तपासा, अर्ज क्रमांक जतन करा आणि स्थिती तपासा.</p></div>
+ </div>
+</section>
+
+<section class="contact">
+ <div>
+  <h3>अधिकृत पोर्टल व मदत</h3>
+  <p>नवीन पोर्टल, फॉर्म आणि तांत्रिक मदतीसाठी अधिकृत स्रोत वापरा.</p>
+ </div>
+ <div class="actions">
+  <a class="btn" href="https://cvc.barti.in/" target="_blank" rel="noopener">नवीन पोर्टल ↗</a>
+  <a class="btn" href="https://ccvis.barti.in/contactus.php" target="_blank" rel="noopener">मदत संपर्क ↗</a>
+  <a class="btn" href="https://cvc.barti.in/home/pages/downloadForm" target="_blank" rel="noopener">डाउनलोड फॉर्म ↗</a>
+ </div>
+</section>
+
+<div class="notice">
+ <b>कायदेशीर सूचना:</b> हे Dipak CSC Center चे मार्गदर्शन पोर्टल आहे; हे सरकारी पोर्टल नाही.
+  शपथपत्राचा नमुना योग्य अधिकृत फॉर्मशी जुळवून घ्या आणि आवश्यक असल्यास अधिकृत पद्धतीने
+  शपथपत्र करून घ्या. चुकीची किंवा बनावट माहिती देऊ नका.
+</div>
+
+</main>
+
+<footer>
+ <strong>Dipak CSC Center, Dabha</strong><br>
+ Caste Validity Information & Document Assistance Portal<br>
+ <a href="https://cvc.barti.in/" target="_blank" rel="noopener">Official CVC Portal</a>
+ <br>© 2026 Dipak CSC Center
+</footer>
+
+<script>
+const search = document.getElementById('search');
+const filter = document.getElementById('filter');
+const cards = [...document.querySelectorAll('#cards .card')];
+
+function updateCards(){
+ const q = search.value.trim().toLowerCase();
+ const type = filter.value;
+ let count = 0;
+
+ cards.forEach(card => {
+  const text = (card.innerText + ' ' + card.dataset.search).toLowerCase();
+  const show = text.includes(q) && (type === 'all' || card.dataset.type === type);
+  card.classList.toggle('hidden', !show);
+  if(show) count++;
+ });
+
+ document.getElementById('empty').classList.toggle('hidden', count !== 0);
+}
+search.addEventListener('input', updateCards);
+filter.addEventListener('change', updateCards);
+</script>
+
+</body>
+</html>
